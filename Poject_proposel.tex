@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\title{Project proposal}
+\author{Tomer Shimshi 203200480     Amit Damri 313191785 }
+\date{March 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Project title:Application of LLM (llama-2) to answer Rebbe Questions in Hebrew}
+
+\section{Names and e-mails of the contributing students:}
+Tomer shimshi tomershimshi@gmail.com
+Amit Damri ???
+\section{A brief description of the proposed project:}
+In the proposed project we will try to fine tune a LLM model (llama-2 or some other good open source LLM) to answer Rebbe questions in Hebrew.
+A Rebbe Question is quastion asked by a Jewish person to hes Rebbe and the Rebbe needs to answer them according to Jewish tradition law the questions can be about anything.
+In our project we will try to fine tune a LLM on a QA dataset which we will comprise from the following Rebbe questions site: https://www.yeshiva.org.il, split the questions to a train and test datasets and evaluate the models performance using the test dataset. We will want to test if it is even possible for an LLM to answer such a complicated questions that a Rebbe spends years studiyng all the Jewish books in order to answer. We can also propose that if the model does not give descent results to try and first fine tune it on all the importent Jewish books and after that do an additional fine tinning over the Rebbe QA dataset which we will build (all the relevant jewish books can be found on this site: https://mechon-mamre.org/indexhe.htm
+If this project will succeed it can help many remote orthodox Jews  that do not have a frequent access to a near by Rebbe but do require hes free assistant
+We know that LLMs can answer question in Hebrew but it is not so trivial to answer Rebbe Quastion and not many pepole are qualified to answer them.
+\section{Our assumptions  and requirements for the project:}
+We assume that since we know LLMs can give expert like results in other fields (such as computer science) we assume that our goal of answering Rebbe quastion is indeed feasible.
+We will also need access to a GPU based compute power, by using some quantization techniques the fine tuning can be done with relativly low compute power (compared to the cumpute power first used when the main model was trained)
+\section{Compute requirements}:
+We will need access Via ssh to a server containing a strong GPU in order to complete the fine tuning on the QA dataset in relatively short period of time
+\end{document}
