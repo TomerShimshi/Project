@@ -11,6 +11,14 @@ from transformers import (
 from peft import LoraConfig
 from trl import SFTTrainer
 
+### EVAL ###
+from deepeval import evaluate
+from deepeval.metrics import AnswerRelevancyMetric,HallucinationMetric
+from deepeval.metrics.ragas import RagasMetric
+from deepeval.test_case import LLMTestCase
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from deepeval.models.base_model import DeepEvalBaseLLM
+
 compute_dtype = getattr(torch, "float16")
 quant_config = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -26,7 +34,7 @@ base_model_name = "NousResearch/Llama-2-7b-chat-hf"
 llama_2 = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
-    device_map="cpu"#{"": 0}
+    device_map={"": 0}
 )
 
 ######################
@@ -92,7 +100,7 @@ trainer = SFTTrainer(
     args=training_arguments,
     packing=False,
 )
-
+'''
 #######################
 ### Fine-Tune Model ###
 #######################
@@ -117,13 +125,8 @@ pipe = pipeline(
 )
 result = pipe(f"###question \n {prompt}.\n ###answer \n ")
 print(result[0]['generated_text'])
-
+'''
 ### EVAL ###
-from deepeval import evaluate
-from deepeval.metrics import AnswerRelevancyMetric,HallucinationMetric
-from deepeval.test_case import LLMTestCase
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from deepeval.models.base_model import DeepEvalBaseLLM
 
 
 class Mistral7B(DeepEvalBaseLLM):
@@ -141,7 +144,7 @@ class Mistral7B(DeepEvalBaseLLM):
     def generate(self, prompt: str) -> str:
         model = self.load_model()
 
-        device = "cuda" # the device to load the model onto
+        device = 'cpu'#"cuda" # the device to load the model onto
 
         model_inputs = self.tokenizer([prompt], return_tensors="pt").to(device)
         model.to(device)
@@ -154,9 +157,10 @@ class Mistral7B(DeepEvalBaseLLM):
 
     def get_model_name(self):
         return "Mistral 7B"
-
-model = AutoModelForCausalLM.from_pretrained("mistralai/Mistral-7B-v0.1")
-tokenizer = AutoTokenizer.from_pretrained("mistralai/Mistral-7B-v0.1")
+model_id = "mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
+model = AutoModelForCausalLM.from_pretrained(model_id)#"mistralai/Mistral-7B-v0.1")
+tokenizer = AutoTokenizer.from_pretrained(model_id)
+#"mistralai/Mistral-7B-v0.1")
 
 mistral_7b = Mistral7B(model=model, tokenizer=tokenizer)
 #print(mistral_7b.generate("Write me a joke"))
@@ -178,14 +182,17 @@ for i in range(len(test_dataset)):
 
     
     metric = AnswerRelevancyMetric(
-        threshold=0.7,
+        threshold=0.5,
         model=mistral_7b,
         include_reason=True
     )
+    #we do not have context so we will use the reference output as context
+    context = test_dataset['answer'][i]
+    excepected_output = test_dataset['answer'][i]
     test_case = LLMTestCase(
-        input=test_dataset['quastion'],
+        input=test_dataset['quastion'][i],
         actual_output=actual_output,
-        expected_output=test_dataset['answer'][i]
+        #expected_output=test_dataset['answer'][i]
         
     )
 
