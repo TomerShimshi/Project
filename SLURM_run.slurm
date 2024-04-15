@@ -11,6 +11,7 @@ SBATCH --ntasks=1 # number of processes
 SBATCH --mem=50000 # CPU memory (MB)
 SBATCH --cpus-per-task=4 # CPU cores per process
 SBATCH --gpus=1 # GPUs in total
+SBATCH --partition=gpu-students
 
 
 python tomershimshi@c-001:/vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/Project/finale_project.py
