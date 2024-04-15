@@ -13,7 +13,7 @@ from trl import SFTTrainer
 
 ### EVAL ###
 from deepeval import evaluate
-from deepeval.metrics import AnswerRelevancyMetric,HallucinationMetric
+from deepeval.metrics import AnswerRelevancyMetric,HallucinationMetric,ContextualPrecisionMetric
 from deepeval.metrics.ragas import RagasMetric
 from deepeval.test_case import LLMTestCase
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -69,7 +69,7 @@ peft_config = LoraConfig(
 ##############################
 training_arguments = TrainingArguments(
     output_dir="./tuning_results",
-    num_train_epochs=0.2,
+    num_train_epochs=2,
     per_device_train_batch_size=12,#4,
     gradient_accumulation_steps=4,#1,
     optim="paged_adamw_32bit",
@@ -100,7 +100,7 @@ trainer = SFTTrainer(
     args=training_arguments,
     packing=False,
 )
-'''
+
 #######################
 ### Fine-Tune Model ###
 #######################
@@ -125,7 +125,7 @@ pipe = pipeline(
 )
 result = pipe(f"###question \n {prompt}.\n ###answer \n ")
 print(result[0]['generated_text'])
-'''
+
 ### EVAL ###
 
 
@@ -157,7 +157,7 @@ class Mistral7B(DeepEvalBaseLLM):
 
     def get_model_name(self):
         return "Mistral 7B"
-model_id = "mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
+model_id = "mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
 model = AutoModelForCausalLM.from_pretrained(model_id)#"mistralai/Mistral-7B-v0.1")
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 #"mistralai/Mistral-7B-v0.1")
@@ -181,18 +181,20 @@ for i in range(len(test_dataset)):
     #"We offer a 30-day full refund at no extra cost."
 
     
-    metric = AnswerRelevancyMetric(
-        threshold=0.5,
-        model=mistral_7b,
-        include_reason=True
-    )
+    #metric = AnswerRelevancyMetric(
+    #    threshold=0.5,
+    #    model=mistral_7b,
+    #    include_reason=True
+    #)
+    metric = ContextualPrecisionMetric(threshold=0.5, model=mistral_7b)
     #we do not have context so we will use the reference output as context
-    context = test_dataset['answer'][i]
+    context = [test_dataset['answer'][i]]
     excepected_output = test_dataset['answer'][i]
     test_case = LLMTestCase(
         input=test_dataset['quastion'][i],
         actual_output=actual_output,
-        #expected_output=test_dataset['answer'][i]
+        expected_output=test_dataset['answer'][i],
+        retrieval_context= context
         
     )
 
