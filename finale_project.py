@@ -68,7 +68,7 @@ peft_config = LoraConfig(
 ### Set Training Arguments ###
 ##############################
 new_model = "tuned-llama-2-7b"
-save_path = os.path.join(os.getcwd() , "results",{new_model})
+save_path = os.path.join(os.getcwd() , "results",new_model)
 temp_save_path = os.path.join(os.getcwd(), "tuning_results")
 print(f"temp save model path = {temp_save_path}")
 training_arguments = TrainingArguments(
