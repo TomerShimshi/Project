@@ -67,25 +67,34 @@ peft_config = LoraConfig(
 ##############################
 ### Set Training Arguments ###
 ##############################
+new_model = "tuned-llama-2-7b"
+save_path = os.path.join(os.getcwd() , "results",{new_model})
+temp_save_path = os.path.join(os.getcwd(), "tuning_results")
+print(f"temp save model path = {temp_save_path}")
 training_arguments = TrainingArguments(
-    output_dir="./tuning_results",
-    num_train_epochs=2,
+    output_dir=temp_save_path,
+    num_train_epochs=3,
     per_device_train_batch_size=1,#4,
     gradient_accumulation_steps=4,#1,
     gradient_checkpointing=True,
     optim="adamw_bnb_8bit",
-    save_steps=25,
-    logging_steps=25,
+    #save_steps=25,
+    logging_steps=50,
     learning_rate=2e-4,
     weight_decay=0.001,
     tf32=True,
-    #fp16=True,
-    bf16=True,
+    fp16=True,
+    #bf16=True,
     max_grad_norm=0.3,
     max_steps=-1,
     warmup_ratio=0.03,
     group_by_length=True,
-    lr_scheduler_type="constant"
+    lr_scheduler_type="constant",
+    load_best_model_at_end=True,
+    save_strategy='epoch',
+    evaluation_strategy="epoch",
+    eval_steps=50,
+    save_total_limit=2,
 )
 
 
@@ -95,6 +104,7 @@ training_arguments = TrainingArguments(
 trainer = SFTTrainer(
     model=llama_2,
     train_dataset=train_dataset,
+    eval_dataset= test_dataset,
     peft_config=peft_config,
     dataset_text_field="text",
     max_seq_length=None,
@@ -102,18 +112,20 @@ trainer = SFTTrainer(
     args=training_arguments,
     packing=False,
 )
+os.environ["PYTORCH_USE_CUDA_DSA"] = "1"
 
 #######################
 ### Fine-Tune Model ###
 #######################
+print("starting model training")
 trainer.train()
 
 ##################
 ### Save Model ###
 ##################
-new_model = "tuned-llama-2-7b"
-trainer.model.save_pretrained(new_model)
-trainer.tokenizer.save_pretrained(new_model)
+print(f"saving model to {save_path}")
+trainer.model.save_pretrained(save_path)
+trainer.tokenizer.save_pretrained(save_path)
 
 #################
 ### Try Model ###
@@ -146,7 +158,7 @@ class Mistral7B(DeepEvalBaseLLM):
     def generate(self, prompt: str) -> str:
         model = self.load_model()
 
-        device = 'cpu'#"cuda" # the device to load the model onto
+        device = "cuda" # the device to load the model onto
 
         model_inputs = self.tokenizer([prompt], return_tensors="pt").to(device)
         model.to(device)
@@ -159,7 +171,7 @@ class Mistral7B(DeepEvalBaseLLM):
 
     def get_model_name(self):
         return "Mistral 7B"
-model_id = "mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
+model_id = "mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
 model = AutoModelForCausalLM.from_pretrained(model_id)#"mistralai/Mistral-7B-v0.1")
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 #"mistralai/Mistral-7B-v0.1")
