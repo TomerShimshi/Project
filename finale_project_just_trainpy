@@ -11,13 +11,7 @@ from transformers import (
 from peft import LoraConfig
 from trl import SFTTrainer
 
-### EVAL ###
-from deepeval import evaluate
-from deepeval.metrics import AnswerRelevancyMetric,HallucinationMetric,ContextualPrecisionMetric
-from deepeval.metrics.ragas import RagasMetric
-from deepeval.test_case import LLMTestCase
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from deepeval.models.base_model import DeepEvalBaseLLM
+
 
 compute_dtype = getattr(torch, "float16")
 quant_config = BitsAndBytesConfig(
@@ -140,82 +134,4 @@ pipe = pipeline(
 result = pipe(f"###question \n {prompt}.\n ###answer \n ")
 print(result[0]['generated_text'])
 
-### EVAL ###
-
-class Mistral7B(DeepEvalBaseLLM):
-    def __init__(
-        self,
-        model,
-        tokenizer
-    ):
-        self.model = model
-        self.tokenizer = tokenizer
-
-    def load_model(self):
-        return self.model
-
-    def generate(self, prompt: str) -> str:
-        model = self.load_model()
-
-        device = "cuda" # the device to load the model onto
-
-        model_inputs = self.tokenizer([prompt], return_tensors="pt").to(device)
-        model.to(device)
-
-        generated_ids = model.generate(**model_inputs, max_new_tokens=100, do_sample=True)
-        return self.tokenizer.batch_decode(generated_ids)[0]
-
-    async def a_generate(self, prompt: str) -> str:
-        return self.generate(prompt)
-
-    def get_model_name(self):
-        return "Mistral 7B"
-model_id = "mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
-model = AutoModelForCausalLM.from_pretrained(model_id)#"mistralai/Mistral-7B-v0.1")
-tokenizer = AutoTokenizer.from_pretrained(model_id)
-#"mistralai/Mistral-7B-v0.1")
-
-mistral_7b = Mistral7B(model=model, tokenizer=tokenizer)
-#print(mistral_7b.generate("Write me a joke"))
-
-
-# Replace this with the actual output from your LLM application
-for i in range(len(test_dataset)):
-    prompt = test_dataset['quastion'][i]
-    pipe = pipeline(
-      task="text-generation", 
-      model=llama_2, 
-      tokenizer=tokenizer, 
-      max_length=200
-    )
-    model_prompt = "###question \n {prompt}.\n ###answer \n "
-    result = pipe(model_prompt)
-    actual_output = result[0]['generated_text']
-    print(actual_output)
-    #"We offer a 30-day full refund at no extra cost."
-
-    
-    #metric = AnswerRelevancyMetric(
-    #    threshold=0.5,
-    #    model=mistral_7b,
-    #    include_reason=True
-    #)
-    metric = ContextualPrecisionMetric(threshold=0.5, model=mistral_7b)
-    #we do not have context so we will use the reference output as context
-    context = [test_dataset['answer'][i]]
-    excepted_output = test_dataset['answer'][i]
-    test_case = LLMTestCase(
-        input=model_prompt,
-        actual_output=actual_output,
-        expected_output=test_dataset['answer'][i],
-        retrieval_context= context
-        
-    )
-
-    metric.measure(test_case)
-    print(metric.score)
-    print(metric.reason)
-
-    # or evaluate test cases in bulk
-    evaluate([test_case], [metric])
 

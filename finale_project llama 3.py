@@ -19,6 +19,8 @@ from deepeval.test_case import LLMTestCase
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from deepeval.models.base_model import DeepEvalBaseLLM
 
+
+
 compute_dtype = getattr(torch, "float16")
 quant_config = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -30,8 +32,8 @@ quant_config = BitsAndBytesConfig(
 #######################
 ### Load Base Model ###
 #######################
-base_model_name = "NousResearch/Llama-2-7b-chat-hf"
-llama_2 = AutoModelForCausalLM.from_pretrained(
+base_model_name = "NousResearch/Meta-Llama-3-8B-Instruct"
+llama_3 = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
     device_map="auto"#{"": 0}
@@ -67,7 +69,7 @@ peft_config = LoraConfig(
 ##############################
 ### Set Training Arguments ###
 ##############################
-new_model = "tuned-llama-2-7b"
+new_model = "tuned-llama-3-8b"
 save_path = os.path.join(os.getcwd() , "results",new_model)
 temp_save_path = os.path.join(os.getcwd(), "tuning_results")
 print(f"temp save model path = {temp_save_path}")
@@ -102,7 +104,7 @@ training_arguments = TrainingArguments(
 ### Set SFT Parameters ###
 ##########################
 trainer = SFTTrainer(
-    model=llama_2,
+    model=llama_3,
     train_dataset=train_dataset,
     eval_dataset= test_dataset,
     peft_config=peft_config,
@@ -133,7 +135,7 @@ trainer.tokenizer.save_pretrained(save_path)
 prompt = "Can I eat pork?"
 pipe = pipeline(
   task="text-generation", 
-  model=llama_2, 
+  model=llama_3, 
   tokenizer=tokenizer, 
   max_length=200
 )
@@ -141,6 +143,7 @@ result = pipe(f"###question \n {prompt}.\n ###answer \n ")
 print(result[0]['generated_text'])
 
 ### EVAL ###
+
 
 class Mistral7B(DeepEvalBaseLLM):
     def __init__(
@@ -184,12 +187,11 @@ for i in range(len(test_dataset)):
     prompt = test_dataset['quastion'][i]
     pipe = pipeline(
       task="text-generation", 
-      model=llama_2, 
+      model=llama_3, 
       tokenizer=tokenizer, 
       max_length=200
     )
-    model_prompt = "###question \n {prompt}.\n ###answer \n "
-    result = pipe(model_prompt)
+    result = pipe(f"###question \n {prompt}.\n ###answer \n ")
     actual_output = result[0]['generated_text']
     print(actual_output)
     #"We offer a 30-day full refund at no extra cost."
@@ -203,9 +205,9 @@ for i in range(len(test_dataset)):
     metric = ContextualPrecisionMetric(threshold=0.5, model=mistral_7b)
     #we do not have context so we will use the reference output as context
     context = [test_dataset['answer'][i]]
-    excepted_output = test_dataset['answer'][i]
+    excepected_output = test_dataset['answer'][i]
     test_case = LLMTestCase(
-        input=model_prompt,
+        input=test_dataset['quastion'][i],
         actual_output=actual_output,
         expected_output=test_dataset['answer'][i],
         retrieval_context= context
