@@ -1,8 +1,8 @@
 #! /bin/sh
 
 #SBATCH --job-name=awesome
-#SBATCH --output=/vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/project_outputs/NLP_proj.out # redirect stdout
-#SBATCH --error=/vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/project_outputs/NLP_proj.err # redirect stderr
+#SBATCH --output=/vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/project_outputs/NLP_projV2.out # redirect stdout
+#SBATCH --error=/vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/project_outputs/NLP_projV2.err # redirect stderr
 #SBATCH --partition=studentkillable # (see resources section)
 #SBATCH --time=480 # max time (minutes)
 #SBATCH --signal=USR1@120 # how to end job when time’s up
