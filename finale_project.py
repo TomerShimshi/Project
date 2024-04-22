@@ -79,7 +79,7 @@ training_arguments = TrainingArguments(
     gradient_checkpointing=True,
     optim="adamw_bnb_8bit",
     save_steps=50,
-    logging_steps=25,
+    logging_steps=2,
     learning_rate=2e-4,
     weight_decay=0.001,
     tf32=False,
@@ -93,12 +93,13 @@ training_arguments = TrainingArguments(
     load_best_model_at_end=True,
     #save_strategy='epoch',
     evaluation_strategy="steps",
-    eval_steps=25,
+    eval_steps=2,
     save_total_limit=2,
     eval_accumulation_steps=1,
+    per_device_eval_batch_size=1
     #torch_compile=True,
 )
-
+print(f"starting train with args = {training_arguments}")
 
 ##########################
 ### Set SFT Parameters ###
