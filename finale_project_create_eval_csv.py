@@ -10,6 +10,7 @@ from transformers import (
 )
 from peft import LoraConfig
 from trl import SFTTrainer
+from tqdm import tqdm
 
 from Rebe_QA_data_scrape_english_site import append_dict_to_csv
 compute_dtype = getattr(torch, "float16")
@@ -23,7 +24,7 @@ quant_config = BitsAndBytesConfig(
 #######################
 ### Load Base Model ###
 #######################
-base_model_name = "results\\tuned-llama-2-7b"
+base_model_name = "tuning_results\checkpoint-50"
 llama_2 = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
@@ -55,18 +56,19 @@ print(f"temp save model path = {save_path_csv_path}")
 
 
 # Replace this with the actual output from your LLM application
-for i in range(len(test_dataset)):
-    prompt = test_dataset['quastion'][i]
+#for i in range(len(test_dataset)):
+for item in tqdm(test_dataset, desc="Processing", unit="items"):
+    prompt = item['quastion']#test_dataset['quastion'][i]
     pipe = pipeline(
       task="text-generation", 
       model=llama_2, 
       tokenizer=tokenizer, 
       max_length=200
     )
-    model_prompt = "###question \n {prompt}.\n ###answer \n "
+    model_prompt = f"###question \n {prompt}.\n ###answer \n "
     result = pipe(model_prompt)
     actual_output = result[0]['generated_text']
-    save_dict = {'question': test_dataset['quastion'][i],'actual_output':actual_output, "expected_output":test_dataset['answer'][i]}
+    save_dict = {'question': prompt,'actual_output':actual_output, "expected_output":item['answer']}#test_dataset['answer'][i]}
     append_dict_to_csv(save_dict, save_path_csv_path)
     #"We offer a 30-day full refund at no extra cost."
 
