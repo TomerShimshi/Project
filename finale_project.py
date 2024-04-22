@@ -52,14 +52,14 @@ tokenizer.padding_side = "right"
 ####################
 train_dataset_name = "Rebe_Q_and_A_dataset_just_rebe_questions_english.csv"
 train_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[:80%]')#, split="train")
-test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-20%:]')
+test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-10%:]')
 #########################################
 ### Load LoRA Configurations for PEFT ###
 #########################################
 peft_config = LoraConfig(
-    lora_alpha = 16,
+    lora_alpha = 32,#16,
     lora_dropout=0.1,
-    r=64,
+    r=8,#64,
     bias="none",
     task_type="CAUSAL_LM",
 )
@@ -75,7 +75,7 @@ training_arguments = TrainingArguments(
     output_dir=temp_save_path,
     num_train_epochs=3,
     per_device_train_batch_size=1,#4,
-    gradient_accumulation_steps=4,#1,
+    gradient_accumulation_steps=8,#1,
     gradient_checkpointing=True,
     optim="adamw_bnb_8bit",
     save_steps=50,
@@ -95,6 +95,7 @@ training_arguments = TrainingArguments(
     evaluation_strategy="steps",
     eval_steps=50,
     save_total_limit=2,
+    #torch_compile=True,
 )
 
 
