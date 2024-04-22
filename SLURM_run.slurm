@@ -12,4 +12,6 @@
 #SBATCH --cpus-per-task=4 # CPU cores per process
 #SBATCH --gpus=1 # GPUs in total
 
+conda activate NLP_proj
+
 python3 /vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/Project/finale_project.py
