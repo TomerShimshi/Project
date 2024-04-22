@@ -1,8 +1,8 @@
 #! /bin/sh
 
 #SBATCH --job-name=NLP_Proj
-#SBATCH --output=/vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/project_outputs/NLP_projV4.out # redirect stdout
-#SBATCH --error=/vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/project_outputs/NLP_projV4.err # redirect stderr
+#SBATCH --output=/vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/project_outputs/NLP_projV5.out # redirect stdout
+#SBATCH --error=/vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/project_outputs/NLP_projV5.err # redirect stderr
 #SBATCH --partition=studentkillable # (see resources section)
 #SBATCH --time=480 # max time (minutes)
 #SBATCH --signal=USR1@120 # how to end job when time’s up
@@ -10,7 +10,7 @@
 #SBATCH --ntasks=1 # number of processes
 #SBATCH --mem=50000 # CPU memory (MB)
 #SBATCH --cpus-per-task=4 # CPU cores per process
-#SBATCH --gpus=1 # GPUs in total
+#SBATCH --gpus=2 # GPUs in total
 
 conda activate NLP_proj
 
