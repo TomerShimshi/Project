@@ -95,6 +95,7 @@ training_arguments = TrainingArguments(
     evaluation_strategy="steps",
     eval_steps=25,
     save_total_limit=2,
+    eval_accumulation_steps=1,
     #torch_compile=True,
 )
 
