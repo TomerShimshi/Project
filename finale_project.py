@@ -73,7 +73,7 @@ temp_save_path = os.path.join(os.getcwd(), "tuning_results")
 print(f"temp save model path = {temp_save_path}")
 training_arguments = TrainingArguments(
     output_dir=temp_save_path,
-    num_train_epochs=3,
+    num_train_epochs=5,
     per_device_train_batch_size=1,#4,
     gradient_accumulation_steps=8,#1,
     gradient_checkpointing=True,
@@ -215,10 +215,10 @@ for i in range(len(test_dataset)):
         
     )
 
-    metric.measure(test_case)
-    print(metric.score)
-    print(metric.reason)
+    #metric.measure(test_case)
+    #print(metric.score)
+    #print(metric.reason)
 
     # or evaluate test cases in bulk
-    evaluate([test_case], [metric])
+    evaluate([test_case], [metric],ignore_errors= True)
 
