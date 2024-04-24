@@ -23,8 +23,8 @@ quant_config = BitsAndBytesConfig(
 #######################
 ### Load Base Model ###
 #######################
-base_model_name = "NousResearch/Meta-Llama-3-8B" #"NousResearch/Meta-Llama-3-8B-Instruct" #"NousResearch/Llama-2-7b-chat-hf" # "NousResearch/Meta-Llama-3-8B-Instruct" #"unsloth/llama-3-8b-bnb-4bit"
-llama_2 = AutoModelForCausalLM.from_pretrained(
+base_model_name = "NousResearch/Meta-Llama-3-8B-Instruct"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Meta-Llama-3-8B-Instruct" #"NousResearch/Llama-2-7b-chat-hf" # "NousResearch/Meta-Llama-3-8B-Instruct" #"unsloth/llama-3-8b-bnb-4bit"
+llama_3 = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
     device_map="auto"#{"": 0}
@@ -60,7 +60,7 @@ peft_config = LoraConfig(
 ##############################
 ### Set Training Arguments ###
 ##############################
-new_model = "tuned-llama-2-7b"
+new_model = "tuned-llama-3-8b"
 save_path = os.path.join(os.getcwd() , "results",new_model)
 temp_save_path = os.path.join(os.getcwd(), "tuning_results")
 print(f"temp save model path = {temp_save_path}")
@@ -98,7 +98,7 @@ print(f"starting train with args = {training_arguments}")
 ### Set SFT Parameters ###
 ##########################
 trainer = SFTTrainer(
-    model=llama_2,
+    model=llama_3,
     train_dataset=train_dataset,
     eval_dataset= test_dataset,
     peft_config=peft_config,
@@ -129,7 +129,7 @@ trainer.tokenizer.save_pretrained(save_path)
 prompt = "Can I eat pork?"
 pipe = pipeline(
   task="text-generation", 
-  model=llama_2, 
+  model=llama_3, 
   tokenizer=tokenizer, 
   max_length=200
 )
