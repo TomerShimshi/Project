@@ -6,6 +6,7 @@ import codecs
 import re
 import csv
 import time
+import os
 
 def get_Q_and_A_from_text(text):
     paragraphs = re.split(r'\n+', text.strip())
@@ -30,7 +31,7 @@ def get_Q_and_A_from_text(text):
                 temp_paragraph = paragraph.replace("Answer:", '', 1)
                 answer_lines.append(temp_paragraph)
         elif answer_started:
-            if 'Sources:' in paragraph:
+            if 'Sources:' in paragraph or 'PREVIOUS QUESTION' in paragraph or '#' in paragraph:
              break
             else:
                 # Collect lines as part of the answer
@@ -46,7 +47,7 @@ def get_Q_and_A_from_text(text):
                     
         elif not answer_started:
             question = paragraph.replace('\xa0','')
-            if len(question)>0:
+            if len(question)>0 and question != 'Question:':
                 question_lines.append(question)
         
     # Join answer lines to form the answer
@@ -57,11 +58,22 @@ def get_Q_and_A_from_text(text):
     return question, answer
 
 def append_dict_to_csv(dictionary, filename):
-    with open(filename, 'a', newline='', encoding='utf-8') as csvfile:
+    if not os.path.exists(filename):
+        char = 'w'
+    else:
+        char = 'a'
+        
+    with open(filename, char, newline='', encoding='utf-8') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=dictionary.keys())
         if csvfile.tell() == 0:
             writer.writeheader()
         writer.writerow(dictionary)
+
+def has_english_letter(s):
+    for char in s:
+        if char.isalpha(): #and char.isascii():
+            return True
+    return False
 
 
 if __name__ == "__main__":
@@ -93,7 +105,7 @@ if __name__ == "__main__":
            
             
             question, answer = get_Q_and_A_from_text(page_text)
-            if len(question) > 1 and len(answer) > 1 and "שאלה:" not in page_text and "תשובה:" not in page_text:
+            if len(question) > 1 and len(answer) > 1 and "שאלה:" not in page_text and "תשובה:" not in page_text and has_english_letter(question + answer): #and has_english_letter(answer):
                 save_txt = f"###question \n {question}.\n ###answer \n {answer}"
 
                 # Save the text to a file with proper encoding for Hebrew (utf-8)
