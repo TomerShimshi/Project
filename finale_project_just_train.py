@@ -23,7 +23,7 @@ quant_config = BitsAndBytesConfig(
 #######################
 ### Load Base Model ###
 #######################
-base_model_name = "NousResearch/Meta-Llama-3-8B-Instruct"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Meta-Llama-3-8B-Instruct" #"NousResearch/Llama-2-7b-chat-hf" # "NousResearch/Meta-Llama-3-8B-Instruct" #"unsloth/llama-3-8b-bnb-4bit"
+base_model_name = "unsloth/llama-3-8b-bnb-4bit"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Meta-Llama-3-8B-Instruct" #"NousResearch/Llama-2-7b-chat-hf" # "NousResearch/Meta-Llama-3-8B-Instruct" #
 llama_3 = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
