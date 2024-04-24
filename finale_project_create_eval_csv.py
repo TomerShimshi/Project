@@ -24,7 +24,8 @@ quant_config = BitsAndBytesConfig(
 #######################
 ### Load Base Model ###
 #######################
-base_model_name = "tuned-llama-2-7b"
+
+base_model_name = os.path.join(os.getcwd() ,"results\\tuned-llama-3-8b")
 llama_2 = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
@@ -50,7 +51,6 @@ test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-2
 ##############################
 ### Set Saving Arguments ###
 ##############################
-new_model = "tuned-llama-2-7b"
 save_path_csv_path = os.path.join(os.getcwd() , "dataset","usage_dataset.csv")
 print(f"temp save model path = {save_path_csv_path}")
 
@@ -63,7 +63,7 @@ for item in tqdm(test_dataset, desc="Processing", unit="items"):
       task="text-generation", 
       model=llama_2, 
       tokenizer=tokenizer, 
-      max_length=200
+      max_length=2000
     )
     model_prompt = f"###question \n {prompt}.\n ###answer \n "
     result = pipe(model_prompt)
