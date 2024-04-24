@@ -24,7 +24,7 @@ quant_config = BitsAndBytesConfig(
 #######################
 ### Load Base Model ###
 #######################
-base_model_name = "tuning_results\checkpoint-50"
+base_model_name = "tuned-llama-2-7b"
 llama_2 = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
@@ -58,7 +58,7 @@ print(f"temp save model path = {save_path_csv_path}")
 # Replace this with the actual output from your LLM application
 #for i in range(len(test_dataset)):
 for item in tqdm(test_dataset, desc="Processing", unit="items"):
-    prompt = item['quastion']#test_dataset['quastion'][i]
+    prompt = item['question']#test_dataset['quastion'][i]
     pipe = pipeline(
       task="text-generation", 
       model=llama_2, 

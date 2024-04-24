@@ -19,6 +19,7 @@ from deepeval.test_case import LLMTestCase
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from deepeval.models.base_model import DeepEvalBaseLLM
 
+import subprocess
 import csv
 from tqdm import tqdm
 
@@ -81,12 +82,12 @@ quant_config = BitsAndBytesConfig(
 #######################
 ### Load Eval Model ###
 #######################
-
-model_id = "mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
+os.environ["DEEPEVAL_RESULTS_FOLDER"] = "dataset"
+model_id = "tuned-llama-2-7b"#"mistralai/Mistral-7B-v0.1" #"NousResearch/Meta-Llama-3-8B-Instruct" # "unsloth/llama-3-8b-bnb-4bit" #"NousResearch/Meta-Llama-3-8B-Instruct" #"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
 model = AutoModelForCausalLM.from_pretrained(model_id,
-    quantization_config=quant_config,
-    device_map="auto"#{"": 0}
-)#"mistralai/Mistral-7B-v0.1")
+   quantization_config=quant_config,
+   device_map={"": 0})
+#"mistralai/Mistral-7B-v0.1")
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 #"mistralai/Mistral-7B-v0.1")
 
@@ -96,8 +97,10 @@ mistral_7b = Mistral7B(model=model, tokenizer=tokenizer)
 model_outputs_csv_path = "dataset\\usage_dataset.csv"
 eval_csv_dict = csv_to_dict(model_outputs_csv_path)
 key = list(eval_csv_dict.keys())[0]
-total_iterations = len(eval_csv_dict[key])
-
+total_iterations = 5#len(eval_csv_dict[key])
+cmd = "deepeval login --confident-api-key pGKpNnRb9JDf2VwL+UZwokgCXeVPlh9W2Ls/9dNqgDU=" 
+os.system(cmd)
+event_id = subprocess.check_output(cmd, shell=True).rstrip()
 for i in tqdm(range(total_iterations), desc="Processing", unit="iterations"):
 # Replace this with the actual output from your LLM application
 #for i in range(len(eval_csv_dict[list(eval_csv_dict.keys())[0]])):
@@ -106,13 +109,17 @@ for i in tqdm(range(total_iterations), desc="Processing", unit="iterations"):
     #"We offer a 30-day full refund at no extra cost."
 
     
-    #metric = AnswerRelevancyMetric(
-    #    threshold=0.5,
-    #    model=mistral_7b,
-    #    include_reason=True
-    #)
-    metric = ContextualPrecisionMetric(threshold=0.5, model=mistral_7b,include_reason=True)
+    metric = AnswerRelevancyMetric(
+        threshold=0.5,
+        model=mistral_7b,
+        include_reason=True,
+        #async_mode=False,
+    )
+    metric2 = ContextualPrecisionMetric(threshold=0.5, model=mistral_7b,include_reason=True)
     #we do not have context so we will use the reference output as context
+    #print(f"fot the following test we have input : {eval_csv_dict['question'][i]}\n actual output \
+    #      = {eval_csv_dict['actual_output'][i]} \n \
+    #      expected_output={eval_csv_dict['expected_output'][i]}")
     test_case = LLMTestCase(
         input=eval_csv_dict['question'][i],
         actual_output=eval_csv_dict['actual_output'][i],
@@ -121,10 +128,11 @@ for i in tqdm(range(total_iterations), desc="Processing", unit="iterations"):
         
     )
 
-    metric.measure(test_case)
-    print(metric.score)
-    print(metric.reason)
+    #metric.measure(test_case)
+    #print(metric.score)
+    #print(metric.reason)
 
     # or evaluate test cases in bulk
-    evaluate([test_case], [metric])
+    evaluate([test_case], [metric,metric2],ignore_errors= True, print_results= True,use_cache=True)
+    t=1
 
