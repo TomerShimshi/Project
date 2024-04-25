@@ -23,7 +23,7 @@ quant_config = BitsAndBytesConfig(
 #######################
 ### Load Base Model ###
 #######################
-base_model_name = "unsloth/llama-3-8b-bnb-4bit"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Meta-Llama-3-8B-Instruct" #"NousResearch/Llama-2-7b-chat-hf" # "NousResearch/Meta-Llama-3-8B-Instruct" #
+base_model_name = "unsloth/llama-3-8b-bnb-4bit"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Llama-2-7b-chat-hf" #"unsloth/llama-3-8b-bnb-4bit"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Meta-Llama-3-8B-Instruct" #"NousResearch/Llama-2-7b-chat-hf" # "NousResearch/Meta-Llama-3-8B-Instruct" #
 llama_3 = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
@@ -45,7 +45,7 @@ tokenizer.padding_side = "right"
 ####################
 train_dataset_name = "Rebe_Q_and_A_dataset_just_rebe_questions_english.csv"
 train_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[:80%]')#, split="train")
-test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-15%:]')
+test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-20%:-10%]')
 #########################################
 ### Load LoRA Configurations for PEFT ###
 #########################################
@@ -60,7 +60,7 @@ peft_config = LoraConfig(
 ##############################
 ### Set Training Arguments ###
 ##############################
-new_model = "tuned-llama-3-8b"
+new_model = "tuned-llama-3-8b_V2"
 save_path = os.path.join(os.getcwd() , "results",new_model)
 temp_save_path = os.path.join(os.getcwd(), "tuning_results")
 print(f"temp save model path = {temp_save_path}")
@@ -74,15 +74,16 @@ training_arguments = TrainingArguments(
     save_steps=50,
     logging_steps=50,
     learning_rate=2e-4,
+    warmup_steps= len(train_dataset)//6,
     weight_decay=0.001,
     tf32=False,
     fp16=True,
     #bf16=True,
     max_grad_norm=0.3,
     max_steps=-1,
-    warmup_ratio=0.03,
+    #warmup_ratio=0.03,
     group_by_length=True,
-    lr_scheduler_type="constant",
+    lr_scheduler_type= "linear", #"constant",
     load_best_model_at_end=True,
     #save_strategy='epoch',
     evaluation_strategy="steps",
