@@ -31,7 +31,7 @@ def get_Q_and_A_from_text(text):
                 temp_paragraph = paragraph.replace("Answer:", '', 1)
                 answer_lines.append(temp_paragraph)
         elif answer_started:
-            if 'Sources:' in paragraph or 'PREVIOUS QUESTION' in paragraph or '#' in paragraph:
+            if 'Sources:' in paragraph or 'PREVIOUS QUESTION' in paragraph or '#' in paragraph or 'See here:' in paragraph :
              break
             else:
                 # Collect lines as part of the answer
