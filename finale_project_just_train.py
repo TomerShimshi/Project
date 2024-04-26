@@ -53,8 +53,8 @@ def train(args):
     ### Load Dataset ###
     ####################
     train_dataset_name = "Rebe_Q_and_A_dataset_just_rebe_questions_english.csv"
-    train_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[:80%]')#, split="train")
-    test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-20%:-10%]')
+    train_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[:70%]')#, split="train")
+    test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-30%:-15%]')
     #########################################
     ### Load LoRA Configurations for PEFT ###
     #########################################
