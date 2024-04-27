@@ -14,4 +14,4 @@
 
 bash conda activate NLP_proj
 
-python3 /vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/Project/finale_project_just_train.py
+python3 /vol/joberant_nobck/data/NLP_368307701_2324/tomershimshi/Project/finale_project_just_train.py --model_name llama-3
