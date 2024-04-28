@@ -15,6 +15,29 @@ import argparse
 parser = argparse.ArgumentParser(description='Description of your program')
 parser.add_argument('--model_name', type=str,default='llama-2', choices=['llama-2', 'llama-3'],help='chose model name either llama-2 or llama-3')
 
+alpaca_prompt = """Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
+
+### Instruction:
+{}
+
+### Question:
+{}
+
+### Answer:
+{}"""
+
+def formatting_prompts_func(examples):
+    instruction = "you are a jewish Rav, please answer the following question"
+    inputs       = examples["question"]
+    outputs      = examples["answer"]
+    texts = []
+    #global EOS_TOKEN
+    for  input, output in zip( inputs, outputs):
+        # Must add EOS_TOKEN, otherwise your generation will go on forever!
+        text = alpaca_prompt.format(instruction, input, output) + EOS_TOKEN
+        texts.append(text)
+    return { "text" : texts, }
+pass
 
 def train(args):
     compute_dtype = getattr(torch, "float16")
@@ -55,12 +78,16 @@ def train(args):
     train_dataset_name = "Rebe_Q_and_A_dataset_just_rebe_questions_english.csv"
     train_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[:70%]')#, split="train")
     test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-30%:-15%]')
+    global EOS_TOKEN
+    EOS_TOKEN=tokenizer.eos_token
+    train_dataset = train_dataset.map(formatting_prompts_func, batched = True, )
+    test_dataset = test_dataset.map(formatting_prompts_func, batched = True,)
     #########################################
     ### Load LoRA Configurations for PEFT ###
     #########################################
     peft_config = LoraConfig(
         lora_alpha = 32,#16,
-        lora_dropout=0.1,
+        lora_dropout=0,#0.1,
         r=8,#64,
         bias="none",
         task_type="CAUSAL_LM",
@@ -75,13 +102,13 @@ def train(args):
     print(f"temp save model path = {temp_save_path}")
     training_arguments = TrainingArguments(
         output_dir=temp_save_path,
-        num_train_epochs=6,
+        num_train_epochs=1,
         per_device_train_batch_size=1,#4,
         gradient_accumulation_steps=8,#1,
         gradient_checkpointing=True,
         optim="adamw_bnb_8bit",
-        save_steps=50,
-        logging_steps=50,
+        save_steps=25,
+        logging_steps=25,
         learning_rate=2e-4,
         warmup_steps= len(train_dataset)//6,
         weight_decay=0.001,
@@ -96,7 +123,7 @@ def train(args):
         load_best_model_at_end=True,
         #save_strategy='epoch',
         evaluation_strategy="steps",
-        eval_steps=50,
+        eval_steps=25,
         save_total_limit=2,
         eval_accumulation_steps=1,
         per_device_eval_batch_size=1
@@ -136,14 +163,17 @@ def train(args):
     #################
     ### Try Model ###
     #################
-    prompt = "Can I eat pork?"
+    question = "Can I eat pork?"
+    instruction = "you are a jewish Rav, please answer the following question"
+    
+    
     pipe = pipeline(
       task="text-generation", 
       model=llama_3, 
       tokenizer=tokenizer, 
       max_length=200
     )
-    result = pipe(f"###question \n {prompt}.\n ###answer \n ")
+    result = pipe( alpaca_prompt.format(instruction, question, ""))
     print(result[0]['generated_text'])
 
 if __name__ == "__main__":
