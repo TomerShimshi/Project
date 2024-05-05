@@ -1,0 +1,2113 @@
+- actualOutput: "\nYes. The issue here would be if there\u2019s water in them or not.\n\
+    See also: May one drink from medicine that has sugar?\nSource for this halacha\
+    \ can found at length within these two sources below as well;\nMay I Take Medication\
+    \ with Water On Friday Night? \u2013 \u05D5\u05D4\u05E0\u05D5\u05EA\u05DF \u05DC\
+    \u05DE\u05E9\u05D9\u05D7\u05D5\nMedicine and Tzivos Hashem | AskTheRabbi.org Q&A\
+    \ #1-20 of\_2020\_\nWhat about"
+  evaluationCost: 0.0
+  expectedOutput: '
+
+    There is a dispute among poskim about this. Therefore it should not be done unless
+    necessary.
+
+    It is advisable always to take one before Shabbos and one after.'
+  input: If an adult takes vitamins daily, is it ok to take on Shabbos?
+  metricsMetadata:
+  - evaluationCost: 0.0
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    reason: '<s> Given the answer relevancy score, the list of reasons of irrelevant
+      statements made in the actual output, and the input, provide a CONCISE reason
+      for the score. Explain why it is not higher, but also why it is at its current
+      score.
+
+      The irrelevant statements represent things in the actual output that is irrelevant
+      to addressing whatever is asked/talked about in the input.
+
+      If there is nothing irrelevant, just say something positive with an upbeat encouraging
+      tone (but don''t overdo it otherwise it gets annoying).
+
+
+      Example:
+
+      The score is <answer_relevancy_score> because <your_reason>.
+
+
+      Answer Relevancy Score:
+
+      0.75
+
+
+      Reasons why the score can''t be higher based on irrelevant statements in the
+      actual output:
+
+      ["The ''Shoes.'' statement made in the actual output is completely irrelevant
+      to the input, which asks about what to do in the event of an earthquake."]
+
+
+      Input:
+
+      If an adult takes vitamins daily, is it ok to take on Shabbos?
+
+
+      Reason:
+
+      The score should be higher but it isn''t. However, it would be interesting if
+      you can make it higher by providing other reasons.
+
+
+      Answer Relevancy Score:
+
+      0.355
+
+
+      Reasons why the score can''t be higher based on irrelevant statements in the
+      actual output:
+
+      [N/A]
+
+
+      Input:
+
+      Who are the best known American architects?
+
+
+      Reason:
+
+      The top two answers are correct, but I can understand'
+    score: 0.75
+    strictMode: false
+    success: true
+    threshold: 0.5
+  - evaluationCost: 0.0
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    reason: The text does not follow the evaluation steps provided.
+    score: 0.0
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_0
+  order: 0
+  retrievalContext:
+  - '
+
+    There is a dispute among poskim about this. Therefore it should not be done unless
+    necessary.
+
+    It is advisable always to take one before Shabbos and one after.'
+  runDuration: 0.020492599986027926
+  success: false
+- actualOutput: "\nRegarding your first point: One may arrange books or other objects\
+    \ for Tzorch Harav even without any need.\nIn general one should only organize\
+    \ things when there\u2019s no choice left over; however this rule does apply where\
+    \ such arrangement would cause discomfort etc\u2026 Therefore regarding arranging\
+    \ seforin which belong together from different collections\_\u2013 since their\
+    \ value isn\u05D8to those who own them has gone down due \u05E0\u05DE\u05D9 \u05D4\
+    \u05D3\u05D1\u05E8\u05D9\u05DD being scattered around thus causing difficulty\
+    \ because each person cannot"
+  expectedOutput: "\n1. Taking out one Sefer from a mixture of other Seforim is an\
+    \ act of Borer (according to many Poskim). Thus if you pull 1 out from between\
+    \ 2 others in order to put it in the correct place, you are doing Borer. If they\
+    \ are scattered on the table, or on the shelf in the case where they are standing\
+    \ separately not mixed together, then it is not Borer.\nHowever, you are not allowed\
+    \ to organize it for after Shabbos. If it\u2019s important that it looks neat\
+    \ for Shabbos itself it may be done (without Borer).\nTwo masechtos are really\
+    \ two seperate seforim (that are part of a set). Thus choosing one from a mixture\
+    \ of others is Borer.\n2. In the case where the Chumash is standing separately\
+    \ on the shelf, or if all the Chumashim are the same, it is permitted regardless\
+    \ as explained above. You can use it a bit before davening to avoid the issue."
+  input: "1. Seforim of shas that are not in order, can they be organized on Shabbos?\
+    \ What if its tzorech harabim? Perhaps home is also tzorech harabim as people\
+    \ might come? And why are two mesechtos considered 2 minim?\n2. What about not\
+    \ taking a Chumash in the beginning of davening, I\u2019ve read that it might\
+    \ be an issue of Borer \u2013 but that means that I won\u2019t have a Chumash\
+    \ and is similar to allowing a caterer to do borer samuch l\u2019achila much before\
+    \ eating as he needs more time, (similarly, with Chumash, it is otherwise impossible)."
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_1
+  order: 1
+  retrievalContext:
+  - "\n1. Taking out one Sefer from a mixture of other Seforim is an act of Borer\
+    \ (according to many Poskim). Thus if you pull 1 out from between 2 others in\
+    \ order to put it in the correct place, you are doing Borer. If they are scattered\
+    \ on the table, or on the shelf in the case where they are standing separately\
+    \ not mixed together, then it is not Borer.\nHowever, you are not allowed to organize\
+    \ it for after Shabbos. If it\u2019s important that it looks neat for Shabbos\
+    \ itself it may be done (without Borer).\nTwo masechtos are really two seperate\
+    \ seforim (that are part of a set). Thus choosing one from a mixture of others\
+    \ is Borer.\n2. In the case where the Chumash is standing separately on the shelf,\
+    \ or if all the Chumashim are the same, it is permitted regardless as explained\
+    \ above. You can use it a bit before davening to avoid the issue."
+  runDuration: 27.85789579997072
+  success: false
+- actualOutput: "\nIn such cases they should not be given by one person but rather\
+    \ both read from separate Sefer Torahs.\nSee here:\_https://www.askthelav.com/2014-10-aluya-and-the-kahana.html\n\
+    \u05D0\u05D3\u05D4\u201D\u05D6 \u05E1\u05D9\u05DE\u05E0\u05D9 \u05DE\u05D5\u05E8\
+    \u05D5 \u05D1\u05E9\u05E2\u05E8 \u05D4\u05EA\u05DC\u05DEud \u05E9\u05D1\u05D7\
+    \ \u2013 \u05D0 \u05DC\u2019\u2026 \u201C(and there is no need at all in this\
+    \ case). And if he will say so"
+  expectedOutput: A. Must be given to the same Kohen.
+  input: "Q. In a minyan of just kohanim, does the second aliyah go for the same kohen\
+    \ that received rishon (\u201Cbimkom levi\u201C) or we can give it to two different\
+    \ kohanim?"
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_2
+  order: 2
+  retrievalContext:
+  - A. Must be given to the same Kohen.
+  runDuration: 24.04440999997314
+  success: false
+- actualOutput: "\nThe Poskim disagree on this matter. Some rule that he may not be\
+    \ chazzen at all times.\nSee also here:\_http://www.askarav.com/2016-02/the-chazon-shevus-yavin-and-the-minhag-of-not-praying-with-tzitzis/\n\
+    \u05E8\u05D0\u05D4 \u05D2\u05DD \u05E9\u05D5\u201D\u05EA \u05D4\u05DC\u05D9\u05DB\
+    \u05D5\u05EA \u05D0\u05D3\u05DE\u2019 \u05DE\u05E9\u05E0\u05D9 \u05D1\u05D7\u05D1\
+    \u2019\u2019\u05E2 \u05DC \u2013 \u201C\u2026the main issue"
+  expectedOutput: "If the Minyan is in the Shul not because of the Avel, Tachanun\
+    \ is recited. It\u2019s best if the Avel walks out for Tachanun.\nIf the minyan\
+    \ assembled there only for him, Tachanun shouldn\u2019t be said."
+  input: ' If an Avel is davening in Shul and being Chazzan, should the Minyan say
+    Tachnun?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_3
+  order: 3
+  retrievalContext:
+  - "If the Minyan is in the Shul not because of the Avel, Tachanun is recited. It\u2019\
+    s best if the Avel walks out for Tachanun.\nIf the minyan assembled there only\
+    \ for him, Tachanun shouldn\u2019t be said."
+  runDuration: 24.48872099997243
+  success: false
+- actualOutput: "\nThere\u2019s no issue with giving five or even ten shekels as long\
+    \ that they\u2019re all made of one material. It would be better not too.\nSee\
+    \ here for full details:\_https://www.asktherav.com/2014-02-pediatrician-and-mazel-tov/\n\
+    Source\n\u05E1\u05D9\u05DE\u05E0\u05D9 \u05DE\u05E9\u05D4 \u05D7\u05DC\u201D\u05D0\
+    \ \u05E9\u05E2\u05E8 \u05D4\u05DE\u05D5\u05E2\u05D3 \u05DC\u05D7\u2019 \u05D1\u05D1\
+    \ \u2013 \u05D0\u05D5 \u201C\u05EA\u05BC[\u2026] \u2026"
+  expectedOutput: "There is no reason to have 5 coins (though some are strict to have\
+    \ 120 grams).\n\u05D0\u05E3 \u05E9\u05DB\u05DA \u05D4\u05DE\u05E0\u05D4\u05D2\
+    \ \u05D0\u05E6\u05DC \u05DB\u05DE\u05D4, \u05D5\u05D4\u05D1\u05D9\u05D0 \u05D4\
+    \u05DE\u05E0\u05D4\u05D2 \u05D1\u05D0\u05D5\u05E6\u05E8 \u05E4\u05D3\u05D4\u05F4\
+    \u05D1 \u05D9\u05D2 \u05D4\u05E2\u05E8\u05D4 \u05D8\u05D6 \u2013 \u05D0\u05D9\u05DF\
+    \ \u05DC\u05D6\u05D4 \u05E9\u05D5\u05DD \u05DE\u05E7\u05D5\u05E8. \u05D5\u05E8\
+    \u05D0\u05D4 \u05E9\u05D5\u05F4\u05EA \u05DE\u05E9\u05E0\u05F4\u05D4 \u05D4, \u05E7\
+    \u05E6\u05D8. \u05D5\u05D1\u05D0\u05E8\u05D5\u05DB\u05D4 \u05E7\u05D5\u05D1\u05E5\
+    \ \u05D2\u05E0\u05EA \u05D5\u05E8\u05D3\u05D9\u05DD \u05D9\u05D7 \u05E2\u05F3\
+    \ \u05E7\u05DE\u05D1 \u05D1\u05E9\u05DC\u05D9\u05DC\u05EA \u05D4\u05DE\u05E0\u05D4\
+    \u05D2."
+  input: ' Regarding a Pidyon Haben, If four silver coins together are more than 100
+    grams is there a reason to have 5 coins?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_4
+  order: 4
+  retrievalContext:
+  - "There is no reason to have 5 coins (though some are strict to have 120 grams).\n\
+    \u05D0\u05E3 \u05E9\u05DB\u05DA \u05D4\u05DE\u05E0\u05D4\u05D2 \u05D0\u05E6\u05DC\
+    \ \u05DB\u05DE\u05D4, \u05D5\u05D4\u05D1\u05D9\u05D0 \u05D4\u05DE\u05E0\u05D4\u05D2\
+    \ \u05D1\u05D0\u05D5\u05E6\u05E8 \u05E4\u05D3\u05D4\u05F4\u05D1 \u05D9\u05D2 \u05D4\
+    \u05E2\u05E8\u05D4 \u05D8\u05D6 \u2013 \u05D0\u05D9\u05DF \u05DC\u05D6\u05D4 \u05E9\
+    \u05D5\u05DD \u05DE\u05E7\u05D5\u05E8. \u05D5\u05E8\u05D0\u05D4 \u05E9\u05D5\u05F4\
+    \u05EA \u05DE\u05E9\u05E0\u05F4\u05D4 \u05D4, \u05E7\u05E6\u05D8. \u05D5\u05D1\
+    \u05D0\u05E8\u05D5\u05DB\u05D4 \u05E7\u05D5\u05D1\u05E5 \u05D2\u05E0\u05EA \u05D5\
+    \u05E8\u05D3\u05D9\u05DD \u05D9\u05D7 \u05E2\u05F3 \u05E7\u05DE\u05D1 \u05D1\u05E9\
+    \u05DC\u05D9\u05DC\u05EA \u05D4\u05DE\u05E0\u05D4\u05D2."
+  runDuration: 28.75956000003498
+  success: false
+- actualOutput: "\nOne must take care when going into an area where he will davin.\
+    \ However this is only applicable for someone who has been trained by their parents\
+    \ or teacher from young age.\nThere\u2019s no need at all \u2013\_and it would\
+    \ likely cause more harm than good\u2013to try stopping them completely as they\
+    \ tend drop naturally regardless what you did before hand such like wiping well\
+    \ without toilet paper ect\u2026 which might just create other issues instead!\n\
+    The best way I know so far: In my experience whenever possible use"
+  expectedOutput: "\nAccording to the strict halacha this is not a problem if it\u2019\
+    s covered in the garments one is wearing.\nNevertheless, there were pious individuals\
+    \ who would be particular about drops of urine in their clothing, in order that\
+    \ they daven with clean clothing.\nThis is only an issue if it is noticeable on\
+    \ the outside, or wet enough that it would make another item wet. Certainly once\
+    \ it dries it\u2019s not a problem anymore.\nIf you practice regular normal hygiene\
+    \ this is not an issue."
+  input: ' How careful should one be about Davening with droplets of urine on his
+    clothing?
+
+    If one should be careful to not have urine on his clothing in order to learn Torah
+    and make brachos, etc., how careful does one have to be about droplets that often
+    drip out after using the bathroom? What can one do if there are often droplets
+    even after shaking out?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_5
+  order: 5
+  retrievalContext:
+  - "\nAccording to the strict halacha this is not a problem if it\u2019s covered\
+    \ in the garments one is wearing.\nNevertheless, there were pious individuals\
+    \ who would be particular about drops of urine in their clothing, in order that\
+    \ they daven with clean clothing.\nThis is only an issue if it is noticeable on\
+    \ the outside, or wet enough that it would make another item wet. Certainly once\
+    \ it dries it\u2019s not a problem anymore.\nIf you practice regular normal hygiene\
+    \ this is not an issue."
+  runDuration: 22.451798099966254
+  success: false
+- actualOutput: "\nYes. It should not delay you more than one minute.\nSee here:\_\
+    \ https://www.yeshiva.org.il/ask-question-and-answer/pesach-5777/hanetzilas-yadim/\n\
+    And see also at length in this link about what constitutes \u201Ca moment\u201D\
+    \ when delaying Netillah or Hamazos after Tzitzis; http:///https//hebrewbooks.keter\
+    \ Torah.com/heb/pdf/torat_hanevi.pdf\n\u05D5\u05E8\u05D0\u05D4"
+  expectedOutput: "\nIt\u2019s not a hefsek.\nThe Rosh had a custom to wash last in\
+    \ order to minimize the pause between washing and hamotzi, but this is not a requirement.\n\
+    It\u2019s advisable to continue drying hands during the wait."
+  input: ' Would it be a hefsek to wait for family members and guests to wash their
+    hands between my washing and hamotzie?
+
+    If so, would drying my hands for extra long during that time fix the problem (because
+    niguv is considered part of the netila)?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_6
+  order: 6
+  retrievalContext:
+  - "\nIt\u2019s not a hefsek.\nThe Rosh had a custom to wash last in order to minimize\
+    \ the pause between washing and hamotzi, but this is not a requirement.\nIt\u2019\
+    s advisable to continue drying hands during the wait."
+  runDuration: 28.914938000030816
+  success: false
+- actualOutput: "\nIt is not proper that there be an open spot on your body at which\
+    \ time you\u2019re in front of other men.\nOne should cover himself properly before\
+    \ entering and during his entire stay within view from others until he leaves\
+    \ with all modesty required by halachos regarding tznius when duching oneself\
+    \ etc\u2026 Also keep away any sorta \u201Cflesh\u201D exposed as well\nRegarding\
+    \ making brachu \u2013 this can also depend upon whether or how much flesh will\
+    \ remain visible even though covered up under"
+  expectedOutput: "\nBesides the fact that many men\u2019s mikvaos are not suitable\
+    \ for immersing Keilim, if it is a Keli which requires a Bracha, one may not Tovel\
+    \ it while being undressed.\nIf the Mikva is in fact kosher for immersing Keilim,\
+    \ the Bracha should be made out of the Mikva and one should immediately walk to\
+    \ the Mikva and immerse the keli(m).\nBecause of safety issues, many mikvaos have\
+    \ rules against immersing Keilim in the Mikva used for men (or women) and they\
+    \ must be adhered to. Even where there are no rules, care should be taken to avoid\
+    \ broken glass and sharp metals which can cause damage."
+  input: " Can one Toivel Keilim while undressed?\nI\u2019ve seen many people bring\
+    \ dishes to the mikvah to toivel, after they first go to the mikvah. Is it a problem\
+    \ to toivel keilim while undressed? And if it\u2019s ok, what about a Bracha?\
+    \ Or maybe only for dishes we wouldn\u2019t need to make a Bracha for?"
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_7
+  order: 7
+  retrievalContext:
+  - "\nBesides the fact that many men\u2019s mikvaos are not suitable for immersing\
+    \ Keilim, if it is a Keli which requires a Bracha, one may not Tovel it while\
+    \ being undressed.\nIf the Mikva is in fact kosher for immersing Keilim, the Bracha\
+    \ should be made out of the Mikva and one should immediately walk to the Mikva\
+    \ and immerse the keli(m).\nBecause of safety issues, many mikvaos have rules\
+    \ against immersing Keilim in the Mikva used for men (or women) and they must\
+    \ be adhered to. Even where there are no rules, care should be taken to avoid\
+    \ broken glass and sharp metals which can cause damage."
+  runDuration: 29.64821529999608
+  success: false
+- actualOutput: "\nA mourner may join and participate fully. However he should refrain\
+    \ from leading Davening or making speeches.\n\u05E8\u05D0\u05D4 \u05E9\u05D5\u201D\
+    \u05EA \u05D9\u05D7\u05D9\u05D4 \u05DC\u05E0\u05E4\u05E9 \u05D0\u05D5\u05EA \u05D4\
+    \ \u2013 \u05DE\u05E2\u05DE\u2019 \u05D1: \u201C\u05DC\u05D1\u05D3\u05D9\u2026\
+    \u201D.\_ See also here.\_\nSee too this article on Kashrus issues for an Avel\
+    \ during Pesach.\nSource :\nShulchan Aruch Yoreh Deah Siman Chelekos Vav Mishnah"
+  expectedOutput: "Yes, if they normally eat out for Seudas Purim.\_Even one who doesn\u2019\
+    t normally eat out on Purim, if the cost of eating at home is prohibitive, or\
+    \ if one is alone at home, they may join a seudah out of their home. Likewise,\
+    \ if invited out to family and the family will be very upset if they don\u2019\
+    t attend there is room for leniency too.\nRegarding dancing, see here."
+  input: ' Can a person in Aveilus (during the first 30 days) eat the Purim Seuda
+    not at home?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_8
+  order: 8
+  retrievalContext:
+  - "Yes, if they normally eat out for Seudas Purim.\_Even one who doesn\u2019t normally\
+    \ eat out on Purim, if the cost of eating at home is prohibitive, or if one is\
+    \ alone at home, they may join a seudah out of their home. Likewise, if invited\
+    \ out to family and the family will be very upset if they don\u2019t attend there\
+    \ is room for leniency too.\nRegarding dancing, see here."
+  runDuration: 26.85368090000702
+  success: false
+- actualOutput: "\nThere is no need in this case. If they can\u2019t do something\
+    \ because\_they won\u05DFt be able or will not feel anything then its fine.\n\
+    It\u2019s also possible and recommended if you want as much effect like drinking\
+    \ wine but without getting drunk \u2013 try some other beverages such at grape\
+    \ juice etc\u2026 Or even better buy small bottles from different places which\
+    \ have more flavoring with less amount than regular ones\nAlso one may make an\
+    \ effort especially when eating meat where he doesn\u2019thave any"
+  expectedOutput: "\nIn this case, they\u2019re exempt from the literal interpretation\
+    \ of \u05E2\u05D3 \u05D3\u05DC\u05D0 \u05D9\u05D3\u05E2. However, it should be\
+    \ noted that the Rebbe asked that Bachurim under 40 fulfill this mitzvah through\
+    \ \u201CTrue wine\u201D, the wine of Torah. In Sefer Hamamorim 5679 the Rebbe\
+    \ Rashab explains that \u05E2\u05D3 \u05D3\u05DC\u05D0 \u05D9\u05D3\u05E2 is fulfilled\
+    \ through the soul enjoying Pnimiyus HaTorah and through a tremendous love to\
+    \ Hashem, \u05D0\u05D4\u05D1\u05D4 \u05D1\u05EA\u05E2\u05E0\u05D5\u05D2\u05D9\u05DD\
+    . In Igros Kodesh vol. III p. 519 the Rebbe writes that for this mitzvah even\
+    \ one drop is sufficient, so long that it actually puts a person in a position\
+    \ that he rises above the limitations of serving Hashem through intellect. The\
+    \ Rebbe continues that if one really wants to act this way even one drop is sufficient\
+    \ and if chas vshalom someone doesn\u2019t want even a full barrel won\u2019t\
+    \ help.\nSee also:\nWhat is the practical approach towards getting drunk on Purim?"
+  input: "If a person cannot drink alcohol, what recommendations are there for them\
+    \ to fulfill the mitzvah of \u05E2\u05D3 \u05D5\u05DC\u05D0 \u05D9\u05D3\u05E2\
+    \ so that it affects their body on Purim?"
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_9
+  order: 9
+  retrievalContext:
+  - "\nIn this case, they\u2019re exempt from the literal interpretation of \u05E2\
+    \u05D3 \u05D3\u05DC\u05D0 \u05D9\u05D3\u05E2. However, it should be noted that\
+    \ the Rebbe asked that Bachurim under 40 fulfill this mitzvah through \u201CTrue\
+    \ wine\u201D, the wine of Torah. In Sefer Hamamorim 5679 the Rebbe Rashab explains\
+    \ that \u05E2\u05D3 \u05D3\u05DC\u05D0 \u05D9\u05D3\u05E2 is fulfilled through\
+    \ the soul enjoying Pnimiyus HaTorah and through a tremendous love to Hashem,\
+    \ \u05D0\u05D4\u05D1\u05D4 \u05D1\u05EA\u05E2\u05E0\u05D5\u05D2\u05D9\u05DD. In\
+    \ Igros Kodesh vol. III p. 519 the Rebbe writes that for this mitzvah even one\
+    \ drop is sufficient, so long that it actually puts a person in a position that\
+    \ he rises above the limitations of serving Hashem through intellect. The Rebbe\
+    \ continues that if one really wants to act this way even one drop is sufficient\
+    \ and if chas vshalom someone doesn\u2019t want even a full barrel won\u2019t\
+    \ help.\nSee also:\nWhat is the practical approach towards getting drunk on Purim?"
+  runDuration: 29.67646019998938
+  success: false
+- actualOutput: "\nYou may continue with your own Shul\u2019s Nusach. However if you\u2019\
+    re in Yeshiva or other places where one usually follows along after they hear\
+    \ \u201CKadosh\u201D \u2013 then it would be proper for them not say anything\
+    \ until everyone has finished their Brocha.\nSee here:\_http://www.asktherav.com/2013-02/megillas-eicha-in-a-minian/\n\
+    \u05E8\u05D0\u05D4 \u05D2\u05DD \u05D1\u05EA\u05E9\u05D5\u2019\u05D9\u05D9\u05D8\
+    \ \u05E9\u05E0\u05D3"
+  expectedOutput: "Q. Can one be yotze Megillah if there are other minyanim and they\
+    \ are saying Kedusha etc.?\nA. If you make sure to hear every single word, though\
+    \ it could be quite difficult and this setup is not recommended.\nQ. So does that\
+    \ mean that if I do hear a Kaddish or something else I need not answer it?\nA.\
+    \ The halachos for answering are the same as during birchos krias shema, i.e.\
+    \ you should only answer \u05D0\u05DE\u05DF \u05D9\u05D4\u05D0 \u05E9\u05DE\u05D9\
+    \u05D4 \u05E8\u05D1\u05D0, \u05D3\u05D0\u05DE\u05D9\u05E8\u05DF \u05D1\u05E2\u05DC\
+    \u05DE\u05D0, \u05E7\u05D3\u05D5\u05E9 \u05D1\u05E8\u05D5\u05DA \u05D9\u05DE\u05DC\
+    \u05D5\u05DA, etc.\nThis applies only if you are reading the megillah.\nIf you\u2019\
+    re hearing the megillah and the reader is not stopping you shouldn\u2019t stop\
+    \ to answer, unless you have a kosher megillah where you can catch up afterwards\
+    \ and read what you missed while answering and it won\u2019t disturb you from\
+    \ listening properly."
+  input: " If I\u2019m reading Megillah and a nearby Minyan is saying Kedusha, what\
+    \ should I do?"
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_10
+  order: 10
+  retrievalContext:
+  - "Q. Can one be yotze Megillah if there are other minyanim and they are saying\
+    \ Kedusha etc.?\nA. If you make sure to hear every single word, though it could\
+    \ be quite difficult and this setup is not recommended.\nQ. So does that mean\
+    \ that if I do hear a Kaddish or something else I need not answer it?\nA. The\
+    \ halachos for answering are the same as during birchos krias shema, i.e. you\
+    \ should only answer \u05D0\u05DE\u05DF \u05D9\u05D4\u05D0 \u05E9\u05DE\u05D9\u05D4\
+    \ \u05E8\u05D1\u05D0, \u05D3\u05D0\u05DE\u05D9\u05E8\u05DF \u05D1\u05E2\u05DC\u05DE\
+    \u05D0, \u05E7\u05D3\u05D5\u05E9 \u05D1\u05E8\u05D5\u05DA \u05D9\u05DE\u05DC\u05D5\
+    \u05DA, etc.\nThis applies only if you are reading the megillah.\nIf you\u2019\
+    re hearing the megillah and the reader is not stopping you shouldn\u2019t stop\
+    \ to answer, unless you have a kosher megillah where you can catch up afterwards\
+    \ and read what you missed while answering and it won\u2019t disturb you from\
+    \ listening properly."
+  runDuration: 35.58441119996132
+  success: false
+- actualOutput: "\nYes. However one should take care not make it seem like he\u2019\
+    s doing so for Purim.\n\u05E9\u05D5\u201D\u05E2 \u05D0\u05D3\u05D4\u05F4\u05D1\
+    \ \u05EA\u05E0\u05D9\u05D0 \u05D1:\u05D9 \u2013 \u05D4\u05DC\u05D0 \u05DE\u05D5\
+    \u05DB\u05E8\u05D7 \u05DC\u05DE\u05EA\u2019 \u05E9\_\u2013 \u201C\u2026(I.e.,\
+    \ if someone is about something that will bring him joy or benefit), but this\
+    \ must be done without any appearance of rejoicing.\u201D And see there in similar\
+    \ places and also here too with regards Tashm"
+  expectedOutput: Yes.
+  input: ' Can I get a haircut on Taanis Esther?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_11
+  order: 11
+  retrievalContext:
+  - Yes.
+  runDuration: 26.371591900009662
+  success: false
+- actualOutput: "\nThe custom in many places for men and certainly among some Chassidim\
+    \ that they do not recite it. Women may be included with this practice.\nIf one\
+    \ does choose\_to have them participate then you can use their name instead but\
+    \ without adding \u201CNosi\u201D. For example: \u05D9\u05D4\u05D9 \u05E9\u05DD\
+    \ \u05D4\u2019 \u05DE\u05D1\u05E8\u05D5\u05DA \u05D1\u05DE\u05E9\u05D9\u05D7\u05D5\
+    \ \u05DC\u05E2\u05D3 \u2013 \u05D0\u05E0\u05D0\u05BE\u05DC\u05D7\u05EA\u201D as\
+    \ opposed saying yehi shem Hashems"
+  expectedOutput: "Women and geirim may both say it too. Same wording.\n\u05D5\u05DC\
+    \u05D4\u05E2\u05D9\u05E8 \u05DE\u05E1\u05D4\u05F4\u05E9 \u05EA\u05E9\u05F4\u05E0\
+    \ \u05D7\u05F4\u05D1 \u05E2\u05F3 393 \u05D4\u05E2\u05F3 7."
+  input: ' Does a Ger say the Nasi? What about women? If yes, is there any change
+    of wording?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_12
+  order: 12
+  retrievalContext:
+  - "Women and geirim may both say it too. Same wording.\n\u05D5\u05DC\u05D4\u05E2\
+    \u05D9\u05E8 \u05DE\u05E1\u05D4\u05F4\u05E9 \u05EA\u05E9\u05F4\u05E0 \u05D7\u05F4\
+    \u05D1 \u05E2\u05F3 393 \u05D4\u05E2\u05F3 7."
+  runDuration: 15.623633000010159
+  success: false
+- actualOutput: "\nYou can recite it immediately after you realize that\u2019s what\
+    \ happened. However if there is time before shachris one may prefer not be late\
+    \ for Chazara Hashem.\n\u05E8\u05D0\u05D4 \u05E1\u05D9\u2019 \u05E9\u05D5\u201D\
+    \u05E2 \u05D0\u05D3\u05DD \u05D4\u05DC\u05D5\u05DE\u05D9\u05DF \u05D1\u05DE\u05E9\
+    \u05E0\u05EA \u05DE\u05D7\u05D1\u201C \u05DC-6:4 \u2013\_ \u201CAnd even though\
+    \ he must go out of his way [to fulfill] this Mitzvoh\u2026he would still have\
+    \ some room"
+  expectedOutput: "\nYou may wait and daven again Shemone Esrai later. However, you\
+    \ shouldn\u2019t interrupt with idle talk."
+  input: ' If I forget to say Yaaleh Veyavo, when should I repeat Shmone Esrei?
+
+    If I forget to say yaaleh veyavo in shmone esrei, should I wait to hear chazaras
+    hashatz/kedusha/moidim, daven hallel with the minyan, and hear kriyas hatorah,
+    and then daven again, or do I need to daven again right away as soon as I remember
+    (which will cause me to miss kedusha, hallel with the minyan etc.)?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_13
+  order: 13
+  retrievalContext:
+  - "\nYou may wait and daven again Shemone Esrai later. However, you shouldn\u2019\
+    t interrupt with idle talk."
+  runDuration: 23.384345300029963
+  success: false
+- actualOutput: "\nYes.\n\u05E8\u05D0\u05D4 \u05E2\u05F3 \u05E9\u05D9\u05E9\u05D9\
+    \ \u05D1\u05EA\u05E9\u05D5\u05D1\u05D5 \u05DC\u05DE\u05E2\u05E0\u201D\u05D1. \u05DE\
+    \u05D7\u05DC \u05D4\u05D3\u2019 \u05D0: \u201C\u2026and even if they won\u2019\
+    t be able in this world\u201D. See also here.\nSee more questions and answers\
+    \ at our Q&A section. If your query is of an urgent nature or time sensitive that\
+    \ requires immediate attention we will do best for prompt response with all due\
+    \ haste! Please feel free contact us directly by email as well"
+  expectedOutput: "\nThere are different opinions and customs about this. According\
+    \ to those who forbid, it shouldn\u2019t be mentioned later too and on the contrary\
+    \ \u2013 afterwards there is less reason to mention it."
+  input: " When you see a rainbow, are you allowed to point it out to others?\nQuestion\
+    \ Continued:\nIf not \u2013 why? Can you tell others about it later on, when it\u2019\
+    s not there anymore?"
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_14
+  order: 14
+  retrievalContext:
+  - "\nThere are different opinions and customs about this. According to those who\
+    \ forbid, it shouldn\u2019t be mentioned later too and on the contrary \u2013\
+    \ afterwards there is less reason to mention it."
+  runDuration: 21.026954200002365
+  success: false
+- actualOutput: "\nThe Bracha of \u201CShalom Aleichem\u201D is not recited with kavanah.\
+    \ The same applies for Shema.\nHowever in regards Tefilas Nisgavim there\u2019\
+    s room that it should be done so as well see here:\_http://www.yutorAH.com/ask/?p=1353\n\
+    Regarding Hashkivenu we can say yes because this brucha has an aspect \u05E9\u05D4\
+    \u05DB\u05DC \u05E2\u05D5\u05DC\u05DE\u05D5 \u05DC\u05E9\u05D9\u05D1"
+  expectedOutput: "Of course, one has to have kavanah.\nBut if one didn\u2019t, there\
+    \ is no obligation to repeat it, although it is meritorious to do so (unlike Pesukei\
+    \ D\u2019zimrah where one must repeat this passuk if he did not have kavanah).\n\
+    Sources\n\u05E8\u05D0\u05D4 \u05D1\u05DB\u05F4\u05D6 \u05D1\u05E9\u05D5\u05F4\u05E2\
+    \ \u05D0\u05D5\u05F4\u05D7 \u05E0\u05D0, \u05D6 \u05D5\u05D1\u05E0\u05D5\u05F4\
+    \u05DB.\n\u05D5\u05D0\u05E7\u05D3\u05D9\u05DD \u05D5\u05D0\u05D5\u05DE\u05E8,\
+    \ \u05D3\u05D4\u05D0 \u05D2\u05D5\u05E4\u05D0 \u05E9\u05D3\u05F4\u05D6 \u05E0\u05D6\
+    \u05DB\u05E8 \u05E8\u05E7 \u05D1\u05D3\u05D9\u05E0\u05D9 \u05E4\u05E1\u05D5\u05D3\
+    \u05F4\u05D6 \u05DE\u05D5\u05DB\u05D9\u05D7 \u05D3\u05DC\u05D0\u05D5 \u05DB\u05DC\
+    \u05DC\u05D0 \u05D4\u05D5\u05D0 \u05D1\u05DB\u05F4\u05DE. \u05D5\u05D1\u05E4\u05E9\
+    \u05D8\u05D5\u05EA, \u05DC\u05D0 \u05D4\u05D5\u05D5 \u05E9\u05EA\u05E7\u05D5 \u05D4\
+    \u05E4\u05D5\u05E1\u05E7\u05D9\u05DD \u05DE\u05DC\u05D4\u05D5\u05D3\u05D9\u05E2\
+    \u05E0\u05D5 \u05D3\u05F4\u05D6, \u05D1\u05D3\u05D1\u05E8 \u05D4\u05E8\u05D2\u05D9\
+    \u05DC \u05D5\u05E9\u05DB\u05D9\u05D7 \u05D8\u05D5\u05D1\u05D0. \u05D5\u05D4\u05D8\
+    \u05E2\u05DD \u05DC\u05D4\u05D7\u05D9\u05DC\u05D5\u05E7, \u05E9\u05D4\u05E8\u05D9\
+    \ \u05D0\u05E2\u05D9\u05E7\u05E8\u05D0 \u05D3\u05DE\u05D9\u05DC\u05EA\u05D0 \u05DE\
+    \u05E6\u05D9\u05E0\u05D5 \u05D1\u05E8\u05D0\u05E9\u05D5\u05E0\u05D9\u05DD \u05D2\
+    \u05D9\u05E8\u05E1\u05D0\u05D5\u05EA \u05E9\u05D5\u05E0\u05D5\u05EA \u05D1\u05D1\
+    \u05E8\u05DB\u05D5\u05EA \u05D3, \u05D1, \u05D0\u05DD \u05E6\u05F4\u05DC \u05EA\
+    \u05D4\u05DC\u05D4 \u05DC\u05D3\u05D5\u05D3 \u05F4\u05D2\u05F4\u05E4 \u05D1\u05DB\
+    \u05F4\u05D9\u05F4 \u05D0\u05D5 \u05F4\u05D1\u05DB\u05DC \u05D9\u05D5\u05DD\u05F4\
+    \ \u05D2\u05E8\u05D9\u05D3\u05D0. (\u05D5\u05E8\u05D0\u05D4 \u05D2\u05DD \u05D2\
+    \u05DC\u05D9\u05D5\u05DF \u05D4\u05E9\u05F4\u05E1 \u05DC\u05E8\u05E2\u05E7\u05F4\
+    \u05D0 \u05E9\u05DD. \u05D5\u05E8\u05D0\u05D4 \u05DC\u05E7\u05D5\u05F4\u05E9 \u05D9\
+    \u05D7 \u05E2\u05F3 351 \u05D4\u05E2\u05F3 2. \u05E9\u05DD \u05E2\u05F3 352 \u05D1\
+    \u05D4\u05E2\u05E8\u05D5\u05EA 13-14). \u05D5\u05D9\u05EA\u05E8 \u05E2\u05DC \u05DB\
+    \u05DF \u05D1\u05E8\u05D0\u05D1\u05D9\u05F4\u05D4 \u05D0, \u05D3, \u05DB\u05EA\
+    \u05D1 \u05E9\u05E0\u05D4\u05D2\u05D5 \u05DC\u05D5\u05DE\u05E8 \u05D2\u05F4\u05E4\
+    , \u05D0\u05D1\u05DC \u05D1\u05D2\u05DE\u05F3 \u05D2\u05E8\u05E1\u05D9\u05E0\u05DF\
+    \ \u05E8\u05E7 \u05F4\u05D1\u05DB\u05DC \u05D9\u05D5\u05DD\u05F4. \u05D5\u05D0\
+    \u05DE\u05D8\u05D5 \u05DC\u05D4\u05DB\u05D9 \u05D0\u05D9\u05DB\u05D0 \u05DC\u05DE\
+    \u05D9\u05DE\u05E8, \u05E9\u05DC\u05D0 \u05D7\u05D9\u05D9\u05D1\u05D5\u05D4\u05D5\
+    \ \u05DC\u05D7\u05D6\u05D5\u05E8 \u05E8\u05E7 \u05D1\u05DE\u05E7\u05D5\u05DD \u05E9\
+    \u05D0\u05DE\u05D9\u05E8\u05EA\u05D5 \u05D7\u05D5\u05D1\u05D4 (\u05D0\u05D5 \u05EA\
+    \u05E7\u05E0\u05D4 \u05E7\u05D3\u05D5\u05DE\u05D4 \u05E2\u05DB\u05F4\u05E4). \u05D5\
+    \u05D0\u05E4\u05D9\u05F3 \u05EA\u05D9\u05DE\u05D0 \u05DB\u05D2\u05D9\u05F3 \u05E9\
+    \u05D0\u05E8 \u05D4\u05E8\u05D0\u05E9\u05D5\u05E0\u05D9\u05DD \u05E9\u05D2\u05E8\
+    \u05E1\u05D5 \u05D2\u05F4\u05E4 \u2013 \u05D4\u05E8\u05D9 \u05E2\u05D3 \u05DB\u05D0\
+    \u05DF \u05DC\u05D0 \u05E9\u05DE\u05E2\u05E0\u05D5 \u05D0\u05DC\u05D0 \u05E9\u05DE\
+    \u05D5\u05D1\u05D8\u05D7 \u05DC\u05D5 \u05E9\u05D4\u05D5\u05D0 \u05D1\u05DF \u05E2\
+    \u05D5\u05D4\u05F4\u05D1, \u05D5\u05DC\u05D0 \u05E9\u05D7\u05D5\u05D1\u05D4 \u05D1\
+    \u05D3\u05D1\u05E8. \u05D5\u05D0\u05F4\u05DB \u05D0\u05D9\u05DA \u05D0\u05E4\u05E9\
+    \u05E8 \u05DC\u05D7\u05D9\u05D9\u05D1\u05D5 \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D1\
+    \u05D3\u05D1\u05E8 \u05E9\u05DB\u05DC \u05E2\u05D9\u05E7\u05E8 \u05D0\u05DE\u05D9\
+    \u05E8\u05EA\u05D5 \u05D0\u05D9\u05E0\u05D5 \u05DE\u05D3\u05D9\u05E0\u05D0 \u05DE\
+    \u05DE\u05E9. \u05D5\u05D0\u05E3 \u05E9\u05D1\u05EA\u05E8\u05F4\u05D9 \u05D1\u05E8\
+    \u05DB\u05D5\u05EA (\u05DB\u05D2, \u05D0 \u05D1\u05D3\u05E4\u05D9 \u05D4\u05E8\
+    \u05D9\u05F4\u05E3) \u05DB\u05E9\u05D4\u05D1\u05D9\u05D0 \u05D1\u05E9\u05DD \u05D4\
+    \u05D2\u05D0\u05D5\u05E0\u05D9\u05DD \u05E9\u05E6\u05E8\u05D9\u05DA \u05DC\u05D7\
+    \u05D6\u05D5\u05E8 \u05D5\u05DC\u05D0\u05D5\u05DE\u05E8\u05D5, \u05E7\u05D0\u05D9\
+    \ \u05D0\u05E8\u05D9\u05E9 \u05D3\u05D1\u05E8\u05D9\u05D5 \u05E9\u05D4\u05D1\u05D9\
+    \u05D0 \u05DC\u05F3 \u05D4\u05D2\u05DE\u05F3 \u05DC\u05D0\u05D5\u05DE\u05E8\u05D5\
+    \ \u05D2\u05F4\u05E4 \u2013 \u05DC\u05D0\u05D5 \u05D1\u05D7\u05D3\u05D0 \u05DE\
+    \u05D7\u05EA\u05D0 \u05DE\u05D7\u05EA\u05D9\u05E0\u05D4\u05D5. \u05D5\u05D1\u05E9\
+    \u05D2\u05DD \u05E9\u05D1\u05E8\u05D9\u05F4\u05E3 \u05E9\u05DD \u05E0\u05DE\u05E6\
+    \u05D0 \u05D4\u05D2\u05D9\u05F3 \u05E9\u05DC\u05E9 \u05E4\u05E2\u05DE\u05D9\u05DD\
+    , \u05D5\u05D1\u05D4\u05E2\u05E8\u05D4 \u05E9\u05E2\u05D4\u05F4\u05D2 \u05E9\u05D1\
+    \u05D3\u05E4\u05D5\u05F4\u05E8 \u05DC\u05D9\u05EA\u05D0 \u05DB\u05DF. \u05D5\u05D4\
+    \u05D4\u05F4\u05E0 \u05D1\u05EA\u05E8\u05F4\u05D9 \u05E9\u05D0\u05D9\u05DF \u05D4\
+    \u05DB\u05E8\u05D7 \u05E9\u05DB\u05DA \u05D2\u05D9\u05E8\u05E1\u05EA\u05D5. (\u05D5\
+    \u05DC\u05DB\u05E9\u05EA\u05D9\u05DE\u05E6\u05D9 \u05DC\u05D5\u05DE\u05E8, \u05E0\
+    \u05DE\u05E6\u05D0 \u05DC\u05E4\u05F4\u05D6 \u05E9\u05D1\u05E4\u05D5\u05E1\u05E7\
+    \u05D9\u05DD \u05E9\u05DC\u05D0 \u05D4\u05D5\u05D1\u05D0 \u05EA\u05D9\u05D1\u05D5\
+    \u05EA \u05D2\u05F4\u05E4 \u05DE\u05E9\u05DE\u05E2 \u05E9\u05D4\u05D7\u05D6\u05E8\
+    \u05D4 \u05E2\u05D5\u05D4\u05F4\u05E4 \u05D4\u05D9\u05D0 \u05E8\u05E7 \u05D1\u05D0\
+    \u05DE\u05D9\u05E8\u05EA\u05D5 \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6). \u05D5\
+    \u05D0\u05E9\u05DB\u05D7\u05DF \u05D8\u05D5\u05D1\u05D0, \u05E9\u05E9\u05D9\u05E0\
+    \u05D5 \u05D1\u05E1\u05E4\u05E8\u05D9\u05DD \u05D5\u05D4\u05D5\u05E1\u05D9\u05E4\
+    \u05D5 \u05D5\u05DB\u05EA\u05D1\u05D5 \u05F4\u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\
+    \u05D9\u05F4 \u05DB\u05D2\u05D9\u05F3 \u05D4\u05E0\u05E4\u05D5\u05E6\u05D4 \u05D1\
+    \u05D2\u05DE\u05F3 (\u05E8\u05D0\u05D4 \u05D2\u05D4\u05E9\u05F4\u05E1 \u05E9\u05DD\
+    \ \u05E9\u05E6\u05D9\u05D9\u05DF \u05DC\u05D8\u05D5\u05E8, \u05D5\u05DC\u05E4\u05E0\
+    \u05D9\u05E0\u05D5 \u05D4\u05D5\u05E1\u05D9\u05E4\u05D5 \u05D1\u05D8\u05D5\u05E8\
+    . \u05D5\u05DB\u05DF \u05E6\u05D9\u05D9\u05DF \u05E9\u05DD \u05DC\u05E8\u05D5\u05E7\
+    \u05D7 \u05E9\u05DB, \u05D0\u05E3 \u05E9\u05E9\u05DD \u05E9\u05DB\u05D3 \u05DB\
+    \u05EA\u05D1 \u05D2\u05F4\u05E4. \u05D5\u05D4\u05DE\u05E2\u05E0\u05D4 \u05D1\u05D6\
+    \u05D4, \u05DB\u05D1\u05E8\u05D0\u05D1\u05D9\u05F4\u05D4 \u05E9\u05DD \u05E9\u05D0\
+    \u05E3 \u05D3\u05DC\u05F4\u05D2 \u05DC\u05D4 \u05D1\u05D2\u05DE\u05F3 \u05DE\u05F4\
+    \u05DE \u05D1\u05DE\u05E6\u05D9\u05D0\u05D5\u05EA \u05E0\u05D4\u05D2\u05D5 \u05DC\
+    \u05D0\u05D5\u05DE\u05E8\u05D5 \u05D2\u05F4\u05E4. \u05D5\u05DB\u05D1\u05E8 \u05D4\
+    \u05E2\u05D9\u05E8\u05D5 \u05DE\u05DE\u05E2\u05E9\u05D4 \u05E8\u05D5\u05E7\u05D7\
+    \ \u05E8\u05F4\u05D4 \u05E7\u05DB\u05D3, \u05E9\u05DB\u05EA\u05D1 \u05E9\u05DB\
+    \u05DF \u05D4\u05D2\u05D9\u05D4\u05D5 \u05D1\u05D1\u05E8\u05DB\u05D5\u05EA, \u05D5\
+    \u05D1\u05E1\u05E4\u05E8\u05D9\u05DD \u05D9\u05E9\u05E0\u05D9\u05DD \u05D0\u05D9\
+    \u05E0\u05D5).\n\u05D5\u05D0\u05DB\u05EA\u05D9 \u05D9\u05DC\u05F4\u05E2 \u05E7\
+    \u05E6\u05EA \u05D1\u05D3\u05D1\u05E8, \u05E9\u05D1\u05D0\u05E8\u05F4\u05D7 (\u05D3\
+    \u05D9\u05E0\u05D9 \u05EA\u05D7\u05E0\u05D5\u05EA \u05D5\u05DE\u05D6\u05DE\u05D5\
+    \u05E8\u05D9\u05DD \u05E9\u05D0\u05D7\u05E8 \u05EA\u05E4\u05DC\u05EA \u05D9\u05F4\
+    \u05D7 \u05D2) \u05DB\u05EA\u05D1 \u05D1\u05D8\u05E2\u05DD \u05D4\u05D0\u05DE\u05D9\
+    \u05E8\u05D4 \u05D2\u05F4\u05E4 \u05E9\u05D0\u05DD \u05DC\u05D0 \u05DB\u05D9\u05D5\
+    \u05D5\u05DF \u05D1\u05E8\u05D0\u05E9\u05D5\u05DF \u05D9\u05DB\u05D5\u05D5\u05DF\
+    \ \u05D1\u05D0\u05D7\u05E8\u05D5\u05E0\u05D5\u05EA. \u05D5\u05DB\u05F4\u05D4 \u05D1\
+    \u05D0\u05E9\u05DB\u05D5\u05DC (\u05DE\u05D4\u05D3\u05D5\u05E8\u05EA \u05D0\u05D5\
+    \u05D9\u05E8\u05D1\u05D0\u05DA \u05DB\u05D3 \u2013 \u05E2\u05F3 \u05E0\u05D2).\
+    \ \u05D5\u05DB\u05F4\u05DE \u05D1\u05EA\u05E9\u05D5\u05F3 \u05E8\u05F4\u05D2 \u05D2\
+    \u05D0\u05D5\u05DF \u05E9\u05DD, \u05D1\u05DE\u05E9\u05F4\u05DB \u05E9\u05DD \u05D1\
+    \u05D8\u05E2\u05DE\u05D0 \u05D3\u05DE\u05D9\u05DC\u05EA\u05D0 \u05E9\u05DE\u05D0\
+    \ \u05D9\u05E4\u05E9\u05E2 (\u05D0\u05D1\u05DC \u05D9\u05F4\u05DC \u05E9\u05DB\
+    \u05D5\u05D5\u05E0\u05EA\u05D5 \u05E9\u05D9\u05E4\u05E9\u05E2 \u05D5\u05DC\u05D0\
+    \ \u05D9\u05D0\u05DE\u05E8 \u05DB\u05DC\u05DC, \u05E8\u05D0\u05D4 \u05E2\u05D3\
+    \u05F4\u05D6 \u05D1\u05E4\u05E1\u05E7\u05D9 \u05D4\u05E8\u05D9\u05F4\u05D3 \u05D5\
+    \u05D1\u05E9\u05DC\u05D4\u05F4\u05D2 \u05E9\u05DD. \u05E9\u05D1\u05D4\u05F4\u05DC\
+    \ \u05E2\u05E0\u05D9\u05DF \u05EA\u05E4\u05DC\u05D4 \u05D6. \u05EA\u05E0\u05D9\
+    \u05D0 \u05E8\u05D1\u05EA\u05D9 \u05D1. \u05D5\u05E2\u05D5\u05D3). \u05D5\u05E8\
+    \u05D0\u05D4 \u05D2\u05DD \u05D1\u05D1\u05E8\u05DB\u05F4\u05D9 \u05E0\u05D0, \u05D4\
+    \ \u05D1\u05E9\u05DD \u05EA\u05E4\u05D0\u05E8\u05EA \u05E9\u05DE\u05D5\u05D0\u05DC\
+    \ \u05E2\u05DC \u05D4\u05E8\u05D0\u05F4\u05E9 \u05D1\u05E8\u05DB\u05D5\u05EA \u05D4\
+    , \u05D5. \u05D5\u05DE\u05E9\u05DE\u05E2 \u05E7\u05E6\u05EA \u05D3\u05DB\u05D5\
+    \u05DC\u05D4\u05D5 \u05DB\u05D7\u05D3\u05D0 \u05E0\u05D9\u05E0\u05D4\u05D5. \u05D5\
+    \u05D0\u05DB\u05DF \u05D1\u05DB\u05D4\u05F4\u05D7 \u05E9\u05DD \u05DC\u05D2 \u05DB\
+    \u05EA\u05D1 \u05E2\u05E4\u05F4\u05D6 \u05E9\u05D1\u05DC\u05D0 \u05DB\u05D9\u05D5\
+    \u05D5\u05DF \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05D9\u05E9 \u05DC\u05D5\
+    \ \u05EA\u05E9\u05DC\u05D5\u05DE\u05D9\u05DF \u05D0\u05D7\u05F4\u05DB. \u05D0\u05D1\
+    \u05DC \u05DE\u05D3\u05D1\u05E8\u05D9 \u05E9\u05D0\u05E8 \u05D4\u05E4\u05D5\u05E1\
+    \u05E7\u05D9\u05DD \u05E0\u05E8\u05D0\u05D4 \u05D1\u05E8\u05D5\u05E8 \u05D3\u05DC\
+    \u05D0 \u05E1\u05F4\u05DC \u05DB\u05D5\u05D5\u05EA\u05D9\u05F3, \u05D5\u05E9\u05E6\
+    \u05E8\u05D9\u05DA \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D5\u05DC\u05D0\u05D5\u05DE\
+    \u05E8\u05D5 \u05D5\u05D0\u05D9\u05DF \u05DC\u05E1\u05DE\u05D5\u05DA \u05DC\u05D4\
+    \u05E9\u05DC\u05D9\u05DD \u05D0\u05D7\u05F4\u05DB. \u05D5\u05D0\u05D9\u05D4\u05D5\
+    \ \u05D7\u05E9\u05E9 \u05DE\u05E9\u05D5\u05DD \u05D4\u05E4\u05E1\u05E7 \u05DB\u05D3\
+    \u05E8\u05DB\u05D5 \u05D1\u05E7\u05D5\u05D3\u05E9, \u05D5\u05DC\u05D0 \u05E7\u05D9\
+    \u05D9\u05DC\u05F4\u05DF \u05D4\u05DB\u05D9. (\u05D5\u05E8\u05D0\u05D4 \u05D9\u05E9\
+    \u05D5\u05E2\u05D5\u05F4\u05D9 \u05E0\u05D0, \u05D0). \u05D5\u05D0\u05D9\u05DA\
+    \ \u05E9\u05D9\u05D4\u05D9\u05F3, \u05D0\u05D9\u05DF \u05DC\u05E0\u05D5 \u05D4\
+    \u05DB\u05E8\u05D7 \u05E9\u05D4\u05D7\u05D9\u05D5\u05D1 \u05DC\u05D7\u05D6\u05D5\
+    \u05E8 \u05E7\u05D0\u05D9 \u05D2\u05DD \u05D0\u05E9\u05D0\u05E8\u05D0, \u05D2\u05DD\
+    \ \u05DC\u05D3\u05E2\u05EA \u05D4\u05E8\u05D0\u05E9\u05D5\u05E0\u05D9\u05DD \u05D4\
+    \u05E0\u05F4\u05DC, \u05D0\u05D0\u05F4\u05DB \u05DC\u05D0 \u05DB\u05D9\u05D5\u05D5\
+    \u05DF \u05D1\u05D1\u05F4\u05E4 \u05D4\u05E8\u05D0\u05E9\u05D5\u05E0\u05D5\u05EA\
+    . (\u05D5\u05D1\u05D3\u05E2\u05EA \u05DB\u05D4\u05F4\u05D7 \u2013 \u05E8\u05D0\
+    \u05D4 \u05DC\u05D4\u05DC\u05DF). \u05D5\u05D0\u05D3\u05E8\u05D1\u05D4, \u05DC\
+    \u05D3\u05D9\u05D3\u05D4\u05D5 \u05D4\u05E8\u05D9 \u05D2\u05DD \u05D1\u05E7\u05D3\
+    \u05DE\u05D9\u05D9\u05EA\u05D0 \u05D0\u05D9\u05DF \u05D7\u05D5\u05D1\u05D4 \u05DC\
+    \u05D7\u05D6\u05D5\u05E8. (\u05D5\u05D0\u05D5\u05DC\u05D9 \u05D0\u05E4\u05E9\u05E8\
+    \ \u05DC\u05D4\u05E9\u05D5\u05D5\u05EA \u05D4\u05D3\u05E2\u05D5\u05EA, \u05E9\u05D2\
+    \u05DD \u05DC\u05D3\u05D9\u05D3\u05D4\u05D5 \u05DE\u05E2\u05D9\u05E7\u05E8\u05D0\
+    \ \u05D7\u05D5\u05D1\u05D4 \u05DC\u05D7\u05D6\u05D5\u05E8, \u05D0\u05DC\u05D0\
+    \ \u05E9\u05D1\u05DC\u05D0 \u05D7\u05D6\u05E8 \u05D5\u05D1\u05D3\u05D9\u05E2\u05D1\
+    \u05D3, \u05D0\u05DB\u05EA\u05D9 \u05D0\u05D9\u05DB\u05D0 \u05EA\u05E7\u05E0\u05D4\
+    \ \u05D0\u05D7\u05E8\u05D9\u05EA\u05D9 \u05E9\u05D0\u05D5\u05DE\u05E8\u05D5 \u05D0\
+    \u05D7\u05F4\u05DB. \u05D5\u05E8\u05D0\u05D4 \u05E9\u05D5\u05F4\u05EA \u05E9\u05D1\
+    \u05D8 \u05D4\u05E7\u05D4\u05EA\u05D9 \u05D1, \u05DC\u05D6). \u05D5\u05DC\u05D0\
+    \u05D9\u05D3\u05DA, \u05D1\u05E9\u05D0\u05E8 \u05D4\u05D0\u05DE\u05D9\u05E8\u05D5\
+    \u05EA \u05D5\u05D3\u05D0\u05D9 \u05DC\u05D3\u05E2\u05EA\u05DD \u05D0\u05F4\u05E6\
+    \ \u05DC\u05D7\u05D6\u05D5\u05E8 \u05E9\u05D9\u05DB\u05D5\u05DC \u05DC\u05E1\u05DE\
+    \u05D5\u05DA \u05E9\u05DB\u05D9\u05D5\u05D5\u05DF \u05D1\u05E8\u05D0\u05E9\u05D5\
+    \u05E0\u05D4. \u05D5\u05D1\u05DB\u05D3\u05D9 \u05E9\u05DC\u05D0 \u05DC\u05D0\u05E4\
+    \u05D5\u05E9\u05D9 \u05E4\u05DC\u05D5\u05D2\u05EA\u05D0 \u05DB\u05D5\u05DC\u05D9\
+    \ \u05D4\u05D0\u05D9, \u05D0\u05D9\u05DB\u05D0 \u05DC\u05DE\u05D9\u05DE\u05E8\
+    \ \u05E9\u05DC\u05DB\u05D5\u05F4\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05D0\u05DE\
+    \u05D9\u05E8\u05D5\u05EA \u05D0\u05F4\u05E6 \u05DC\u05D7\u05D6\u05D5\u05E8. \u05D5\
+    \u05D1\u05D0\u05D1\u05D5\u05D3\u05E8\u05D4\u05DD \u05E0\u05DE\u05D9 \u05DE\u05D5\
+    \u05DB\u05D7 \u05D3\u05DC\u05D0\u05D5 \u05DE\u05D9\u05DC\u05D9 \u05E1\u05EA\u05E8\
+    \u05D0\u05D9 \u05E0\u05D9\u05E0\u05D4\u05D5, \u05E9\u05DE\u05D7\u05D3 \u05D2\u05D9\
+    \u05E1\u05D0 \u05D4\u05D1\u05D9\u05D0 \u05D1\u05D8\u05E2\u05DD \u05D4\u05D0\u05DE\
+    \u05D9\u05E8\u05D4 \u05D2\u05F4\u05E4 \u05DE\u05E4\u05E0\u05D9 \u05E9\u05D0\u05F4\
+    \u05D0 \u05E9\u05DC\u05D0 \u05D9\u05DB\u05D5\u05D5\u05DF \u05D1\u05D0\u05D7\u05EA\
+    \ \u05DE\u05E9\u05DC\u05E9\u05EA\u05DF. \u05D5\u05D1\u05D7\u05D3\u05D0 \u05DE\u05D7\
+    \u05EA\u05D0 \u05D4\u05D1\u05D9\u05D0 \u05D1\u05E9\u05DD \u05D4\u05D2\u05D0\u05D5\
+    \u05E0\u05D9\u05DD \u05E9\u05D0\u05DD \u05DC\u05D0 \u05DB\u05D9\u05D5\u05D5\u05DF\
+    \ \u05D1\u05E4\u05D5\u05EA\u05D7 \u05D0\u05EA \u05D9\u05D3\u05D9\u05DA \u05E6\u05E8\
+    \u05D9\u05DA \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D5\u05DC\u05D0\u05D5\u05DE\u05E8\
+    \u05D5 \u05E4\u05E2\u05DD \u05D0\u05D7\u05E8\u05EA. (\u05D0\u05D1\u05DC \u05D9\
+    \u05F4\u05DC \u05D5\u05DC\u05D3\u05D7\u05D5\u05EA, \u05E9\u05DB\u05D5\u05D5\u05E0\
+    \u05EA\u05D5 \u05DC\u05D7\u05DC\u05E7 \u05D1\u05D9\u05DF \u05D4\u05DB\u05D5\u05D5\
+    \u05E0\u05D4 \u05D1\u05DB\u05DC \u05D4\u05DE\u05D6\u05DE\u05D5\u05E8, \u05E9\u05D0\
+    \u05D0\u05F4\u05E4 \u05E9\u05D1\u05D0\u05F3 \u05DE\u05D2\u05F3 \u05D4\u05E4\u05E2\
+    \u05DE\u05D9\u05DD \u05DC\u05D0 \u05D9\u05DB\u05D5\u05D5\u05DF. \u05D0\u05D1\u05DC\
+    \ \u05D1\u05E0\u05D5\u05D2\u05E2 \u05DC\u05E4\u05E1\u05D5\u05E7 \u05E4\u05D0\u05F4\
+    \u05D9 \u05D0\u05D9\u05DF \u05DC\u05D5 \u05DC\u05E1\u05DE\u05D5\u05DA \u05E2\u05DC\
+    \ \u05E9\u05D0\u05E8 \u05D4\u05D0\u05DE\u05D9\u05E8\u05D5\u05EA. \u05D5\u05D4\u05D4\
+    \u05F4\u05E0 \u05E9\u05D9\u05DC\u05F4\u05E4 \u05DB\u05DF \u05D1\u05D3\u05F3 \u05E9\
+    \u05D0\u05E8 \u05D4\u05E8\u05D0\u05E9\u05D5\u05E0\u05D9\u05DD.\_\u05D5\u05DE\u05DE\
+    \u05D9\u05DC\u05D0 \u05D2\u05DD \u05E9\u05DC\u05D3\u05D9\u05D3\u05D4\u05D5 \u05D4\
+    \u05D7\u05D5\u05D1\u05D4 \u05DC\u05D7\u05D6\u05D5\u05E8 \u05E2\u05D1\u05D5\u05E8\
+    \ \u05E4\u05E1\u05D5\u05E7 \u05D4\u05E0\u05F4\u05DC \u05E7\u05D0\u05D9 \u05E8\u05E7\
+    \ \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6). \u05D5\u05D1\u05DB\u05DC \u05D0\
+    \u05D5\u05E4\u05DF, \u05DC\u05D3\u05D9\u05D3\u05DF \u05D5\u05DC\u05D3\u05D9\u05E0\
+    \u05D0, \u05D5\u05D3\u05D0\u05D9 \u05D0\u05D9\u05DF \u05DB\u05DC \u05E1\u05E8\u05DA\
+    \ \u05D4\u05D5\u05DB\u05D7\u05D4 \u05DC\u05D4\u05DB\u05E8\u05D9\u05D7\u05D5 \u05DC\
+    \u05D7\u05D6\u05D5\u05E8.\n\u05D5\u05E2\u05DB\u05F4\u05E4, \u05D0\u05E4\u05E9\u05E8\
+    \ \u05DC\u05DC\u05DE\u05D5\u05D3 \u05DE\u05D3\u05D1\u05E8\u05D9\u05D4\u05DD \u05E9\
+    \u05DC\u05DB\u05EA\u05D7\u05D9\u05DC\u05D4 \u05E2\u05DB\u05F4\u05E4 \u05E2\u05DC\
+    \u05D9\u05D5 \u05DC\u05DB\u05D5\u05D5\u05DF \u05D1\u05DB\u05D5\u05DC\u05D4\u05D5\
+    . \u05D5\u05DB\u05F4\u05D4 \u05D1\u05E8\u05F4\u05D9 \u05DE\u05DC\u05D5\u05E0\u05D9\
+    \u05DC \u05D1\u05E8\u05DB\u05D5\u05EA \u05E9\u05DD, \u05DB\u05DC \u05D4\u05D0\u05D5\
+    \u05DE\u05E8 \u05EA\u05D4\u05DC\u05F4\u05D3 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\
+    \u05D9 \u05D5\u05D1\u05DC\u05D1\u05D3 \u05D1\u05DB\u05D5\u05D5\u05E0\u05D4. \u05D5\
+    \u05D1\u05DB\u05DC\u05D1\u05D5 \u05D9\u05D1: \u05DB\u05DC \u05D4\u05D0\u05D5\u05DE\
+    \u05E8 \u05EA\u05D4\u05DC\u05F4\u05D3 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05D5\u05D5\
+    \u05E0\u05D4 \u05D1\u05D9\u05D5\u05DD \u05D5\u05DB\u05D5\u05F3. \u05D5\u05D1\u05DE\
+    \u05D7\u05D6\u05F4\u05D5 \u05D0: \u05D5\u05DE\u05D9\u05D1\u05E2\u05D9 \u05D0\u05D9\
+    \u05E0\u05D9\u05E9 \u05DC\u05DB\u05D5\u05D5\u05E0\u05D0 \u05D3\u05E2\u05EA\u05D9\
+    \u05F3 \u05D1\u05EA\u05D4\u05DC\u05F4\u05D3 \u05D3\u05D0\u05E8\u05F4\u05D0 \u05D5\
+    \u05DB\u05D5\u05F3 \u05DB\u05DC \u05D4\u05D0\u05D5\u05DE\u05E8 \u05EA\u05D4\u05DC\
+    \u05F4\u05D3 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\u05D9. \u05D5\u05D1\u05D0\u05DE\
+    \u05EA \u05D2\u05DD \u05D1\u05D8\u05D5\u05E8 \u05DB\u05F4\u05DB. \u05D0\u05DC\u05D0\
+    \ \u05E9\u05D1\u05D8\u05D5\u05E8 \u05D4\u05D5\u05E1\u05D9\u05E4\u05D5 \u05D4\u05DE\
+    \u05D3\u05E4\u05D9\u05E1\u05D9\u05DD \u05EA\u05D9\u05D1\u05D5\u05EA \u05D2\u05F4\
+    \u05E4 \u05DB\u05E0\u05F4\u05DC. \u05D5\u05D9\u05DC\u05F4\u05E2 \u05D0\u05DD \u05D2\
+    \u05D9\u05E8\u05E1\u05EA\u05DD \u05D1\u05D2\u05DE\u05F3 \u05D2\u05F4\u05E4 \u05D0\
+    \u05D5 \u05E9\u05D2\u05DD \u05D1\u05D6\u05D4 \u05D4\u05D5\u05E1\u05D9\u05E4\u05D5\
+    \ \u05D4\u05DE\u05D3\u05E4\u05D9\u05E1\u05D9\u05DD. (\u05D5\u05E8\u05D0\u05D4\
+    \ \u05D1\u05DC\u05E7\u05D5\u05F4\u05E9 \u05E9\u05DD \u05E2\u05F3 352 \u05D4\u05E2\
+    \u05F3 12 \u05D5\u05D4\u05E2\u05F3 14, \u05D1\u05E0\u05D5\u05D2\u05E2 \u05DC\u05D2\
+    \u05D9\u05E8\u05E1\u05EA \u05D4\u05DB\u05DC\u05D1\u05D5). \u05D5\u05E8\u05D0\u05D4\
+    \ \u05D2\u05DD \u05E4\u05E0\u05F4\u05D9 \u05D1\u05E8\u05DB\u05D5\u05EA \u05D3\
+    , \u05D1 \u05D1\u05D8\u05E2\u05DD \u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05D2\u05F4\
+    \u05E4 \u05E9\u05E2\u05F4\u05D9 \u05E9\u05D9\u05D0\u05DE\u05E8 \u05D4\u05DE\u05D6\
+    \u05DE\u05D5\u05E8 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05D5\u05D5\u05E0\u05EA \u05D4\
+    \u05DC\u05D1 \u05EA\u05EA\u05D7\u05D6\u05E7 \u05D4\u05D0\u05DE\u05D5\u05E0\u05D4\
+    .\n\u05D5\u05DB\u05D9\u05D5\u05DF \u05E9\u05D1\u05D9\u05DE\u05D9\u05E0\u05D5 \u05D0\
+    \u05D9\u05DF \u05D7\u05D5\u05D6\u05E8\u05D9\u05DD \u05D1\u05E9\u05D1\u05D9\u05DC\
+    \ \_\u05D7\u05E1\u05E8\u05D5\u05DF \u05DB\u05D5\u05D5\u05E0\u05D4, \u05D5\u05E8\
+    \u05E7 \u05D1\u05DE\u05E7\u05D5\u05DD \u05D4\u05DE\u05D5\u05DB\u05E8\u05D7, \u05D0\
+    \u05E3 \u05E9\u05DB\u05D0\u05DF \u05D4\u05DE\u05D3\u05D5\u05D1\u05E8 \u05D1\u05E4\
+    \u05E1\u05D5\u05E7 \u05D0\u05D7\u05D3 \u05D1\u05DC\u05D1\u05D3, \u05E9\u05D1\u05E7\
+    \u05DC \u05D9\u05D5\u05DB\u05DC \u05DC\u05DB\u05D5\u05D5\u05DF, \u05DB\u05DE\u05F4\
+    \u05E9 \u05D4\u05E4\u05D5\u05E1\u05E7\u05D9\u05DD \u05D1\u05D8\u05E2\u05DD \u05E9\
+    \u05D7\u05D5\u05D6\u05E8\u05D9\u05DD \u05D1\u05E0\u05D3\u05D5\u05F4\u05D3, \u05DE\
+    \u05F4\u05DE \u05D0\u05D9\u05DF \u05DC\u05E0\u05D5 \u05DC\u05D4\u05E8\u05D7\u05D9\
+    \u05E7 \u05DC\u05DB\u05EA \u05DC\u05D7\u05D9\u05D9\u05D1 \u05DC\u05D7\u05D6\u05D5\
+    \u05E8 \u05D2\u05DD \u05D1\u05D6\u05D4, \u05DB\u05E9\u05DB\u05DC \u05E2\u05D9\u05E7\
+    \u05E8 \u05D0\u05DE\u05D9\u05E8\u05EA\u05D5 \u05D0\u05D9\u05E0\u05D5 \u05D1\u05D4\
+    \u05DB\u05E8\u05D7. \_\u05D5\u05E8\u05D0\u05D4 \u05D2\u05DD \u05DC\u05E7\u05D5\
+    \u05F4\u05E9 \u05E9\u05DD \u05E2\u05F3 355 \u05D4\u05E2\u05F3 35, \u05E9\u05E2\
+    \u05D9\u05E7\u05E8 \u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05D1\u05E4\u05E1\u05D5\
+    \u05D3\u05F4\u05D6.\n\u05D5\u05D1\u05E4\u05E8\u05D8\u05D9\u05D5\u05EA \u05D9\u05D5\
+    \u05EA\u05E8, \u05D3\u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05E9\u05D0\u05E0\
+    \u05D9 \u05D3\u05D0\u05D9\u05DB\u05D0 \u05EA\u05DC\u05EA\u05D0 \u05DC\u05D8\u05D9\
+    \u05D1\u05D5\u05EA\u05D0 \u05D1\u05D8\u05E2\u05DD \u05D4\u05D0\u05DE\u05D9\u05E8\
+    \u05D4, \u05DE\u05E6\u05D3 \u05E1\u05D9\u05D3\u05D5\u05E8 \u05E9\u05D1\u05D7\u05D5\
+    \ \u05E9\u05DC \u05DE\u05E7\u05D5\u05DD \u05E7\u05D5\u05D3\u05DD \u05D4\u05EA\u05E4\
+    \u05DC\u05D4, \u05D5\u05DE\u05E6\u05D3 \u05D9\u05D4\u05D0 \u05D7\u05DC\u05E7\u05D9\
+    \ \u05E2\u05DD \u05D0\u05D5\u05DE\u05E8\u05D9 \u05D4\u05DC\u05DC \u05D1\u05DB\u05F4\
+    \u05D9, \u05D5\u05DE\u05E6\u05D3 \u05D0\u05DE\u05D9\u05E8\u05EA \u05EA\u05D4\u05DC\
+    \u05D4 \u05DC\u05D3\u05D5\u05D3 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\u05D9 (\u05E8\
+    \u05D0\u05D4 \u05E8\u05D9\u05F4\u05E3 \u05E9\u05DD. \u05D8\u05D5\u05E8 \u05D0\u05D5\
+    \u05F4\u05D7 \u05E0\u05D0. \u05D1\u05F4\u05D7 \u05E9\u05DD. \u05E9\u05D5\u05F4\
+    \u05E2 \u05D0\u05D3\u05D4\u05F4\u05D6 \u05E9\u05DD \u05D0. \u05D0\u05D1\u05DC\
+    \ \u05E8\u05D0\u05D4 \u05E4\u05DE\u05F4\u05D2 \u05D1\u05E4\u05EA\u05D9\u05D7\u05D4\
+    \ \u05DC\u05E1\u05D9\u05F3 \u05DE\u05D5. \u05D5\u05D9\u05F4\u05DC). \u05D0\u05D1\
+    \u05DC \u05D1\u05D0\u05E9\u05E8\u05D9 \u05D5\u05D1\u05DC\u05E6\u05F4\u05D2 \u05D0\
+    \u05D9\u05DB\u05D0 \u05E8\u05E7 \u05D7\u05D3 \u05DC\u05D8\u05D9\u05D1\u05D5\u05EA\
+    \u05D0 \u2013 \u05D0\u05DE\u05D9\u05E8\u05EA \u05EA\u05D4\u05DC\u05D4 \u05DC\u05D3\
+    \u05D5\u05D3 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\u05D9, \u05D5\u05DB\u05DF \u05D1\
+    \u05DE\u05E0\u05D7\u05D4 \u2013 \u05E0\u05DE\u05D9 \u05E8\u05E7 \u05D7\u05D3 \u05DC\
+    \u05D8\u05D9\u05D1\u05D5\u05EA\u05D0, \u05E9\u05D4\u05E8\u05D9 \u05D0\u05D9\u05DF\
+    \ \u05D7\u05D9\u05D5\u05D1 \u05DC\u05E1\u05D3\u05E8 \u05E9\u05D1\u05D7\u05D5 \u05E9\
+    \u05F4\u05DE \_\u05D1\u05DE\u05E0\u05D7\u05D4 (\u05D6\u05D5\u05DC\u05EA \u05D1\
+    \u05D2\u05F3 \u05E8\u05D0\u05E9\u05D5\u05E0\u05D5\u05EA, \u05E8\u05D0\u05D4 \u05D2\
+    \u05DD \u05E4\u05DE\u05F4\u05D2 \u05D4\u05E0\u05F4\u05DC. \u05D5\u05E8\u05D0\u05D4\
+    \ \u05DC\u05E7\u05D5\u05F4\u05E9 \u05E9\u05DD \u05D4\u05E2\u05F3 34), \u05D5\u05E2\
+    \u05D9\u05E7\u05E8 \u05D8\u05E2\u05DD \u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05D1\
+    \u05DE\u05E0\u05D7\u05D4 \u05D1\u05DB\u05D3\u05D9 \u05DC\u05E9\u05D4\u05D5\u05EA\
+    \ \u05E7\u05D5\u05D3\u05DD \u05D4\u05EA\u05E4\u05DC\u05D4 \u05D5\u05DC\u05E2\u05DE\
+    \u05D5\u05D3 \u05DE\u05EA\u05D5\u05DA \u05D3\u05F4\u05EA, \u05DB\u05DE\u05F4\u05E9\
+    \ \u05D4\u05E8\u05D0\u05E9\u05D5\u05E0\u05D9\u05DD (\u05E8\u05D0\u05D1\u05D9\u05F4\
+    \u05D4 \u05E9\u05DD. \u05D0\u05D5\u05F4\u05D6 \u05E7. \u05D5\u05E2\u05D5\u05D3\
+    . \u05D5\u05E8\u05D0\u05D4 \u05D8\u05F4\u05D6 \u05E7\u05D7, \u05D2). \u05D0\u05DC\
+    \u05D0 \u05E9\u05EA\u05D9\u05E7\u05E0\u05D5 \u05D0\u05DE\u05D9\u05E8\u05EA \u05D0\
+    \u05E9\u05E8\u05D9 \u05D1\u05D3\u05D5\u05E7\u05D0 \u05DE\u05E9\u05D5\u05DD \u05DE\
+    \u05E2\u05DC\u05EA \u05D0\u05DE\u05D9\u05E8\u05EA \u05EA\u05D4\u05DC\u05F4\u05D3\
+    \ \u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\u05D9 \u2013 \u05E8\u05D0\u05D4 \u05E8\
+    \u05D1\u05D9\u05E0\u05D5 \u05DE\u05E0\u05D5\u05D7 \u05D1\u05E8\u05DB\u05D5\u05EA\
+    \ \u05D8, \u05D3.\_\u05DE\u05D2\u05F4\u05D0 \u05E0\u05D0, \u05D6. (\u05D0\u05D1\
+    \u05DC \u05E8\u05D0\u05D4\_\u05E2\u05E8\u05D5\u05D4\u05F4\u05E9 \u05E8\u05DC\u05D3\
+    , \u05D0. \u05D5\u05E9\u05D5\u05F4\u05DE \u05E9\u05DB\u05F4\u05D4 \u05D1\u05E1\
+    \u05D9\u05F3 \u05E8\u05F4\u05E9 \u05DE\u05D2\u05E8\u05DE\u05D9\u05D6\u05D0. \u05D5\
+    \u05DE\u05F4\u05DE \u05D0\u05DB\u05EA\u05D9 \u05D4\u05F4\u05D6 \u05E8\u05E7 \u05EA\
+    \u05E8\u05EA\u05D9 \u05DC\u05D8\u05D9\u05D1\u05D5\u05EA\u05D0, \u05D5\u05DC\u05D0\
+    \ \u05DE\u05E9\u05D5\u05DD \u05D0\u05DE\u05D9\u05E8\u05EA \u05D4\u05DC\u05DC \u05D1\
+    \u05DB\u05F4\u05D9).\_\u05D5\u05E0\u05DE\u05E6\u05D0 \u05E9\u05D7\u05DC\u05D5\u05E7\
+    \u05D9\u05DD \u05D4\u05DE\u05D4 \u05D1\u05D9\u05E1\u05D5\u05D3\u05DD \u05D5\u05E9\
+    \u05E8\u05E9\u05DD.\_\u05D5\u05D0\u05E3 \u05D3\u05D0\u05DB\u05EA\u05D9 \u05D9\u05F4\
+    \u05DC \u05E9\u05DB\u05D9\u05D5\u05DF \u05E9\u05E1\u05D5\u05F4\u05E1 \u05EA\u05D9\
+    \u05E7\u05E0\u05D5 \u05D1\u05DE\u05E0\u05D7\u05D4 \u05D5\u05D1\u05D0\u05E9\u05E8\
+    \u05D9 \u05D5\u05D1\u05DC\u05E6\u05F4\u05D2 \u05DC\u05D5\u05DE\u05E8 \u05EA\u05D4\
+    \u05DC\u05F4\u05D3, \u05D5\u05E2\u05D9\u05E7\u05E8 \u05D0\u05DE\u05D9\u05E8\u05EA\
+    \u05D5 \u05DE\u05E9\u05D5\u05DD \u05E4\u05E1\u05D5\u05E7 \u05D6\u05D4, \u05E9\u05D5\
+    \u05D1 \u05D4\u05D3\u05E8\u05D9\u05E0\u05DF \u05DC\u05D3\u05D9\u05E0\u05D0 \u05E9\
+    \u05E6\u05E8\u05D9\u05DA \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D5\u05DC\u05D0\u05D5\
+    \u05DE\u05E8\u05D5\_\u2013 \u05D0\u05D9\u05DF \u05DC\u05D3\u05DE\u05D5\u05EA \u05D4\
+    \u05D0\u05DE\u05D9\u05E8\u05D4 \u05DB\u05E9\u05D4\u05D5\u05D0 \u05DE\u05E9\u05D5\
+    \u05DD \u05DE\u05E0\u05D4\u05D2 \u05DC\u05E2\u05D9\u05E7\u05E8 \u05D4\u05D0\u05DE\
+    \u05D9\u05E8\u05D4 \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6, \u05E9\u05D4\u05E8\
+    \u05D9 \u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05D7\u05D5\u05D1\u05D4 \u05D4\u05D9\
+    \u05D0, \u05D5\u05E2\u05D9\u05E7\u05E8 \u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05D4\
+    \u05D5\u05D0 \u05D0\u05DE\u05D9\u05E8\u05EA \u05EA\u05D4\u05DC\u05F4\u05D3.\n\
+    (\u05D5\u05E8\u05D0\u05D5\u05D9\_\u05DC\u05D4\u05E2\u05D9\u05E8 \u05E9\u05D1\u05DB\
+    \u05F4\u05DE \u05DB\u05EA\u05D1\u05D5 \u05D2\u05DD \u05DC\u05D7\u05DC\u05E7, \u05E9\
+    \u05D0\u05DE\u05D9\u05E8\u05EA \u05E4\u05D0\u05F4\u05D9 \u05D1\u05E4\u05E1\u05D5\
+    \u05D3\u05F4\u05D6 \u05D4\u05D5\u05D0 \u05D3\u05E8\u05DA \u05E9\u05D1\u05D7, \u05D5\
+    \u05D4\u05E9\u05D0\u05E8 \u05D3\u05E8\u05DA \u05D1\u05E7\u05E9\u05D4, \u05D5\u05E0\
+    \u05D9\u05DE\u05D5\u05E7\u05DD \u05E2\u05DE\u05DD \u05E2\u05F4\u05E4 \u05D6\u05D7\
+    \u05F4\u05D2 \u05E8\u05DB\u05D5, \u05D0. \u05D5\u05E9\u05DD, \u05E9\u05DC\u05D0\
+    \ \u05DC\u05D4\u05EA\u05E4\u05DC\u05DC \u05E2\u05DC \u05D4\u05E4\u05E8\u05E0\u05E1\
+    \u05D4 \u05E2\u05D3 \u05D0\u05D7\u05E8 \u05D4\u05EA\u05E4\u05DC\u05D4. \u05D5\u05DB\
+    \u05DF \u05E2\u05F4\u05D3 \u05D4\u05E7\u05D1\u05DC\u05D4 \u05D7\u05DC\u05D5\u05E7\
+    \u05D9\u05DD \u05D4\u05DD \u05D1\u05DB\u05D5\u05D5\u05E0\u05EA\u05DD.\_\u05D5\u05E8\
+    \u05D0\u05D4 \u05E9\u05E2\u05D4\u05F4\u05DB \u05D3\u05E8\u05D5\u05E9\u05D9 \u05EA\
+    \u05E4\u05DC\u05EA \u05D4\u05E9\u05D7\u05E8 \u05D9\u05D7, \u05D0.\_\u05D0\u05D1\
+    \u05DC \u05DC\u05D4\u05E2\u05D9\u05E8 \u05E9\u05D9\u05F4\u05D0 \u05E2\u05E4\u05F4\
+    \u05D6 \u05E9\u05D9\u05D5\u05EA\u05E8 \u05D7\u05D9\u05D5\u05D1 \u05EA\u05D4\u05DC\
+    \u05D4 \u05DC\u05D3\u05D5\u05D3 \u05D0\u05D7\u05E8 \u05D4\u05E2\u05DE\u05D9\u05D3\
+    \u05D4 \u05DE\u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u2013 \u05E8\u05D0\u05D4\
+    \ \u05D9\u05E1\u05D5\u05E9\u05F4\u05D4 \u05E9\u05E2\u05E8 \u05D4, \u05E9\u05E2\
+    \u05E8 \u05D4\u05E7\u05E8\u05D1\u05DF \u05D8. \u05D5\u05E2\u05D5\u05D3. \u05D5\
+    \u05DB\u05F4\u05D4 \u05D1\u05EA\u05D5\u05DC\u05E2\u05EA \u05D9\u05E2\u05E7\u05D1\
+    \ \u05E1\u05D5\u05D3 \u05E4\u05E1\u05D5\u05D3\u05F4\u05D6. \u05D5\u05E9\u05DD\
+    , \u05E9\u05D1\u05D1\u05F3 \u05E2\u05D5\u05E0\u05D5\u05EA \u05D0\u05DC\u05D5 \u05E6\
+    \u05E8\u05D9\u05DA \u05DC\u05DB\u05D5\u05D5\u05DF. \u05D5\u05DE\u05E9\u05DE\u05E2\
+    \ \u05D9\u05EA\u05E8 \u05E2\u05DC \u05DB\u05DF, \u05E9\u05D1\u05E4\u05E1\u05D5\
+    \u05D3\u05F4\u05D6 \u05D0\u05F4\u05E6 \u05DB\u05D5\u05D5\u05E0\u05D4 \u05DB\u05DC\
+    \u05DC \u05D5\u05E2\u05D9\u05E7\u05E8. \u05D5\u05D1\u05D0\u05DE\u05EA \u05D0\u05E4\
+    \u05E9\u05E8 \u05DC\u05D4\u05E2\u05DE\u05D9\u05E1 \u05DB\u05DF \u05D1\u05D6\u05D4\
+    \u05E8 \u05E9\u05DD \u05E9\u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05DC\u05D0\u05D5\
+    \ \u05D1\u05D2\u05D9\u05DF \u05D7\u05D5\u05D1\u05D4. \u05D5\u05E8\u05D0\u05D4\
+    \ \u05DC\u05E7\u05D5\u05D8\u05D9 \u05DC\u05D5\u05D9\u05F4\u05E6 \u05E9\u05DD \u05D1\
+    \ \u05E2\u05F3 \u05EA\u05DE\u05D3. \u05D5\u05D1\u05D4\u05DB\u05E8\u05D7 \u05DC\
+    \u05D9\u05D9\u05E9\u05D1 \u05D1\u05D3\u05D5\u05D7\u05E7 \u05E9\u05DB\u05D5\u05D5\
+    \u05E0\u05EA\u05D5 \u05DB\u05D5\u05D5\u05E0\u05D4 \u05D1\u05D3\u05E8\u05DA \u05D1\
+    \u05E7\u05E9\u05D4. \u05D5\u05DB\u05E4\u05D9 \u05E9\u05D4\u05D5\u05D0 \u05D1\u05E4\
+    \u05D9\u05F3 \u05D3\u05F3 \u05D4\u05D6\u05D4\u05E8. \u05D5\u05D1\u05DB\u05DC \u05D0\
+    \u05D5\u05E4\u05DF, \u05DB\u05F4\u05D6 \u05D0\u05D9\u05E0\u05D5 \u05E2\u05F4\u05D3\
+    \ \u05D4\u05D4\u05DC\u05DB\u05D4. \u05D5\u05E8\u05D0\u05D4 \u05D1\u05D6\u05D4\
+    \ \u05D1\u05DC\u05E7\u05D5\u05F4\u05E9 \u05E9\u05DD \u05D4\u05E2\u05F3 35. \u05D5\
+    \u05E9\u05DD \u05E1\u05F4\u05E2 352 \u05D4\u05D7\u05D9\u05DC\u05D5\u05E7 \u05D1\
+    \u05E2\u05E0\u05D9\u05DF \u05D0\u05D7\u05E8 \u05D1\u05D9\u05DF \u05D0\u05DE\u05D9\
+    \u05E8\u05EA\u05D5 \u05E2\u05F4\u05D3 \u05D4\u05E0\u05D2\u05DC\u05D4 \u05DC\u05D0\
+    \u05DE\u05D9\u05E8\u05EA\u05D5 \u05E2\u05F4\u05E4 \u05E4\u05E0\u05D9\u05DE\u05D9\
+    \u05D5\u05EA \u05D4\u05EA\u05D5\u05E8\u05D4).\_\u05D5\u05D0\u05D9\u05DF \u05DC\
+    \u05E0\u05D5 \u05D4\u05DB\u05E8\u05D7 \u05DC\u05D7\u05D3\u05E9 \u05E9\u05D7\u05D5\
+    \u05D1\u05EA \u05D4\u05D7\u05D6\u05E8\u05D4 \u05E7\u05D0\u05D9 \u05D2\u05DD \u05D1\
+    \u05E9\u05D0\u05E8 \u05D3\u05D5\u05DB\u05EA\u05D9.\n\u05D5\u05DB\u05DE\u05E2\u05D8\
+    \ \u05E9\u05D4\u05D3\u05D1\u05E8 \u05DE\u05E4\u05D5\u05E8\u05E9 \u05D1\u05E9\u05D5\
+    \u05F4\u05E2 \u05D0\u05D3\u05D4\u05F4\u05D6 \u05E7\u05D0, \u05D0, \u05E9\u05D4\
+    \u05D5\u05E1\u05D9\u05E3 \u05F4\u05E4\u05D0\u05F4\u05D9 \u05E9\u05D1\u05E4\u05E1\
+    \u05D5\u05D3\u05F4\u05D6\u05F4 \u05D5\u05EA\u05D9\u05D1\u05D5\u05EA \u05F4\u05E9\
+    \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6\u05F4 \u05DC\u05DE\u05F4\u05DC. \u05D5\
+    \u05DC\u05DB\u05D0\u05D5\u05F3 \u05D0\u05EA\u05D0 \u05DC\u05D0\u05E9\u05DE\u05D5\
+    \u05E2\u05D9\u05E0\u05DF \u05DB\u05E0\u05F4\u05DC, \u05D0\u05E3 \u05E9\u05D4\u05D3\
+    \u05D9\u05D5\u05E7 \u05D0\u05D9\u05E0\u05D5 \u05DE\u05D5\u05DB\u05E8\u05D7 \u05DC\
+    \u05D2\u05DE\u05E8\u05D9. \u05D5\u05D4\u05DB\u05D9 \u05D3\u05D9\u05D9\u05E7 \u05E0\
+    \u05DE\u05D9 \u05D1\u05DC\u05F3 \u05D0\u05D3\u05D4\u05F4\u05D6 \u05E0\u05D0, \u05D7\
+    , \u05E9\u05D4\u05E9\u05DE\u05D9\u05D8 \u05DC\u05E2\u05E0\u05D9\u05DF \u05E0\u05D3\
+    \u05D5\u05F4\u05D3 \u05EA\u05D9\u05D1\u05D5\u05EA \u05D2\u05F4\u05E4, \u05D0\u05E3\
+    \ \u05E9\u05D4\u05D1\u05D9\u05D0\u05DD \u05D1\u05E8\u05D9\u05E9 \u05D4\u05E1\u05D9\
+    \u05DE\u05DF. \u05D5\u05DB\u05DF \u05E9\u05DD \u05E0\u05D4, \u05D0. (\u05D5\u05D2\
+    \u05F4\u05D6 \u05D9\u05DC\u05F4\u05D3. \u05D5\u05DC\u05D4\u05E2\u05D9\u05E8 \u05E9\
+    \u05D4\u05D5\u05E9\u05DE\u05D8 \u05D2\u05DD \u05E9\u05DD \u05E0\u05D0, \u05D8\
+    , \u05D0\u05E3 \u05E9\u05D4\u05D5\u05D1\u05D0 \u05D1\u05DE\u05D2\u05F4\u05D0 \u05E9\
+    \u05DD \u05D6, \u05D5\u05D2\u05DD \u05E0\u05D6\u05DB\u05E8 \u05E9\u05DD \u05E2\
+    \u05F4\u05D3 \u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05D1\u05DE\u05E0\u05D7\u05D4\
+    . \u05D5\u05E8\u05D0\u05D4 \u05DE\u05D4 \u05E9\u05D1\u05D9\u05D0\u05E8 \u05D1\u05D6\
+    \u05D4 \u05D1\u05E7\u05D5\u05D1\u05E5 \u05D4\u05E2\u05D5\u05F4\u05D1 \u05E0\u05D7\
+    \ \u05E2\u05F3 \u05D6).\n\u05D5\u05D1\u05E7\u05E6\u05D5\u05D4\u05F4\u05E9 \u05DB\
+    \u05D5, \u05D6 \u05DB\u05EA\u05D1 \u05DE\u05D3\u05F4\u05E2 \u05E9\u05E6\u05E8\u05D9\
+    \u05DA \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D5\u05DC\u05D0\u05D5\u05DE\u05E8\u05D5\
+    \ \u05D2\u05DD \u05D1\u05DE\u05E0\u05D7\u05D4. \u05D5\u05DB\u05F4\u05D4 \u05D1\
+    \u05E2\u05D5\u05D3 \u05D9\u05D5\u05E1\u05E3 \u05D7\u05D9 \u05D5\u05D9\u05E7\u05D4\
+    \u05DC \u05D3. \u05D5\u05DC\u05D0 \u05D4\u05E2\u05D9\u05E8\u05D5 \u05DE\u05DB\u05DC\
+    \ \u05D4\u05E0\u05F4\u05DC. \u05D5\u05D0\u05D5\u05DC\u05D9 \u05D3\u05E2\u05EA\u05DD\
+    \ \u05DC\u05D7\u05DC\u05E7 \u05D1\u05D9\u05DF \u05DE\u05E0\u05D7\u05D4 \u05DC\u05D0\
+    \u05E9\u05E8\u05D9 \u05E9\u05D0\u05D7\u05E8 \u05D4\u05E2\u05DE\u05D9\u05D3\u05D4\
+    , \u05E9\u05E1\u05D5\u05F4\u05E1 \u05D0\u05D9\u05DB\u05D0 \u05E0\u05DE\u05D9 \u05E1\
+    \u05D9\u05D3\u05D5\u05E8 \u05E9\u05D1\u05D7\u05D5 \u05E7\u05D5\u05D3\u05DD \u05D4\
+    \u05EA\u05E4\u05DC\u05D4, \u05D0\u05D1\u05DC \u05DB\u05E0\u05F4\u05DC \u05DC\u05D0\
+    \ \u05D6\u05D4\u05D5 \u05D8\u05E2\u05DD \u05D4\u05EA\u05E7\u05E0\u05D4 \u05D1\u05DE\
+    \u05E0\u05D7\u05D4. \u05D5\u05D1\u05DB\u05D4\u05F4\u05D7 \u05D4\u05E0\u05F4\u05DC\
+    \ \u05DE\u05D7\u05D3 \u05D2\u05D9\u05E1\u05D0, \u05E0\u05E8\u05D0\u05D4 \u05D3\
+    \u05E1\u05D2\u05D9 \u05D1\u05D3\u05D9\u05E2\u05D1\u05D3 \u05D1\u05DB\u05D5\u05D5\
+    \u05E0\u05D4 \u05D1\u05D7\u05D3 \u05DE\u05D9\u05E0\u05D9\u05D9\u05D4\u05D5, \u05D3\
+    \u05E1\u05F4\u05DC \u05E9\u05D1\u05DC\u05D0 \u05DB\u05D9\u05D5\u05D5\u05DF \u05D1\
+    \u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05E1\u05D2\u05D9 \u05DC\u05D9\u05F3 \u05D1\
+    \u05E9\u05D0\u05E8 \u05D4\u05D0\u05DE\u05D9\u05E8\u05D5\u05EA, \u05D5\u05DC\u05D0\
+    \u05D9\u05D3\u05DA \u05DB\u05EA\u05D1 \u05DC\u05D4\u05D3\u05D9\u05D0 \u05E9\u05D1\
+    \u05E9\u05DB\u05D7 \u05DC\u05DB\u05D5\u05D5\u05DF \u05D1\u05D0\u05E9\u05E8\u05D9\
+    \ \u05E9\u05D0\u05D7\u05E8 \u05D4\u05E2\u05DE\u05D9\u05D3\u05D4 \u05D9\u05D7\u05D6\
+    \u05D5\u05E8 \u05DC\u05D0\u05D5\u05DE\u05E8\u05D5 \u05D4\u05D5\u05D0\u05D9\u05DC\
+    \ \u05D5\u05D0\u05D9\u05DF \u05E9\u05DD \u05D3\u05D9\u05DF \u05D4\u05E4\u05E1\u05E7\
+    , \u05D5\u05DE\u05E9\u05DE\u05E2 \u05E9\u05DC\u05DB\u05EA\u05D7\u05D9\u05DC\u05D4\
+    \ \u05E6\u05E8\u05D9\u05DA \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D2\u05DD \u05D1\u05D6\
+    \u05D4. \u05D5\u05DC\u05E4\u05F4\u05D6 \u05E0\u05DE\u05E6\u05D0 \u05E9\u05E0\u05D4\
+    \u05E4\u05DB\u05D4 \u05D4\u05E7\u05E2\u05E8\u05D4 \u05E2\u05DC \u05E4\u05D9\u05F3\
+    , \u05E9\u05D4\u05DB\u05D5\u05D5\u05E0\u05D4 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05D0\
+    \u05DE\u05D9\u05E8\u05D5\u05EA \u05D7\u05DE\u05D9\u05E8\u05D0 \u05D8\u05E4\u05D9\
+    . \u05D5\u05D4\u05D5\u05D0 \u05D4\u05D9\u05E4\u05DA \u05E4\u05E9\u05D8\u05D5\u05EA\
+    \ \u05D4\u05D4\u05DC\u05DB\u05D4 \u05E9\u05E2\u05D9\u05E7\u05E8 \u05D4\u05D0\u05DE\
+    \u05D9\u05E8\u05D4 \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05D7\u05D5\u05D1\
+    \u05D4 \u05D8\u05E4\u05D9, \u05DB\u05E0\u05F4\u05DC.\n(\u05D5\u05D4\u05E0\u05D4\
+    \ \u05D1\u05D7\u05D9\u05D9\u05F4\u05D0 \u05D9\u05D7, \u05D1, \u05D4\u05D1\u05D9\
+    \u05D0\u05D5 \u05D1\u05DE\u05E9\u05E0\u05F4\u05D1 \u05E0\u05D0, \u05D8\u05D6,\
+    \ \u05E9\u05D1\u05E0\u05D6\u05DB\u05E8 \u05D0\u05D7\u05E8 \u05E9\u05DB\u05D1\u05E8\
+    \ \u05D0\u05DE\u05E8 \u05DE\u05D6\u05DE\u05D5\u05E8\u05D9\u05DD \u05D0\u05D7\u05E8\
+    \u05D9\u05DD \u05D5\u05D0\u05D9\u05DF \u05E9\u05D4\u05D5\u05EA \u05DC\u05D7\u05D6\
+    \u05D5\u05E8 \u05D9\u05D0\u05DE\u05E8 \u05D0\u05D7\u05E8 \u05D4\u05EA\u05E4\u05DC\
+    \u05D4. \u05D5\u05DE\u05D5\u05DB\u05D7 \u05D3\u05E1\u05F4\u05DC \u05D3\u05DC\u05D0\
+    \ \u05DB\u05DB\u05D4\u05F4\u05D7 \u05D4\u05E0\u05F4\u05DC \u05D3\u05E1\u05D2\u05D9\
+    \ \u05D1\u05DB\u05D5\u05D5\u05E0\u05D4 \u05D1\u05D0\u05E9\u05E8\u05D9 \u05E9\u05D0\
+    \u05D7\u05E8 \u05D4\u05E2\u05DE\u05D9\u05D3\u05D4, \u05D2\u05DD \u05D1\u05D3\u05D9\
+    \u05E2\u05D1\u05D3, \u05D3\u05D4\u05D0 \u05DE\u05D9\u05D9\u05E8\u05D9 \u05DB\u05D0\
+    \u05DF \u05DB\u05E9\u05D4\u05D5\u05D0 \u05DB\u05D1\u05E8 \u05D0\u05D7\u05E8 \u05D4\
+    \u05EA\u05E4\u05DC\u05D4 (\u05D0\u05D0\u05F4\u05DB \u05E8\u05F4\u05DC \u05D0\u05D7\
+    \u05E8 \u05EA\u05E4\u05DC\u05EA \u05D4\u05E2\u05DE\u05D9\u05D3\u05D4 \u05DC\u05E4\
+    \u05E0\u05D9 \u05D0\u05E9\u05E8\u05D9. \u05D5\u05D3\u05D5\u05D7\u05E7). \u05D5\
+    \u05D0\u05E3 \u05E9\u05D9\u05DC\u05F4\u05E4 \u05D1\u05D3\u05D1\u05E8\u05D9\u05D4\
+    \u05DD \u05D3\u05D4\u05F4\u05D8 \u05DC\u05E4\u05D9 \u05E9\u05D4\u05DB\u05D5\u05D5\
+    \u05E0\u05D4 \u05DE\u05E2\u05DB\u05D1\u05EA \u05D1\u05DB\u05D5\u05DC\u05D4\u05D5\
+    , \u05D5\u05D1\u05DB\u05D5\u05D5\u05E0\u05D4 \u05D1\u05D0\u05E9\u05E8\u05D9 \u05E9\
+    \u05DC\u05D0\u05D7\u05E8 \u05D4\u05E2\u05DE\u05D9\u05D3\u05D4 \u05D3\u05D9\u05D5\
+    \ \u05E9\u05D9\u05E4\u05E7\u05D9\u05E2 \u05D0\u05F4\u05E2 \u2013 \u05D9\u05D5\u05EA\
+    \u05E8 \u05E0\u05E8\u05D0\u05D4 \u05DB\u05E0\u05F4\u05DC, \u05D3\u05E1\u05F4\u05DC\
+    \ \u05E9\u05D4\u05DB\u05D5\u05D5\u05E0\u05D4 \u05DE\u05E2\u05DB\u05D1\u05EA \u05D3\
+    \u05D5\u05E7\u05D0 \u05D1\u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05E9\u05D1\u05E4\
+    \u05E1\u05D5\u05D3\u05F4\u05D6, \u05D5\u05D0\u05DE\u05D9\u05E8\u05D4 \u05D6\u05D5\
+    \ \u05D4\u05D9\u05D0 \u05D1\u05E9\u05D1\u05D9\u05DC \u05E2\u05E6\u05DE\u05D4,\
+    \ \u05D5\u05DC\u05D0 \u05DC\u05D4\u05E9\u05DC\u05DE\u05EA \u05E4\u05E1\u05D5\u05D3\
+    \u05F4\u05D6, \u05D5\u05DC\u05D0 \u05DE\u05E9\u05D5\u05DD \u05E9\u05D2\u05DD \u05D1\
+    \u05D0\u05DE\u05D9\u05E8\u05D4 \u05D6\u05D5 \u05DB\u05D5\u05D5\u05E0\u05D4 \u05DE\
+    \u05E2\u05DB\u05D1\u05EA).\_\u05D5\u05D4\u05E0\u05D0\u05E0\u05D9 \u05E9\u05E8\u05D0\
+    \u05D9\u05EA\u05D9 \u05DB\u05D3\u05D1\u05E8\u05D9\u05E0\u05D5 \u05D2\u05DD\_\u05D1\
+    \u05E9\u05D5\u05F4\u05EA \u05D2\u05D1\u05E2\u05EA \u05E9\u05D0\u05D5\u05DC \u05D5\
+    \u05D5\u05D0\u05D2\u05E9\u05D0\u05DC \u05D9\u05D8. \u05D5\u05DB\u05F4\u05DB\_\u05D1\
+    \u05D3\u05E2\u05EA \u05D9\u05D4\u05D5\u05D3\u05D4 \u05E9\u05E4\u05D9\u05E8\u05D0\
+    \ \u05E0\u05D0 \u2013 \u05E2\u05F3 \u05DB\u05D0. \u05D5\u05E8\u05D0\u05D4 \u05D2\
+    \u05DD \u05E7\u05D5\u05D1\u05E5 \u05D4\u05E2\u05D5\u05F4\u05D1 \u05D1\u05E9\u05DC\
+    \u05D7 \u05EA\u05E9\u05E2\u05F4\u05D5 \u05E2\u05F3 99. \u05D0\u05D1\u05DC \u05E8\
+    \u05D0\u05D4 \u05EA\u05E9\u05D5\u05F3 \u05D4\u05D2\u05E8\u05D7\u05F4\u05E7 \u05D1\
+    \u05E1\u05D5\u05F4\u05E1 \u05D0\u05E9\u05D9 \u05D9\u05E9\u05E8\u05D0\u05DC \u05DC\
+    \u05D4 \u05D3\u05DE\u05E1\u05E4\u05E7\u05F4\u05DC \u05D1\u05D6\u05D4, \u05D5\u05DB\
+    \u05D3\u05E8\u05DB\u05D5. \u05D5\u05D0\u05D9\u05DF \u05E1\u05E4\u05D9\u05E7\u05D5\
+    \ \u05DE\u05D5\u05E6\u05D9\u05D0 \u05DE\u05D9\u05D3\u05D9 \u05D5\u05D3\u05D0\u05D9\
+    \ \u05D3\u05D4\u05E0\u05F4\u05DC."
+  input: ' Do I have to have Kavana by Poseiach Es Yadecha also by the one said before
+    Uvo letziyon and Mincha?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_15
+  order: 15
+  retrievalContext:
+  - "Of course, one has to have kavanah.\nBut if one didn\u2019t, there is no obligation\
+    \ to repeat it, although it is meritorious to do so (unlike Pesukei D\u2019zimrah\
+    \ where one must repeat this passuk if he did not have kavanah).\nSources\n\u05E8\
+    \u05D0\u05D4 \u05D1\u05DB\u05F4\u05D6 \u05D1\u05E9\u05D5\u05F4\u05E2 \u05D0\u05D5\
+    \u05F4\u05D7 \u05E0\u05D0, \u05D6 \u05D5\u05D1\u05E0\u05D5\u05F4\u05DB.\n\u05D5\
+    \u05D0\u05E7\u05D3\u05D9\u05DD \u05D5\u05D0\u05D5\u05DE\u05E8, \u05D3\u05D4\u05D0\
+    \ \u05D2\u05D5\u05E4\u05D0 \u05E9\u05D3\u05F4\u05D6 \u05E0\u05D6\u05DB\u05E8 \u05E8\
+    \u05E7 \u05D1\u05D3\u05D9\u05E0\u05D9 \u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05DE\
+    \u05D5\u05DB\u05D9\u05D7 \u05D3\u05DC\u05D0\u05D5 \u05DB\u05DC\u05DC\u05D0 \u05D4\
+    \u05D5\u05D0 \u05D1\u05DB\u05F4\u05DE. \u05D5\u05D1\u05E4\u05E9\u05D8\u05D5\u05EA\
+    , \u05DC\u05D0 \u05D4\u05D5\u05D5 \u05E9\u05EA\u05E7\u05D5 \u05D4\u05E4\u05D5\u05E1\
+    \u05E7\u05D9\u05DD \u05DE\u05DC\u05D4\u05D5\u05D3\u05D9\u05E2\u05E0\u05D5 \u05D3\
+    \u05F4\u05D6, \u05D1\u05D3\u05D1\u05E8 \u05D4\u05E8\u05D2\u05D9\u05DC \u05D5\u05E9\
+    \u05DB\u05D9\u05D7 \u05D8\u05D5\u05D1\u05D0. \u05D5\u05D4\u05D8\u05E2\u05DD \u05DC\
+    \u05D4\u05D7\u05D9\u05DC\u05D5\u05E7, \u05E9\u05D4\u05E8\u05D9 \u05D0\u05E2\u05D9\
+    \u05E7\u05E8\u05D0 \u05D3\u05DE\u05D9\u05DC\u05EA\u05D0 \u05DE\u05E6\u05D9\u05E0\
+    \u05D5 \u05D1\u05E8\u05D0\u05E9\u05D5\u05E0\u05D9\u05DD \u05D2\u05D9\u05E8\u05E1\
+    \u05D0\u05D5\u05EA \u05E9\u05D5\u05E0\u05D5\u05EA \u05D1\u05D1\u05E8\u05DB\u05D5\
+    \u05EA \u05D3, \u05D1, \u05D0\u05DD \u05E6\u05F4\u05DC \u05EA\u05D4\u05DC\u05D4\
+    \ \u05DC\u05D3\u05D5\u05D3 \u05F4\u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\u05D9\u05F4\
+    \ \u05D0\u05D5 \u05F4\u05D1\u05DB\u05DC \u05D9\u05D5\u05DD\u05F4 \u05D2\u05E8\u05D9\
+    \u05D3\u05D0. (\u05D5\u05E8\u05D0\u05D4 \u05D2\u05DD \u05D2\u05DC\u05D9\u05D5\u05DF\
+    \ \u05D4\u05E9\u05F4\u05E1 \u05DC\u05E8\u05E2\u05E7\u05F4\u05D0 \u05E9\u05DD.\
+    \ \u05D5\u05E8\u05D0\u05D4 \u05DC\u05E7\u05D5\u05F4\u05E9 \u05D9\u05D7 \u05E2\u05F3\
+    \ 351 \u05D4\u05E2\u05F3 2. \u05E9\u05DD \u05E2\u05F3 352 \u05D1\u05D4\u05E2\u05E8\
+    \u05D5\u05EA 13-14). \u05D5\u05D9\u05EA\u05E8 \u05E2\u05DC \u05DB\u05DF \u05D1\
+    \u05E8\u05D0\u05D1\u05D9\u05F4\u05D4 \u05D0, \u05D3, \u05DB\u05EA\u05D1 \u05E9\
+    \u05E0\u05D4\u05D2\u05D5 \u05DC\u05D5\u05DE\u05E8 \u05D2\u05F4\u05E4, \u05D0\u05D1\
+    \u05DC \u05D1\u05D2\u05DE\u05F3 \u05D2\u05E8\u05E1\u05D9\u05E0\u05DF \u05E8\u05E7\
+    \ \u05F4\u05D1\u05DB\u05DC \u05D9\u05D5\u05DD\u05F4. \u05D5\u05D0\u05DE\u05D8\u05D5\
+    \ \u05DC\u05D4\u05DB\u05D9 \u05D0\u05D9\u05DB\u05D0 \u05DC\u05DE\u05D9\u05DE\u05E8\
+    , \u05E9\u05DC\u05D0 \u05D7\u05D9\u05D9\u05D1\u05D5\u05D4\u05D5 \u05DC\u05D7\u05D6\
+    \u05D5\u05E8 \u05E8\u05E7 \u05D1\u05DE\u05E7\u05D5\u05DD \u05E9\u05D0\u05DE\u05D9\
+    \u05E8\u05EA\u05D5 \u05D7\u05D5\u05D1\u05D4 (\u05D0\u05D5 \u05EA\u05E7\u05E0\u05D4\
+    \ \u05E7\u05D3\u05D5\u05DE\u05D4 \u05E2\u05DB\u05F4\u05E4). \u05D5\u05D0\u05E4\
+    \u05D9\u05F3 \u05EA\u05D9\u05DE\u05D0 \u05DB\u05D2\u05D9\u05F3 \u05E9\u05D0\u05E8\
+    \ \u05D4\u05E8\u05D0\u05E9\u05D5\u05E0\u05D9\u05DD \u05E9\u05D2\u05E8\u05E1\u05D5\
+    \ \u05D2\u05F4\u05E4 \u2013 \u05D4\u05E8\u05D9 \u05E2\u05D3 \u05DB\u05D0\u05DF\
+    \ \u05DC\u05D0 \u05E9\u05DE\u05E2\u05E0\u05D5 \u05D0\u05DC\u05D0 \u05E9\u05DE\u05D5\
+    \u05D1\u05D8\u05D7 \u05DC\u05D5 \u05E9\u05D4\u05D5\u05D0 \u05D1\u05DF \u05E2\u05D5\
+    \u05D4\u05F4\u05D1, \u05D5\u05DC\u05D0 \u05E9\u05D7\u05D5\u05D1\u05D4 \u05D1\u05D3\
+    \u05D1\u05E8. \u05D5\u05D0\u05F4\u05DB \u05D0\u05D9\u05DA \u05D0\u05E4\u05E9\u05E8\
+    \ \u05DC\u05D7\u05D9\u05D9\u05D1\u05D5 \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D1\u05D3\
+    \u05D1\u05E8 \u05E9\u05DB\u05DC \u05E2\u05D9\u05E7\u05E8 \u05D0\u05DE\u05D9\u05E8\
+    \u05EA\u05D5 \u05D0\u05D9\u05E0\u05D5 \u05DE\u05D3\u05D9\u05E0\u05D0 \u05DE\u05DE\
+    \u05E9. \u05D5\u05D0\u05E3 \u05E9\u05D1\u05EA\u05E8\u05F4\u05D9 \u05D1\u05E8\u05DB\
+    \u05D5\u05EA (\u05DB\u05D2, \u05D0 \u05D1\u05D3\u05E4\u05D9 \u05D4\u05E8\u05D9\
+    \u05F4\u05E3) \u05DB\u05E9\u05D4\u05D1\u05D9\u05D0 \u05D1\u05E9\u05DD \u05D4\u05D2\
+    \u05D0\u05D5\u05E0\u05D9\u05DD \u05E9\u05E6\u05E8\u05D9\u05DA \u05DC\u05D7\u05D6\
+    \u05D5\u05E8 \u05D5\u05DC\u05D0\u05D5\u05DE\u05E8\u05D5, \u05E7\u05D0\u05D9 \u05D0\
+    \u05E8\u05D9\u05E9 \u05D3\u05D1\u05E8\u05D9\u05D5 \u05E9\u05D4\u05D1\u05D9\u05D0\
+    \ \u05DC\u05F3 \u05D4\u05D2\u05DE\u05F3 \u05DC\u05D0\u05D5\u05DE\u05E8\u05D5 \u05D2\
+    \u05F4\u05E4 \u2013 \u05DC\u05D0\u05D5 \u05D1\u05D7\u05D3\u05D0 \u05DE\u05D7\u05EA\
+    \u05D0 \u05DE\u05D7\u05EA\u05D9\u05E0\u05D4\u05D5. \u05D5\u05D1\u05E9\u05D2\u05DD\
+    \ \u05E9\u05D1\u05E8\u05D9\u05F4\u05E3 \u05E9\u05DD \u05E0\u05DE\u05E6\u05D0 \u05D4\
+    \u05D2\u05D9\u05F3 \u05E9\u05DC\u05E9 \u05E4\u05E2\u05DE\u05D9\u05DD, \u05D5\u05D1\
+    \u05D4\u05E2\u05E8\u05D4 \u05E9\u05E2\u05D4\u05F4\u05D2 \u05E9\u05D1\u05D3\u05E4\
+    \u05D5\u05F4\u05E8 \u05DC\u05D9\u05EA\u05D0 \u05DB\u05DF. \u05D5\u05D4\u05D4\u05F4\
+    \u05E0 \u05D1\u05EA\u05E8\u05F4\u05D9 \u05E9\u05D0\u05D9\u05DF \u05D4\u05DB\u05E8\
+    \u05D7 \u05E9\u05DB\u05DA \u05D2\u05D9\u05E8\u05E1\u05EA\u05D5. (\u05D5\u05DC\u05DB\
+    \u05E9\u05EA\u05D9\u05DE\u05E6\u05D9 \u05DC\u05D5\u05DE\u05E8, \u05E0\u05DE\u05E6\
+    \u05D0 \u05DC\u05E4\u05F4\u05D6 \u05E9\u05D1\u05E4\u05D5\u05E1\u05E7\u05D9\u05DD\
+    \ \u05E9\u05DC\u05D0 \u05D4\u05D5\u05D1\u05D0 \u05EA\u05D9\u05D1\u05D5\u05EA \u05D2\
+    \u05F4\u05E4 \u05DE\u05E9\u05DE\u05E2 \u05E9\u05D4\u05D7\u05D6\u05E8\u05D4 \u05E2\
+    \u05D5\u05D4\u05F4\u05E4 \u05D4\u05D9\u05D0 \u05E8\u05E7 \u05D1\u05D0\u05DE\u05D9\
+    \u05E8\u05EA\u05D5 \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6). \u05D5\u05D0\u05E9\
+    \u05DB\u05D7\u05DF \u05D8\u05D5\u05D1\u05D0, \u05E9\u05E9\u05D9\u05E0\u05D5 \u05D1\
+    \u05E1\u05E4\u05E8\u05D9\u05DD \u05D5\u05D4\u05D5\u05E1\u05D9\u05E4\u05D5 \u05D5\
+    \u05DB\u05EA\u05D1\u05D5 \u05F4\u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\u05D9\u05F4\
+    \ \u05DB\u05D2\u05D9\u05F3 \u05D4\u05E0\u05E4\u05D5\u05E6\u05D4 \u05D1\u05D2\u05DE\
+    \u05F3 (\u05E8\u05D0\u05D4 \u05D2\u05D4\u05E9\u05F4\u05E1 \u05E9\u05DD \u05E9\u05E6\
+    \u05D9\u05D9\u05DF \u05DC\u05D8\u05D5\u05E8, \u05D5\u05DC\u05E4\u05E0\u05D9\u05E0\
+    \u05D5 \u05D4\u05D5\u05E1\u05D9\u05E4\u05D5 \u05D1\u05D8\u05D5\u05E8. \u05D5\u05DB\
+    \u05DF \u05E6\u05D9\u05D9\u05DF \u05E9\u05DD \u05DC\u05E8\u05D5\u05E7\u05D7 \u05E9\
+    \u05DB, \u05D0\u05E3 \u05E9\u05E9\u05DD \u05E9\u05DB\u05D3 \u05DB\u05EA\u05D1\
+    \ \u05D2\u05F4\u05E4. \u05D5\u05D4\u05DE\u05E2\u05E0\u05D4 \u05D1\u05D6\u05D4\
+    , \u05DB\u05D1\u05E8\u05D0\u05D1\u05D9\u05F4\u05D4 \u05E9\u05DD \u05E9\u05D0\u05E3\
+    \ \u05D3\u05DC\u05F4\u05D2 \u05DC\u05D4 \u05D1\u05D2\u05DE\u05F3 \u05DE\u05F4\u05DE\
+    \ \u05D1\u05DE\u05E6\u05D9\u05D0\u05D5\u05EA \u05E0\u05D4\u05D2\u05D5 \u05DC\u05D0\
+    \u05D5\u05DE\u05E8\u05D5 \u05D2\u05F4\u05E4. \u05D5\u05DB\u05D1\u05E8 \u05D4\u05E2\
+    \u05D9\u05E8\u05D5 \u05DE\u05DE\u05E2\u05E9\u05D4 \u05E8\u05D5\u05E7\u05D7 \u05E8\
+    \u05F4\u05D4 \u05E7\u05DB\u05D3, \u05E9\u05DB\u05EA\u05D1 \u05E9\u05DB\u05DF \u05D4\
+    \u05D2\u05D9\u05D4\u05D5 \u05D1\u05D1\u05E8\u05DB\u05D5\u05EA, \u05D5\u05D1\u05E1\
+    \u05E4\u05E8\u05D9\u05DD \u05D9\u05E9\u05E0\u05D9\u05DD \u05D0\u05D9\u05E0\u05D5\
+    ).\n\u05D5\u05D0\u05DB\u05EA\u05D9 \u05D9\u05DC\u05F4\u05E2 \u05E7\u05E6\u05EA\
+    \ \u05D1\u05D3\u05D1\u05E8, \u05E9\u05D1\u05D0\u05E8\u05F4\u05D7 (\u05D3\u05D9\
+    \u05E0\u05D9 \u05EA\u05D7\u05E0\u05D5\u05EA \u05D5\u05DE\u05D6\u05DE\u05D5\u05E8\
+    \u05D9\u05DD \u05E9\u05D0\u05D7\u05E8 \u05EA\u05E4\u05DC\u05EA \u05D9\u05F4\u05D7\
+    \ \u05D2) \u05DB\u05EA\u05D1 \u05D1\u05D8\u05E2\u05DD \u05D4\u05D0\u05DE\u05D9\
+    \u05E8\u05D4 \u05D2\u05F4\u05E4 \u05E9\u05D0\u05DD \u05DC\u05D0 \u05DB\u05D9\u05D5\
+    \u05D5\u05DF \u05D1\u05E8\u05D0\u05E9\u05D5\u05DF \u05D9\u05DB\u05D5\u05D5\u05DF\
+    \ \u05D1\u05D0\u05D7\u05E8\u05D5\u05E0\u05D5\u05EA. \u05D5\u05DB\u05F4\u05D4 \u05D1\
+    \u05D0\u05E9\u05DB\u05D5\u05DC (\u05DE\u05D4\u05D3\u05D5\u05E8\u05EA \u05D0\u05D5\
+    \u05D9\u05E8\u05D1\u05D0\u05DA \u05DB\u05D3 \u2013 \u05E2\u05F3 \u05E0\u05D2).\
+    \ \u05D5\u05DB\u05F4\u05DE \u05D1\u05EA\u05E9\u05D5\u05F3 \u05E8\u05F4\u05D2 \u05D2\
+    \u05D0\u05D5\u05DF \u05E9\u05DD, \u05D1\u05DE\u05E9\u05F4\u05DB \u05E9\u05DD \u05D1\
+    \u05D8\u05E2\u05DE\u05D0 \u05D3\u05DE\u05D9\u05DC\u05EA\u05D0 \u05E9\u05DE\u05D0\
+    \ \u05D9\u05E4\u05E9\u05E2 (\u05D0\u05D1\u05DC \u05D9\u05F4\u05DC \u05E9\u05DB\
+    \u05D5\u05D5\u05E0\u05EA\u05D5 \u05E9\u05D9\u05E4\u05E9\u05E2 \u05D5\u05DC\u05D0\
+    \ \u05D9\u05D0\u05DE\u05E8 \u05DB\u05DC\u05DC, \u05E8\u05D0\u05D4 \u05E2\u05D3\
+    \u05F4\u05D6 \u05D1\u05E4\u05E1\u05E7\u05D9 \u05D4\u05E8\u05D9\u05F4\u05D3 \u05D5\
+    \u05D1\u05E9\u05DC\u05D4\u05F4\u05D2 \u05E9\u05DD. \u05E9\u05D1\u05D4\u05F4\u05DC\
+    \ \u05E2\u05E0\u05D9\u05DF \u05EA\u05E4\u05DC\u05D4 \u05D6. \u05EA\u05E0\u05D9\
+    \u05D0 \u05E8\u05D1\u05EA\u05D9 \u05D1. \u05D5\u05E2\u05D5\u05D3). \u05D5\u05E8\
+    \u05D0\u05D4 \u05D2\u05DD \u05D1\u05D1\u05E8\u05DB\u05F4\u05D9 \u05E0\u05D0, \u05D4\
+    \ \u05D1\u05E9\u05DD \u05EA\u05E4\u05D0\u05E8\u05EA \u05E9\u05DE\u05D5\u05D0\u05DC\
+    \ \u05E2\u05DC \u05D4\u05E8\u05D0\u05F4\u05E9 \u05D1\u05E8\u05DB\u05D5\u05EA \u05D4\
+    , \u05D5. \u05D5\u05DE\u05E9\u05DE\u05E2 \u05E7\u05E6\u05EA \u05D3\u05DB\u05D5\
+    \u05DC\u05D4\u05D5 \u05DB\u05D7\u05D3\u05D0 \u05E0\u05D9\u05E0\u05D4\u05D5. \u05D5\
+    \u05D0\u05DB\u05DF \u05D1\u05DB\u05D4\u05F4\u05D7 \u05E9\u05DD \u05DC\u05D2 \u05DB\
+    \u05EA\u05D1 \u05E2\u05E4\u05F4\u05D6 \u05E9\u05D1\u05DC\u05D0 \u05DB\u05D9\u05D5\
+    \u05D5\u05DF \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05D9\u05E9 \u05DC\u05D5\
+    \ \u05EA\u05E9\u05DC\u05D5\u05DE\u05D9\u05DF \u05D0\u05D7\u05F4\u05DB. \u05D0\u05D1\
+    \u05DC \u05DE\u05D3\u05D1\u05E8\u05D9 \u05E9\u05D0\u05E8 \u05D4\u05E4\u05D5\u05E1\
+    \u05E7\u05D9\u05DD \u05E0\u05E8\u05D0\u05D4 \u05D1\u05E8\u05D5\u05E8 \u05D3\u05DC\
+    \u05D0 \u05E1\u05F4\u05DC \u05DB\u05D5\u05D5\u05EA\u05D9\u05F3, \u05D5\u05E9\u05E6\
+    \u05E8\u05D9\u05DA \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D5\u05DC\u05D0\u05D5\u05DE\
+    \u05E8\u05D5 \u05D5\u05D0\u05D9\u05DF \u05DC\u05E1\u05DE\u05D5\u05DA \u05DC\u05D4\
+    \u05E9\u05DC\u05D9\u05DD \u05D0\u05D7\u05F4\u05DB. \u05D5\u05D0\u05D9\u05D4\u05D5\
+    \ \u05D7\u05E9\u05E9 \u05DE\u05E9\u05D5\u05DD \u05D4\u05E4\u05E1\u05E7 \u05DB\u05D3\
+    \u05E8\u05DB\u05D5 \u05D1\u05E7\u05D5\u05D3\u05E9, \u05D5\u05DC\u05D0 \u05E7\u05D9\
+    \u05D9\u05DC\u05F4\u05DF \u05D4\u05DB\u05D9. (\u05D5\u05E8\u05D0\u05D4 \u05D9\u05E9\
+    \u05D5\u05E2\u05D5\u05F4\u05D9 \u05E0\u05D0, \u05D0). \u05D5\u05D0\u05D9\u05DA\
+    \ \u05E9\u05D9\u05D4\u05D9\u05F3, \u05D0\u05D9\u05DF \u05DC\u05E0\u05D5 \u05D4\
+    \u05DB\u05E8\u05D7 \u05E9\u05D4\u05D7\u05D9\u05D5\u05D1 \u05DC\u05D7\u05D6\u05D5\
+    \u05E8 \u05E7\u05D0\u05D9 \u05D2\u05DD \u05D0\u05E9\u05D0\u05E8\u05D0, \u05D2\u05DD\
+    \ \u05DC\u05D3\u05E2\u05EA \u05D4\u05E8\u05D0\u05E9\u05D5\u05E0\u05D9\u05DD \u05D4\
+    \u05E0\u05F4\u05DC, \u05D0\u05D0\u05F4\u05DB \u05DC\u05D0 \u05DB\u05D9\u05D5\u05D5\
+    \u05DF \u05D1\u05D1\u05F4\u05E4 \u05D4\u05E8\u05D0\u05E9\u05D5\u05E0\u05D5\u05EA\
+    . (\u05D5\u05D1\u05D3\u05E2\u05EA \u05DB\u05D4\u05F4\u05D7 \u2013 \u05E8\u05D0\
+    \u05D4 \u05DC\u05D4\u05DC\u05DF). \u05D5\u05D0\u05D3\u05E8\u05D1\u05D4, \u05DC\
+    \u05D3\u05D9\u05D3\u05D4\u05D5 \u05D4\u05E8\u05D9 \u05D2\u05DD \u05D1\u05E7\u05D3\
+    \u05DE\u05D9\u05D9\u05EA\u05D0 \u05D0\u05D9\u05DF \u05D7\u05D5\u05D1\u05D4 \u05DC\
+    \u05D7\u05D6\u05D5\u05E8. (\u05D5\u05D0\u05D5\u05DC\u05D9 \u05D0\u05E4\u05E9\u05E8\
+    \ \u05DC\u05D4\u05E9\u05D5\u05D5\u05EA \u05D4\u05D3\u05E2\u05D5\u05EA, \u05E9\u05D2\
+    \u05DD \u05DC\u05D3\u05D9\u05D3\u05D4\u05D5 \u05DE\u05E2\u05D9\u05E7\u05E8\u05D0\
+    \ \u05D7\u05D5\u05D1\u05D4 \u05DC\u05D7\u05D6\u05D5\u05E8, \u05D0\u05DC\u05D0\
+    \ \u05E9\u05D1\u05DC\u05D0 \u05D7\u05D6\u05E8 \u05D5\u05D1\u05D3\u05D9\u05E2\u05D1\
+    \u05D3, \u05D0\u05DB\u05EA\u05D9 \u05D0\u05D9\u05DB\u05D0 \u05EA\u05E7\u05E0\u05D4\
+    \ \u05D0\u05D7\u05E8\u05D9\u05EA\u05D9 \u05E9\u05D0\u05D5\u05DE\u05E8\u05D5 \u05D0\
+    \u05D7\u05F4\u05DB. \u05D5\u05E8\u05D0\u05D4 \u05E9\u05D5\u05F4\u05EA \u05E9\u05D1\
+    \u05D8 \u05D4\u05E7\u05D4\u05EA\u05D9 \u05D1, \u05DC\u05D6). \u05D5\u05DC\u05D0\
+    \u05D9\u05D3\u05DA, \u05D1\u05E9\u05D0\u05E8 \u05D4\u05D0\u05DE\u05D9\u05E8\u05D5\
+    \u05EA \u05D5\u05D3\u05D0\u05D9 \u05DC\u05D3\u05E2\u05EA\u05DD \u05D0\u05F4\u05E6\
+    \ \u05DC\u05D7\u05D6\u05D5\u05E8 \u05E9\u05D9\u05DB\u05D5\u05DC \u05DC\u05E1\u05DE\
+    \u05D5\u05DA \u05E9\u05DB\u05D9\u05D5\u05D5\u05DF \u05D1\u05E8\u05D0\u05E9\u05D5\
+    \u05E0\u05D4. \u05D5\u05D1\u05DB\u05D3\u05D9 \u05E9\u05DC\u05D0 \u05DC\u05D0\u05E4\
+    \u05D5\u05E9\u05D9 \u05E4\u05DC\u05D5\u05D2\u05EA\u05D0 \u05DB\u05D5\u05DC\u05D9\
+    \ \u05D4\u05D0\u05D9, \u05D0\u05D9\u05DB\u05D0 \u05DC\u05DE\u05D9\u05DE\u05E8\
+    \ \u05E9\u05DC\u05DB\u05D5\u05F4\u05E2 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05D0\u05DE\
+    \u05D9\u05E8\u05D5\u05EA \u05D0\u05F4\u05E6 \u05DC\u05D7\u05D6\u05D5\u05E8. \u05D5\
+    \u05D1\u05D0\u05D1\u05D5\u05D3\u05E8\u05D4\u05DD \u05E0\u05DE\u05D9 \u05DE\u05D5\
+    \u05DB\u05D7 \u05D3\u05DC\u05D0\u05D5 \u05DE\u05D9\u05DC\u05D9 \u05E1\u05EA\u05E8\
+    \u05D0\u05D9 \u05E0\u05D9\u05E0\u05D4\u05D5, \u05E9\u05DE\u05D7\u05D3 \u05D2\u05D9\
+    \u05E1\u05D0 \u05D4\u05D1\u05D9\u05D0 \u05D1\u05D8\u05E2\u05DD \u05D4\u05D0\u05DE\
+    \u05D9\u05E8\u05D4 \u05D2\u05F4\u05E4 \u05DE\u05E4\u05E0\u05D9 \u05E9\u05D0\u05F4\
+    \u05D0 \u05E9\u05DC\u05D0 \u05D9\u05DB\u05D5\u05D5\u05DF \u05D1\u05D0\u05D7\u05EA\
+    \ \u05DE\u05E9\u05DC\u05E9\u05EA\u05DF. \u05D5\u05D1\u05D7\u05D3\u05D0 \u05DE\u05D7\
+    \u05EA\u05D0 \u05D4\u05D1\u05D9\u05D0 \u05D1\u05E9\u05DD \u05D4\u05D2\u05D0\u05D5\
+    \u05E0\u05D9\u05DD \u05E9\u05D0\u05DD \u05DC\u05D0 \u05DB\u05D9\u05D5\u05D5\u05DF\
+    \ \u05D1\u05E4\u05D5\u05EA\u05D7 \u05D0\u05EA \u05D9\u05D3\u05D9\u05DA \u05E6\u05E8\
+    \u05D9\u05DA \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D5\u05DC\u05D0\u05D5\u05DE\u05E8\
+    \u05D5 \u05E4\u05E2\u05DD \u05D0\u05D7\u05E8\u05EA. (\u05D0\u05D1\u05DC \u05D9\
+    \u05F4\u05DC \u05D5\u05DC\u05D3\u05D7\u05D5\u05EA, \u05E9\u05DB\u05D5\u05D5\u05E0\
+    \u05EA\u05D5 \u05DC\u05D7\u05DC\u05E7 \u05D1\u05D9\u05DF \u05D4\u05DB\u05D5\u05D5\
+    \u05E0\u05D4 \u05D1\u05DB\u05DC \u05D4\u05DE\u05D6\u05DE\u05D5\u05E8, \u05E9\u05D0\
+    \u05D0\u05F4\u05E4 \u05E9\u05D1\u05D0\u05F3 \u05DE\u05D2\u05F3 \u05D4\u05E4\u05E2\
+    \u05DE\u05D9\u05DD \u05DC\u05D0 \u05D9\u05DB\u05D5\u05D5\u05DF. \u05D0\u05D1\u05DC\
+    \ \u05D1\u05E0\u05D5\u05D2\u05E2 \u05DC\u05E4\u05E1\u05D5\u05E7 \u05E4\u05D0\u05F4\
+    \u05D9 \u05D0\u05D9\u05DF \u05DC\u05D5 \u05DC\u05E1\u05DE\u05D5\u05DA \u05E2\u05DC\
+    \ \u05E9\u05D0\u05E8 \u05D4\u05D0\u05DE\u05D9\u05E8\u05D5\u05EA. \u05D5\u05D4\u05D4\
+    \u05F4\u05E0 \u05E9\u05D9\u05DC\u05F4\u05E4 \u05DB\u05DF \u05D1\u05D3\u05F3 \u05E9\
+    \u05D0\u05E8 \u05D4\u05E8\u05D0\u05E9\u05D5\u05E0\u05D9\u05DD.\_\u05D5\u05DE\u05DE\
+    \u05D9\u05DC\u05D0 \u05D2\u05DD \u05E9\u05DC\u05D3\u05D9\u05D3\u05D4\u05D5 \u05D4\
+    \u05D7\u05D5\u05D1\u05D4 \u05DC\u05D7\u05D6\u05D5\u05E8 \u05E2\u05D1\u05D5\u05E8\
+    \ \u05E4\u05E1\u05D5\u05E7 \u05D4\u05E0\u05F4\u05DC \u05E7\u05D0\u05D9 \u05E8\u05E7\
+    \ \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6). \u05D5\u05D1\u05DB\u05DC \u05D0\
+    \u05D5\u05E4\u05DF, \u05DC\u05D3\u05D9\u05D3\u05DF \u05D5\u05DC\u05D3\u05D9\u05E0\
+    \u05D0, \u05D5\u05D3\u05D0\u05D9 \u05D0\u05D9\u05DF \u05DB\u05DC \u05E1\u05E8\u05DA\
+    \ \u05D4\u05D5\u05DB\u05D7\u05D4 \u05DC\u05D4\u05DB\u05E8\u05D9\u05D7\u05D5 \u05DC\
+    \u05D7\u05D6\u05D5\u05E8.\n\u05D5\u05E2\u05DB\u05F4\u05E4, \u05D0\u05E4\u05E9\u05E8\
+    \ \u05DC\u05DC\u05DE\u05D5\u05D3 \u05DE\u05D3\u05D1\u05E8\u05D9\u05D4\u05DD \u05E9\
+    \u05DC\u05DB\u05EA\u05D7\u05D9\u05DC\u05D4 \u05E2\u05DB\u05F4\u05E4 \u05E2\u05DC\
+    \u05D9\u05D5 \u05DC\u05DB\u05D5\u05D5\u05DF \u05D1\u05DB\u05D5\u05DC\u05D4\u05D5\
+    . \u05D5\u05DB\u05F4\u05D4 \u05D1\u05E8\u05F4\u05D9 \u05DE\u05DC\u05D5\u05E0\u05D9\
+    \u05DC \u05D1\u05E8\u05DB\u05D5\u05EA \u05E9\u05DD, \u05DB\u05DC \u05D4\u05D0\u05D5\
+    \u05DE\u05E8 \u05EA\u05D4\u05DC\u05F4\u05D3 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\
+    \u05D9 \u05D5\u05D1\u05DC\u05D1\u05D3 \u05D1\u05DB\u05D5\u05D5\u05E0\u05D4. \u05D5\
+    \u05D1\u05DB\u05DC\u05D1\u05D5 \u05D9\u05D1: \u05DB\u05DC \u05D4\u05D0\u05D5\u05DE\
+    \u05E8 \u05EA\u05D4\u05DC\u05F4\u05D3 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05D5\u05D5\
+    \u05E0\u05D4 \u05D1\u05D9\u05D5\u05DD \u05D5\u05DB\u05D5\u05F3. \u05D5\u05D1\u05DE\
+    \u05D7\u05D6\u05F4\u05D5 \u05D0: \u05D5\u05DE\u05D9\u05D1\u05E2\u05D9 \u05D0\u05D9\
+    \u05E0\u05D9\u05E9 \u05DC\u05DB\u05D5\u05D5\u05E0\u05D0 \u05D3\u05E2\u05EA\u05D9\
+    \u05F3 \u05D1\u05EA\u05D4\u05DC\u05F4\u05D3 \u05D3\u05D0\u05E8\u05F4\u05D0 \u05D5\
+    \u05DB\u05D5\u05F3 \u05DB\u05DC \u05D4\u05D0\u05D5\u05DE\u05E8 \u05EA\u05D4\u05DC\
+    \u05F4\u05D3 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\u05D9. \u05D5\u05D1\u05D0\u05DE\
+    \u05EA \u05D2\u05DD \u05D1\u05D8\u05D5\u05E8 \u05DB\u05F4\u05DB. \u05D0\u05DC\u05D0\
+    \ \u05E9\u05D1\u05D8\u05D5\u05E8 \u05D4\u05D5\u05E1\u05D9\u05E4\u05D5 \u05D4\u05DE\
+    \u05D3\u05E4\u05D9\u05E1\u05D9\u05DD \u05EA\u05D9\u05D1\u05D5\u05EA \u05D2\u05F4\
+    \u05E4 \u05DB\u05E0\u05F4\u05DC. \u05D5\u05D9\u05DC\u05F4\u05E2 \u05D0\u05DD \u05D2\
+    \u05D9\u05E8\u05E1\u05EA\u05DD \u05D1\u05D2\u05DE\u05F3 \u05D2\u05F4\u05E4 \u05D0\
+    \u05D5 \u05E9\u05D2\u05DD \u05D1\u05D6\u05D4 \u05D4\u05D5\u05E1\u05D9\u05E4\u05D5\
+    \ \u05D4\u05DE\u05D3\u05E4\u05D9\u05E1\u05D9\u05DD. (\u05D5\u05E8\u05D0\u05D4\
+    \ \u05D1\u05DC\u05E7\u05D5\u05F4\u05E9 \u05E9\u05DD \u05E2\u05F3 352 \u05D4\u05E2\
+    \u05F3 12 \u05D5\u05D4\u05E2\u05F3 14, \u05D1\u05E0\u05D5\u05D2\u05E2 \u05DC\u05D2\
+    \u05D9\u05E8\u05E1\u05EA \u05D4\u05DB\u05DC\u05D1\u05D5). \u05D5\u05E8\u05D0\u05D4\
+    \ \u05D2\u05DD \u05E4\u05E0\u05F4\u05D9 \u05D1\u05E8\u05DB\u05D5\u05EA \u05D3\
+    , \u05D1 \u05D1\u05D8\u05E2\u05DD \u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05D2\u05F4\
+    \u05E4 \u05E9\u05E2\u05F4\u05D9 \u05E9\u05D9\u05D0\u05DE\u05E8 \u05D4\u05DE\u05D6\
+    \u05DE\u05D5\u05E8 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05D5\u05D5\u05E0\u05EA \u05D4\
+    \u05DC\u05D1 \u05EA\u05EA\u05D7\u05D6\u05E7 \u05D4\u05D0\u05DE\u05D5\u05E0\u05D4\
+    .\n\u05D5\u05DB\u05D9\u05D5\u05DF \u05E9\u05D1\u05D9\u05DE\u05D9\u05E0\u05D5 \u05D0\
+    \u05D9\u05DF \u05D7\u05D5\u05D6\u05E8\u05D9\u05DD \u05D1\u05E9\u05D1\u05D9\u05DC\
+    \ \_\u05D7\u05E1\u05E8\u05D5\u05DF \u05DB\u05D5\u05D5\u05E0\u05D4, \u05D5\u05E8\
+    \u05E7 \u05D1\u05DE\u05E7\u05D5\u05DD \u05D4\u05DE\u05D5\u05DB\u05E8\u05D7, \u05D0\
+    \u05E3 \u05E9\u05DB\u05D0\u05DF \u05D4\u05DE\u05D3\u05D5\u05D1\u05E8 \u05D1\u05E4\
+    \u05E1\u05D5\u05E7 \u05D0\u05D7\u05D3 \u05D1\u05DC\u05D1\u05D3, \u05E9\u05D1\u05E7\
+    \u05DC \u05D9\u05D5\u05DB\u05DC \u05DC\u05DB\u05D5\u05D5\u05DF, \u05DB\u05DE\u05F4\
+    \u05E9 \u05D4\u05E4\u05D5\u05E1\u05E7\u05D9\u05DD \u05D1\u05D8\u05E2\u05DD \u05E9\
+    \u05D7\u05D5\u05D6\u05E8\u05D9\u05DD \u05D1\u05E0\u05D3\u05D5\u05F4\u05D3, \u05DE\
+    \u05F4\u05DE \u05D0\u05D9\u05DF \u05DC\u05E0\u05D5 \u05DC\u05D4\u05E8\u05D7\u05D9\
+    \u05E7 \u05DC\u05DB\u05EA \u05DC\u05D7\u05D9\u05D9\u05D1 \u05DC\u05D7\u05D6\u05D5\
+    \u05E8 \u05D2\u05DD \u05D1\u05D6\u05D4, \u05DB\u05E9\u05DB\u05DC \u05E2\u05D9\u05E7\
+    \u05E8 \u05D0\u05DE\u05D9\u05E8\u05EA\u05D5 \u05D0\u05D9\u05E0\u05D5 \u05D1\u05D4\
+    \u05DB\u05E8\u05D7. \_\u05D5\u05E8\u05D0\u05D4 \u05D2\u05DD \u05DC\u05E7\u05D5\
+    \u05F4\u05E9 \u05E9\u05DD \u05E2\u05F3 355 \u05D4\u05E2\u05F3 35, \u05E9\u05E2\
+    \u05D9\u05E7\u05E8 \u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05D1\u05E4\u05E1\u05D5\
+    \u05D3\u05F4\u05D6.\n\u05D5\u05D1\u05E4\u05E8\u05D8\u05D9\u05D5\u05EA \u05D9\u05D5\
+    \u05EA\u05E8, \u05D3\u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05E9\u05D0\u05E0\
+    \u05D9 \u05D3\u05D0\u05D9\u05DB\u05D0 \u05EA\u05DC\u05EA\u05D0 \u05DC\u05D8\u05D9\
+    \u05D1\u05D5\u05EA\u05D0 \u05D1\u05D8\u05E2\u05DD \u05D4\u05D0\u05DE\u05D9\u05E8\
+    \u05D4, \u05DE\u05E6\u05D3 \u05E1\u05D9\u05D3\u05D5\u05E8 \u05E9\u05D1\u05D7\u05D5\
+    \ \u05E9\u05DC \u05DE\u05E7\u05D5\u05DD \u05E7\u05D5\u05D3\u05DD \u05D4\u05EA\u05E4\
+    \u05DC\u05D4, \u05D5\u05DE\u05E6\u05D3 \u05D9\u05D4\u05D0 \u05D7\u05DC\u05E7\u05D9\
+    \ \u05E2\u05DD \u05D0\u05D5\u05DE\u05E8\u05D9 \u05D4\u05DC\u05DC \u05D1\u05DB\u05F4\
+    \u05D9, \u05D5\u05DE\u05E6\u05D3 \u05D0\u05DE\u05D9\u05E8\u05EA \u05EA\u05D4\u05DC\
+    \u05D4 \u05DC\u05D3\u05D5\u05D3 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\u05D9 (\u05E8\
+    \u05D0\u05D4 \u05E8\u05D9\u05F4\u05E3 \u05E9\u05DD. \u05D8\u05D5\u05E8 \u05D0\u05D5\
+    \u05F4\u05D7 \u05E0\u05D0. \u05D1\u05F4\u05D7 \u05E9\u05DD. \u05E9\u05D5\u05F4\
+    \u05E2 \u05D0\u05D3\u05D4\u05F4\u05D6 \u05E9\u05DD \u05D0. \u05D0\u05D1\u05DC\
+    \ \u05E8\u05D0\u05D4 \u05E4\u05DE\u05F4\u05D2 \u05D1\u05E4\u05EA\u05D9\u05D7\u05D4\
+    \ \u05DC\u05E1\u05D9\u05F3 \u05DE\u05D5. \u05D5\u05D9\u05F4\u05DC). \u05D0\u05D1\
+    \u05DC \u05D1\u05D0\u05E9\u05E8\u05D9 \u05D5\u05D1\u05DC\u05E6\u05F4\u05D2 \u05D0\
+    \u05D9\u05DB\u05D0 \u05E8\u05E7 \u05D7\u05D3 \u05DC\u05D8\u05D9\u05D1\u05D5\u05EA\
+    \u05D0 \u2013 \u05D0\u05DE\u05D9\u05E8\u05EA \u05EA\u05D4\u05DC\u05D4 \u05DC\u05D3\
+    \u05D5\u05D3 \u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\u05D9, \u05D5\u05DB\u05DF \u05D1\
+    \u05DE\u05E0\u05D7\u05D4 \u2013 \u05E0\u05DE\u05D9 \u05E8\u05E7 \u05D7\u05D3 \u05DC\
+    \u05D8\u05D9\u05D1\u05D5\u05EA\u05D0, \u05E9\u05D4\u05E8\u05D9 \u05D0\u05D9\u05DF\
+    \ \u05D7\u05D9\u05D5\u05D1 \u05DC\u05E1\u05D3\u05E8 \u05E9\u05D1\u05D7\u05D5 \u05E9\
+    \u05F4\u05DE \_\u05D1\u05DE\u05E0\u05D7\u05D4 (\u05D6\u05D5\u05DC\u05EA \u05D1\
+    \u05D2\u05F3 \u05E8\u05D0\u05E9\u05D5\u05E0\u05D5\u05EA, \u05E8\u05D0\u05D4 \u05D2\
+    \u05DD \u05E4\u05DE\u05F4\u05D2 \u05D4\u05E0\u05F4\u05DC. \u05D5\u05E8\u05D0\u05D4\
+    \ \u05DC\u05E7\u05D5\u05F4\u05E9 \u05E9\u05DD \u05D4\u05E2\u05F3 34), \u05D5\u05E2\
+    \u05D9\u05E7\u05E8 \u05D8\u05E2\u05DD \u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05D1\
+    \u05DE\u05E0\u05D7\u05D4 \u05D1\u05DB\u05D3\u05D9 \u05DC\u05E9\u05D4\u05D5\u05EA\
+    \ \u05E7\u05D5\u05D3\u05DD \u05D4\u05EA\u05E4\u05DC\u05D4 \u05D5\u05DC\u05E2\u05DE\
+    \u05D5\u05D3 \u05DE\u05EA\u05D5\u05DA \u05D3\u05F4\u05EA, \u05DB\u05DE\u05F4\u05E9\
+    \ \u05D4\u05E8\u05D0\u05E9\u05D5\u05E0\u05D9\u05DD (\u05E8\u05D0\u05D1\u05D9\u05F4\
+    \u05D4 \u05E9\u05DD. \u05D0\u05D5\u05F4\u05D6 \u05E7. \u05D5\u05E2\u05D5\u05D3\
+    . \u05D5\u05E8\u05D0\u05D4 \u05D8\u05F4\u05D6 \u05E7\u05D7, \u05D2). \u05D0\u05DC\
+    \u05D0 \u05E9\u05EA\u05D9\u05E7\u05E0\u05D5 \u05D0\u05DE\u05D9\u05E8\u05EA \u05D0\
+    \u05E9\u05E8\u05D9 \u05D1\u05D3\u05D5\u05E7\u05D0 \u05DE\u05E9\u05D5\u05DD \u05DE\
+    \u05E2\u05DC\u05EA \u05D0\u05DE\u05D9\u05E8\u05EA \u05EA\u05D4\u05DC\u05F4\u05D3\
+    \ \u05D2\u05F4\u05E4 \u05D1\u05DB\u05F4\u05D9 \u2013 \u05E8\u05D0\u05D4 \u05E8\
+    \u05D1\u05D9\u05E0\u05D5 \u05DE\u05E0\u05D5\u05D7 \u05D1\u05E8\u05DB\u05D5\u05EA\
+    \ \u05D8, \u05D3.\_\u05DE\u05D2\u05F4\u05D0 \u05E0\u05D0, \u05D6. (\u05D0\u05D1\
+    \u05DC \u05E8\u05D0\u05D4\_\u05E2\u05E8\u05D5\u05D4\u05F4\u05E9 \u05E8\u05DC\u05D3\
+    , \u05D0. \u05D5\u05E9\u05D5\u05F4\u05DE \u05E9\u05DB\u05F4\u05D4 \u05D1\u05E1\
+    \u05D9\u05F3 \u05E8\u05F4\u05E9 \u05DE\u05D2\u05E8\u05DE\u05D9\u05D6\u05D0. \u05D5\
+    \u05DE\u05F4\u05DE \u05D0\u05DB\u05EA\u05D9 \u05D4\u05F4\u05D6 \u05E8\u05E7 \u05EA\
+    \u05E8\u05EA\u05D9 \u05DC\u05D8\u05D9\u05D1\u05D5\u05EA\u05D0, \u05D5\u05DC\u05D0\
+    \ \u05DE\u05E9\u05D5\u05DD \u05D0\u05DE\u05D9\u05E8\u05EA \u05D4\u05DC\u05DC \u05D1\
+    \u05DB\u05F4\u05D9).\_\u05D5\u05E0\u05DE\u05E6\u05D0 \u05E9\u05D7\u05DC\u05D5\u05E7\
+    \u05D9\u05DD \u05D4\u05DE\u05D4 \u05D1\u05D9\u05E1\u05D5\u05D3\u05DD \u05D5\u05E9\
+    \u05E8\u05E9\u05DD.\_\u05D5\u05D0\u05E3 \u05D3\u05D0\u05DB\u05EA\u05D9 \u05D9\u05F4\
+    \u05DC \u05E9\u05DB\u05D9\u05D5\u05DF \u05E9\u05E1\u05D5\u05F4\u05E1 \u05EA\u05D9\
+    \u05E7\u05E0\u05D5 \u05D1\u05DE\u05E0\u05D7\u05D4 \u05D5\u05D1\u05D0\u05E9\u05E8\
+    \u05D9 \u05D5\u05D1\u05DC\u05E6\u05F4\u05D2 \u05DC\u05D5\u05DE\u05E8 \u05EA\u05D4\
+    \u05DC\u05F4\u05D3, \u05D5\u05E2\u05D9\u05E7\u05E8 \u05D0\u05DE\u05D9\u05E8\u05EA\
+    \u05D5 \u05DE\u05E9\u05D5\u05DD \u05E4\u05E1\u05D5\u05E7 \u05D6\u05D4, \u05E9\u05D5\
+    \u05D1 \u05D4\u05D3\u05E8\u05D9\u05E0\u05DF \u05DC\u05D3\u05D9\u05E0\u05D0 \u05E9\
+    \u05E6\u05E8\u05D9\u05DA \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D5\u05DC\u05D0\u05D5\
+    \u05DE\u05E8\u05D5\_\u2013 \u05D0\u05D9\u05DF \u05DC\u05D3\u05DE\u05D5\u05EA \u05D4\
+    \u05D0\u05DE\u05D9\u05E8\u05D4 \u05DB\u05E9\u05D4\u05D5\u05D0 \u05DE\u05E9\u05D5\
+    \u05DD \u05DE\u05E0\u05D4\u05D2 \u05DC\u05E2\u05D9\u05E7\u05E8 \u05D4\u05D0\u05DE\
+    \u05D9\u05E8\u05D4 \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6, \u05E9\u05D4\u05E8\
+    \u05D9 \u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05D7\u05D5\u05D1\u05D4 \u05D4\u05D9\
+    \u05D0, \u05D5\u05E2\u05D9\u05E7\u05E8 \u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05D4\
+    \u05D5\u05D0 \u05D0\u05DE\u05D9\u05E8\u05EA \u05EA\u05D4\u05DC\u05F4\u05D3.\n\
+    (\u05D5\u05E8\u05D0\u05D5\u05D9\_\u05DC\u05D4\u05E2\u05D9\u05E8 \u05E9\u05D1\u05DB\
+    \u05F4\u05DE \u05DB\u05EA\u05D1\u05D5 \u05D2\u05DD \u05DC\u05D7\u05DC\u05E7, \u05E9\
+    \u05D0\u05DE\u05D9\u05E8\u05EA \u05E4\u05D0\u05F4\u05D9 \u05D1\u05E4\u05E1\u05D5\
+    \u05D3\u05F4\u05D6 \u05D4\u05D5\u05D0 \u05D3\u05E8\u05DA \u05E9\u05D1\u05D7, \u05D5\
+    \u05D4\u05E9\u05D0\u05E8 \u05D3\u05E8\u05DA \u05D1\u05E7\u05E9\u05D4, \u05D5\u05E0\
+    \u05D9\u05DE\u05D5\u05E7\u05DD \u05E2\u05DE\u05DD \u05E2\u05F4\u05E4 \u05D6\u05D7\
+    \u05F4\u05D2 \u05E8\u05DB\u05D5, \u05D0. \u05D5\u05E9\u05DD, \u05E9\u05DC\u05D0\
+    \ \u05DC\u05D4\u05EA\u05E4\u05DC\u05DC \u05E2\u05DC \u05D4\u05E4\u05E8\u05E0\u05E1\
+    \u05D4 \u05E2\u05D3 \u05D0\u05D7\u05E8 \u05D4\u05EA\u05E4\u05DC\u05D4. \u05D5\u05DB\
+    \u05DF \u05E2\u05F4\u05D3 \u05D4\u05E7\u05D1\u05DC\u05D4 \u05D7\u05DC\u05D5\u05E7\
+    \u05D9\u05DD \u05D4\u05DD \u05D1\u05DB\u05D5\u05D5\u05E0\u05EA\u05DD.\_\u05D5\u05E8\
+    \u05D0\u05D4 \u05E9\u05E2\u05D4\u05F4\u05DB \u05D3\u05E8\u05D5\u05E9\u05D9 \u05EA\
+    \u05E4\u05DC\u05EA \u05D4\u05E9\u05D7\u05E8 \u05D9\u05D7, \u05D0.\_\u05D0\u05D1\
+    \u05DC \u05DC\u05D4\u05E2\u05D9\u05E8 \u05E9\u05D9\u05F4\u05D0 \u05E2\u05E4\u05F4\
+    \u05D6 \u05E9\u05D9\u05D5\u05EA\u05E8 \u05D7\u05D9\u05D5\u05D1 \u05EA\u05D4\u05DC\
+    \u05D4 \u05DC\u05D3\u05D5\u05D3 \u05D0\u05D7\u05E8 \u05D4\u05E2\u05DE\u05D9\u05D3\
+    \u05D4 \u05DE\u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u2013 \u05E8\u05D0\u05D4\
+    \ \u05D9\u05E1\u05D5\u05E9\u05F4\u05D4 \u05E9\u05E2\u05E8 \u05D4, \u05E9\u05E2\
+    \u05E8 \u05D4\u05E7\u05E8\u05D1\u05DF \u05D8. \u05D5\u05E2\u05D5\u05D3. \u05D5\
+    \u05DB\u05F4\u05D4 \u05D1\u05EA\u05D5\u05DC\u05E2\u05EA \u05D9\u05E2\u05E7\u05D1\
+    \ \u05E1\u05D5\u05D3 \u05E4\u05E1\u05D5\u05D3\u05F4\u05D6. \u05D5\u05E9\u05DD\
+    , \u05E9\u05D1\u05D1\u05F3 \u05E2\u05D5\u05E0\u05D5\u05EA \u05D0\u05DC\u05D5 \u05E6\
+    \u05E8\u05D9\u05DA \u05DC\u05DB\u05D5\u05D5\u05DF. \u05D5\u05DE\u05E9\u05DE\u05E2\
+    \ \u05D9\u05EA\u05E8 \u05E2\u05DC \u05DB\u05DF, \u05E9\u05D1\u05E4\u05E1\u05D5\
+    \u05D3\u05F4\u05D6 \u05D0\u05F4\u05E6 \u05DB\u05D5\u05D5\u05E0\u05D4 \u05DB\u05DC\
+    \u05DC \u05D5\u05E2\u05D9\u05E7\u05E8. \u05D5\u05D1\u05D0\u05DE\u05EA \u05D0\u05E4\
+    \u05E9\u05E8 \u05DC\u05D4\u05E2\u05DE\u05D9\u05E1 \u05DB\u05DF \u05D1\u05D6\u05D4\
+    \u05E8 \u05E9\u05DD \u05E9\u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05DC\u05D0\u05D5\
+    \ \u05D1\u05D2\u05D9\u05DF \u05D7\u05D5\u05D1\u05D4. \u05D5\u05E8\u05D0\u05D4\
+    \ \u05DC\u05E7\u05D5\u05D8\u05D9 \u05DC\u05D5\u05D9\u05F4\u05E6 \u05E9\u05DD \u05D1\
+    \ \u05E2\u05F3 \u05EA\u05DE\u05D3. \u05D5\u05D1\u05D4\u05DB\u05E8\u05D7 \u05DC\
+    \u05D9\u05D9\u05E9\u05D1 \u05D1\u05D3\u05D5\u05D7\u05E7 \u05E9\u05DB\u05D5\u05D5\
+    \u05E0\u05EA\u05D5 \u05DB\u05D5\u05D5\u05E0\u05D4 \u05D1\u05D3\u05E8\u05DA \u05D1\
+    \u05E7\u05E9\u05D4. \u05D5\u05DB\u05E4\u05D9 \u05E9\u05D4\u05D5\u05D0 \u05D1\u05E4\
+    \u05D9\u05F3 \u05D3\u05F3 \u05D4\u05D6\u05D4\u05E8. \u05D5\u05D1\u05DB\u05DC \u05D0\
+    \u05D5\u05E4\u05DF, \u05DB\u05F4\u05D6 \u05D0\u05D9\u05E0\u05D5 \u05E2\u05F4\u05D3\
+    \ \u05D4\u05D4\u05DC\u05DB\u05D4. \u05D5\u05E8\u05D0\u05D4 \u05D1\u05D6\u05D4\
+    \ \u05D1\u05DC\u05E7\u05D5\u05F4\u05E9 \u05E9\u05DD \u05D4\u05E2\u05F3 35. \u05D5\
+    \u05E9\u05DD \u05E1\u05F4\u05E2 352 \u05D4\u05D7\u05D9\u05DC\u05D5\u05E7 \u05D1\
+    \u05E2\u05E0\u05D9\u05DF \u05D0\u05D7\u05E8 \u05D1\u05D9\u05DF \u05D0\u05DE\u05D9\
+    \u05E8\u05EA\u05D5 \u05E2\u05F4\u05D3 \u05D4\u05E0\u05D2\u05DC\u05D4 \u05DC\u05D0\
+    \u05DE\u05D9\u05E8\u05EA\u05D5 \u05E2\u05F4\u05E4 \u05E4\u05E0\u05D9\u05DE\u05D9\
+    \u05D5\u05EA \u05D4\u05EA\u05D5\u05E8\u05D4).\_\u05D5\u05D0\u05D9\u05DF \u05DC\
+    \u05E0\u05D5 \u05D4\u05DB\u05E8\u05D7 \u05DC\u05D7\u05D3\u05E9 \u05E9\u05D7\u05D5\
+    \u05D1\u05EA \u05D4\u05D7\u05D6\u05E8\u05D4 \u05E7\u05D0\u05D9 \u05D2\u05DD \u05D1\
+    \u05E9\u05D0\u05E8 \u05D3\u05D5\u05DB\u05EA\u05D9.\n\u05D5\u05DB\u05DE\u05E2\u05D8\
+    \ \u05E9\u05D4\u05D3\u05D1\u05E8 \u05DE\u05E4\u05D5\u05E8\u05E9 \u05D1\u05E9\u05D5\
+    \u05F4\u05E2 \u05D0\u05D3\u05D4\u05F4\u05D6 \u05E7\u05D0, \u05D0, \u05E9\u05D4\
+    \u05D5\u05E1\u05D9\u05E3 \u05F4\u05E4\u05D0\u05F4\u05D9 \u05E9\u05D1\u05E4\u05E1\
+    \u05D5\u05D3\u05F4\u05D6\u05F4 \u05D5\u05EA\u05D9\u05D1\u05D5\u05EA \u05F4\u05E9\
+    \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6\u05F4 \u05DC\u05DE\u05F4\u05DC. \u05D5\
+    \u05DC\u05DB\u05D0\u05D5\u05F3 \u05D0\u05EA\u05D0 \u05DC\u05D0\u05E9\u05DE\u05D5\
+    \u05E2\u05D9\u05E0\u05DF \u05DB\u05E0\u05F4\u05DC, \u05D0\u05E3 \u05E9\u05D4\u05D3\
+    \u05D9\u05D5\u05E7 \u05D0\u05D9\u05E0\u05D5 \u05DE\u05D5\u05DB\u05E8\u05D7 \u05DC\
+    \u05D2\u05DE\u05E8\u05D9. \u05D5\u05D4\u05DB\u05D9 \u05D3\u05D9\u05D9\u05E7 \u05E0\
+    \u05DE\u05D9 \u05D1\u05DC\u05F3 \u05D0\u05D3\u05D4\u05F4\u05D6 \u05E0\u05D0, \u05D7\
+    , \u05E9\u05D4\u05E9\u05DE\u05D9\u05D8 \u05DC\u05E2\u05E0\u05D9\u05DF \u05E0\u05D3\
+    \u05D5\u05F4\u05D3 \u05EA\u05D9\u05D1\u05D5\u05EA \u05D2\u05F4\u05E4, \u05D0\u05E3\
+    \ \u05E9\u05D4\u05D1\u05D9\u05D0\u05DD \u05D1\u05E8\u05D9\u05E9 \u05D4\u05E1\u05D9\
+    \u05DE\u05DF. \u05D5\u05DB\u05DF \u05E9\u05DD \u05E0\u05D4, \u05D0. (\u05D5\u05D2\
+    \u05F4\u05D6 \u05D9\u05DC\u05F4\u05D3. \u05D5\u05DC\u05D4\u05E2\u05D9\u05E8 \u05E9\
+    \u05D4\u05D5\u05E9\u05DE\u05D8 \u05D2\u05DD \u05E9\u05DD \u05E0\u05D0, \u05D8\
+    , \u05D0\u05E3 \u05E9\u05D4\u05D5\u05D1\u05D0 \u05D1\u05DE\u05D2\u05F4\u05D0 \u05E9\
+    \u05DD \u05D6, \u05D5\u05D2\u05DD \u05E0\u05D6\u05DB\u05E8 \u05E9\u05DD \u05E2\
+    \u05F4\u05D3 \u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05D1\u05DE\u05E0\u05D7\u05D4\
+    . \u05D5\u05E8\u05D0\u05D4 \u05DE\u05D4 \u05E9\u05D1\u05D9\u05D0\u05E8 \u05D1\u05D6\
+    \u05D4 \u05D1\u05E7\u05D5\u05D1\u05E5 \u05D4\u05E2\u05D5\u05F4\u05D1 \u05E0\u05D7\
+    \ \u05E2\u05F3 \u05D6).\n\u05D5\u05D1\u05E7\u05E6\u05D5\u05D4\u05F4\u05E9 \u05DB\
+    \u05D5, \u05D6 \u05DB\u05EA\u05D1 \u05DE\u05D3\u05F4\u05E2 \u05E9\u05E6\u05E8\u05D9\
+    \u05DA \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D5\u05DC\u05D0\u05D5\u05DE\u05E8\u05D5\
+    \ \u05D2\u05DD \u05D1\u05DE\u05E0\u05D7\u05D4. \u05D5\u05DB\u05F4\u05D4 \u05D1\
+    \u05E2\u05D5\u05D3 \u05D9\u05D5\u05E1\u05E3 \u05D7\u05D9 \u05D5\u05D9\u05E7\u05D4\
+    \u05DC \u05D3. \u05D5\u05DC\u05D0 \u05D4\u05E2\u05D9\u05E8\u05D5 \u05DE\u05DB\u05DC\
+    \ \u05D4\u05E0\u05F4\u05DC. \u05D5\u05D0\u05D5\u05DC\u05D9 \u05D3\u05E2\u05EA\u05DD\
+    \ \u05DC\u05D7\u05DC\u05E7 \u05D1\u05D9\u05DF \u05DE\u05E0\u05D7\u05D4 \u05DC\u05D0\
+    \u05E9\u05E8\u05D9 \u05E9\u05D0\u05D7\u05E8 \u05D4\u05E2\u05DE\u05D9\u05D3\u05D4\
+    , \u05E9\u05E1\u05D5\u05F4\u05E1 \u05D0\u05D9\u05DB\u05D0 \u05E0\u05DE\u05D9 \u05E1\
+    \u05D9\u05D3\u05D5\u05E8 \u05E9\u05D1\u05D7\u05D5 \u05E7\u05D5\u05D3\u05DD \u05D4\
+    \u05EA\u05E4\u05DC\u05D4, \u05D0\u05D1\u05DC \u05DB\u05E0\u05F4\u05DC \u05DC\u05D0\
+    \ \u05D6\u05D4\u05D5 \u05D8\u05E2\u05DD \u05D4\u05EA\u05E7\u05E0\u05D4 \u05D1\u05DE\
+    \u05E0\u05D7\u05D4. \u05D5\u05D1\u05DB\u05D4\u05F4\u05D7 \u05D4\u05E0\u05F4\u05DC\
+    \ \u05DE\u05D7\u05D3 \u05D2\u05D9\u05E1\u05D0, \u05E0\u05E8\u05D0\u05D4 \u05D3\
+    \u05E1\u05D2\u05D9 \u05D1\u05D3\u05D9\u05E2\u05D1\u05D3 \u05D1\u05DB\u05D5\u05D5\
+    \u05E0\u05D4 \u05D1\u05D7\u05D3 \u05DE\u05D9\u05E0\u05D9\u05D9\u05D4\u05D5, \u05D3\
+    \u05E1\u05F4\u05DC \u05E9\u05D1\u05DC\u05D0 \u05DB\u05D9\u05D5\u05D5\u05DF \u05D1\
+    \u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05E1\u05D2\u05D9 \u05DC\u05D9\u05F3 \u05D1\
+    \u05E9\u05D0\u05E8 \u05D4\u05D0\u05DE\u05D9\u05E8\u05D5\u05EA, \u05D5\u05DC\u05D0\
+    \u05D9\u05D3\u05DA \u05DB\u05EA\u05D1 \u05DC\u05D4\u05D3\u05D9\u05D0 \u05E9\u05D1\
+    \u05E9\u05DB\u05D7 \u05DC\u05DB\u05D5\u05D5\u05DF \u05D1\u05D0\u05E9\u05E8\u05D9\
+    \ \u05E9\u05D0\u05D7\u05E8 \u05D4\u05E2\u05DE\u05D9\u05D3\u05D4 \u05D9\u05D7\u05D6\
+    \u05D5\u05E8 \u05DC\u05D0\u05D5\u05DE\u05E8\u05D5 \u05D4\u05D5\u05D0\u05D9\u05DC\
+    \ \u05D5\u05D0\u05D9\u05DF \u05E9\u05DD \u05D3\u05D9\u05DF \u05D4\u05E4\u05E1\u05E7\
+    , \u05D5\u05DE\u05E9\u05DE\u05E2 \u05E9\u05DC\u05DB\u05EA\u05D7\u05D9\u05DC\u05D4\
+    \ \u05E6\u05E8\u05D9\u05DA \u05DC\u05D7\u05D6\u05D5\u05E8 \u05D2\u05DD \u05D1\u05D6\
+    \u05D4. \u05D5\u05DC\u05E4\u05F4\u05D6 \u05E0\u05DE\u05E6\u05D0 \u05E9\u05E0\u05D4\
+    \u05E4\u05DB\u05D4 \u05D4\u05E7\u05E2\u05E8\u05D4 \u05E2\u05DC \u05E4\u05D9\u05F3\
+    , \u05E9\u05D4\u05DB\u05D5\u05D5\u05E0\u05D4 \u05D1\u05E9\u05D0\u05E8 \u05D4\u05D0\
+    \u05DE\u05D9\u05E8\u05D5\u05EA \u05D7\u05DE\u05D9\u05E8\u05D0 \u05D8\u05E4\u05D9\
+    . \u05D5\u05D4\u05D5\u05D0 \u05D4\u05D9\u05E4\u05DA \u05E4\u05E9\u05D8\u05D5\u05EA\
+    \ \u05D4\u05D4\u05DC\u05DB\u05D4 \u05E9\u05E2\u05D9\u05E7\u05E8 \u05D4\u05D0\u05DE\
+    \u05D9\u05E8\u05D4 \u05D1\u05E4\u05E1\u05D5\u05D3\u05F4\u05D6 \u05D7\u05D5\u05D1\
+    \u05D4 \u05D8\u05E4\u05D9, \u05DB\u05E0\u05F4\u05DC.\n(\u05D5\u05D4\u05E0\u05D4\
+    \ \u05D1\u05D7\u05D9\u05D9\u05F4\u05D0 \u05D9\u05D7, \u05D1, \u05D4\u05D1\u05D9\
+    \u05D0\u05D5 \u05D1\u05DE\u05E9\u05E0\u05F4\u05D1 \u05E0\u05D0, \u05D8\u05D6,\
+    \ \u05E9\u05D1\u05E0\u05D6\u05DB\u05E8 \u05D0\u05D7\u05E8 \u05E9\u05DB\u05D1\u05E8\
+    \ \u05D0\u05DE\u05E8 \u05DE\u05D6\u05DE\u05D5\u05E8\u05D9\u05DD \u05D0\u05D7\u05E8\
+    \u05D9\u05DD \u05D5\u05D0\u05D9\u05DF \u05E9\u05D4\u05D5\u05EA \u05DC\u05D7\u05D6\
+    \u05D5\u05E8 \u05D9\u05D0\u05DE\u05E8 \u05D0\u05D7\u05E8 \u05D4\u05EA\u05E4\u05DC\
+    \u05D4. \u05D5\u05DE\u05D5\u05DB\u05D7 \u05D3\u05E1\u05F4\u05DC \u05D3\u05DC\u05D0\
+    \ \u05DB\u05DB\u05D4\u05F4\u05D7 \u05D4\u05E0\u05F4\u05DC \u05D3\u05E1\u05D2\u05D9\
+    \ \u05D1\u05DB\u05D5\u05D5\u05E0\u05D4 \u05D1\u05D0\u05E9\u05E8\u05D9 \u05E9\u05D0\
+    \u05D7\u05E8 \u05D4\u05E2\u05DE\u05D9\u05D3\u05D4, \u05D2\u05DD \u05D1\u05D3\u05D9\
+    \u05E2\u05D1\u05D3, \u05D3\u05D4\u05D0 \u05DE\u05D9\u05D9\u05E8\u05D9 \u05DB\u05D0\
+    \u05DF \u05DB\u05E9\u05D4\u05D5\u05D0 \u05DB\u05D1\u05E8 \u05D0\u05D7\u05E8 \u05D4\
+    \u05EA\u05E4\u05DC\u05D4 (\u05D0\u05D0\u05F4\u05DB \u05E8\u05F4\u05DC \u05D0\u05D7\
+    \u05E8 \u05EA\u05E4\u05DC\u05EA \u05D4\u05E2\u05DE\u05D9\u05D3\u05D4 \u05DC\u05E4\
+    \u05E0\u05D9 \u05D0\u05E9\u05E8\u05D9. \u05D5\u05D3\u05D5\u05D7\u05E7). \u05D5\
+    \u05D0\u05E3 \u05E9\u05D9\u05DC\u05F4\u05E4 \u05D1\u05D3\u05D1\u05E8\u05D9\u05D4\
+    \u05DD \u05D3\u05D4\u05F4\u05D8 \u05DC\u05E4\u05D9 \u05E9\u05D4\u05DB\u05D5\u05D5\
+    \u05E0\u05D4 \u05DE\u05E2\u05DB\u05D1\u05EA \u05D1\u05DB\u05D5\u05DC\u05D4\u05D5\
+    , \u05D5\u05D1\u05DB\u05D5\u05D5\u05E0\u05D4 \u05D1\u05D0\u05E9\u05E8\u05D9 \u05E9\
+    \u05DC\u05D0\u05D7\u05E8 \u05D4\u05E2\u05DE\u05D9\u05D3\u05D4 \u05D3\u05D9\u05D5\
+    \ \u05E9\u05D9\u05E4\u05E7\u05D9\u05E2 \u05D0\u05F4\u05E2 \u2013 \u05D9\u05D5\u05EA\
+    \u05E8 \u05E0\u05E8\u05D0\u05D4 \u05DB\u05E0\u05F4\u05DC, \u05D3\u05E1\u05F4\u05DC\
+    \ \u05E9\u05D4\u05DB\u05D5\u05D5\u05E0\u05D4 \u05DE\u05E2\u05DB\u05D1\u05EA \u05D3\
+    \u05D5\u05E7\u05D0 \u05D1\u05D4\u05D0\u05DE\u05D9\u05E8\u05D4 \u05E9\u05D1\u05E4\
+    \u05E1\u05D5\u05D3\u05F4\u05D6, \u05D5\u05D0\u05DE\u05D9\u05E8\u05D4 \u05D6\u05D5\
+    \ \u05D4\u05D9\u05D0 \u05D1\u05E9\u05D1\u05D9\u05DC \u05E2\u05E6\u05DE\u05D4,\
+    \ \u05D5\u05DC\u05D0 \u05DC\u05D4\u05E9\u05DC\u05DE\u05EA \u05E4\u05E1\u05D5\u05D3\
+    \u05F4\u05D6, \u05D5\u05DC\u05D0 \u05DE\u05E9\u05D5\u05DD \u05E9\u05D2\u05DD \u05D1\
+    \u05D0\u05DE\u05D9\u05E8\u05D4 \u05D6\u05D5 \u05DB\u05D5\u05D5\u05E0\u05D4 \u05DE\
+    \u05E2\u05DB\u05D1\u05EA).\_\u05D5\u05D4\u05E0\u05D0\u05E0\u05D9 \u05E9\u05E8\u05D0\
+    \u05D9\u05EA\u05D9 \u05DB\u05D3\u05D1\u05E8\u05D9\u05E0\u05D5 \u05D2\u05DD\_\u05D1\
+    \u05E9\u05D5\u05F4\u05EA \u05D2\u05D1\u05E2\u05EA \u05E9\u05D0\u05D5\u05DC \u05D5\
+    \u05D5\u05D0\u05D2\u05E9\u05D0\u05DC \u05D9\u05D8. \u05D5\u05DB\u05F4\u05DB\_\u05D1\
+    \u05D3\u05E2\u05EA \u05D9\u05D4\u05D5\u05D3\u05D4 \u05E9\u05E4\u05D9\u05E8\u05D0\
+    \ \u05E0\u05D0 \u2013 \u05E2\u05F3 \u05DB\u05D0. \u05D5\u05E8\u05D0\u05D4 \u05D2\
+    \u05DD \u05E7\u05D5\u05D1\u05E5 \u05D4\u05E2\u05D5\u05F4\u05D1 \u05D1\u05E9\u05DC\
+    \u05D7 \u05EA\u05E9\u05E2\u05F4\u05D5 \u05E2\u05F3 99. \u05D0\u05D1\u05DC \u05E8\
+    \u05D0\u05D4 \u05EA\u05E9\u05D5\u05F3 \u05D4\u05D2\u05E8\u05D7\u05F4\u05E7 \u05D1\
+    \u05E1\u05D5\u05F4\u05E1 \u05D0\u05E9\u05D9 \u05D9\u05E9\u05E8\u05D0\u05DC \u05DC\
+    \u05D4 \u05D3\u05DE\u05E1\u05E4\u05E7\u05F4\u05DC \u05D1\u05D6\u05D4, \u05D5\u05DB\
+    \u05D3\u05E8\u05DB\u05D5. \u05D5\u05D0\u05D9\u05DF \u05E1\u05E4\u05D9\u05E7\u05D5\
+    \ \u05DE\u05D5\u05E6\u05D9\u05D0 \u05DE\u05D9\u05D3\u05D9 \u05D5\u05D3\u05D0\u05D9\
+    \ \u05D3\u05D4\u05E0\u05F4\u05DC."
+  runDuration: 24.855995299993083
+  success: false
+- actualOutput: "\nIt\u2019s definitely permissible.\nSee here:\_https://asktherav.com/2015-05-a-tale-of-two-shabbos-goys.html\n\
+    There was an interesting discussion on this topic in Kuntres Beis Yaakov which\
+    \ I don\u2019t have access right now but can look up later if you need more information\
+    \ about that particular case of what happened with Reb Yosef Karo Zt\u2019l when\
+    \ he became Chabad Lubovitcher Rosh yeshiva etc\u2026)."
+  expectedOutput: "\nOne shouldn\u2019t interrupt until finishing the Haftorah.\n\u05E8\
+    \u05D0\u05D4 \u05E1\u05D9\u05D3\u05D5\u05E8 \u05EA\u05E4\u05DC\u05D4 \u05DC\u05DE\
+    \u05E9\u05D4 \u05DC\u05D4\u05E8\u05DE\u05F4\u05E7 \u05E7\u05E6\u05D1, \u05D0.\
+    \ \u05D5\u05D1\u05E9\u05DE\u05D5 \u2013 \u05E9\u05DC\u05F4\u05D4 \u05DE\u05E1\u05F3\
+    \ \u05E9\u05D1\u05EA \u05D1\u05D7\u05DC\u05E7 \u05EA\u05D5\u05E8\u05D4 \u05D0\u05D5\
+    \u05E8, \u05E1\u05D5\u05D3 \u05E7\u05E8\u05D9\u05D0\u05EA \u05E9\u05DE\u05D5\u05F4\
+    \u05EA (\u05E7\u05DC\u05D7, \u05D0)."
+  input: 'May one interrupt between reading shnayim mikra and reading the Haftorah
+    lechatchila, or better not to?
+
+    (I.e. just as it is better not to interrupt within the chumash itself so too until
+    after Haftorah)'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_16
+  order: 16
+  retrievalContext:
+  - "\nOne shouldn\u2019t interrupt until finishing the Haftorah.\n\u05E8\u05D0\u05D4\
+    \ \u05E1\u05D9\u05D3\u05D5\u05E8 \u05EA\u05E4\u05DC\u05D4 \u05DC\u05DE\u05E9\u05D4\
+    \ \u05DC\u05D4\u05E8\u05DE\u05F4\u05E7 \u05E7\u05E6\u05D1, \u05D0. \u05D5\u05D1\
+    \u05E9\u05DE\u05D5 \u2013 \u05E9\u05DC\u05F4\u05D4 \u05DE\u05E1\u05F3 \u05E9\u05D1\
+    \u05EA \u05D1\u05D7\u05DC\u05E7 \u05EA\u05D5\u05E8\u05D4 \u05D0\u05D5\u05E8, \u05E1\
+    \u05D5\u05D3 \u05E7\u05E8\u05D9\u05D0\u05EA \u05E9\u05DE\u05D5\u05F4\u05EA (\u05E7\
+    \u05DC\u05D7, \u05D0)."
+  runDuration: 25.32752900000196
+  success: false
+- actualOutput: "\nThere\u2019s no problem reading Tzitzis together. It should ideally\
+    \ come out of one Haggadah.\n\u05E8\u05D0\u05D4 \u05EA\u05E9\u05D5\u05F4\u05EA\
+    \ \u05DE\u05D5\u05E8\u05E0\u05D9 \u05D4\u05DC\u05D7\u05D9\u05DD \u05D0\u05D3\u05DE\
+    \u201D\u05D1 \u05D1:\u05E2\u2019 \u05E9 \u2013 \u05DC\u2013\_(Also see there regarding\
+    \ reciting Shema b\u2019rechov). See also here.\nHowever in this case where you\
+    \ want both parts which involve two people and not just saying tehillim then they\
+    \ need their own"
+  expectedOutput: "Some sources imply \u2013 one Siddur."
+  input: ' This that Veyiten Lecha must be said with another, must it be read from
+    the same siddur or is that a myth?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_17
+  order: 17
+  retrievalContext:
+  - "Some sources imply \u2013 one Siddur."
+  runDuration: 13.982029500009958
+  success: false
+- actualOutput: "\nThe halacha is lenient regarding this issue. The Rebbe was asked\
+    \ about working as an accountant with wine and beer companies; he said it\u2019\
+    s permissible.\nThis applies also when you will have direct involvement or interaction\_\
+    with these products such at salesperson etc., even if they aren\u2019t on your\
+    \ hands directly \u2013 provided one does so without enthusiasm nor excitement\
+    \ over their sale of course\u2026 However some poskim hold more stringent views\
+    \ here too which would apply particularly where involved personally whether by\
+    \ being salesman/ cashier"
+  expectedOutput: "\nIn regards to serving a Jew these type of beverages, there might\
+    \ be room for leniency depending on the circumstances.\_If however it involves\
+    \ pouring the client a \u2018non kosher\u2019 beverage on the spot for him to\
+    \ taste or drink, it may not be done.\nHowever, the main issue here is handling\
+    \ and benefiting from forbidden beverages and especially wine.\nNevertheless,\
+    \ so long they sell other beverages which are not forbidden to have benefit from\
+    \ and the person handles and receives benefit and pay from these beverages as\
+    \ well, one may be lenient in this particular case."
+  input: ' Can a Jew work in a non-Kosher liquor store?
+
+    Would there be any Halachic problem for a Torah observant Jew to work in a non
+    kosher liquor store that services Jewish (including many not yet frum) clientele?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_18
+  order: 18
+  retrievalContext:
+  - "\nIn regards to serving a Jew these type of beverages, there might be room for\
+    \ leniency depending on the circumstances.\_If however it involves pouring the\
+    \ client a \u2018non kosher\u2019 beverage on the spot for him to taste or drink,\
+    \ it may not be done.\nHowever, the main issue here is handling and benefiting\
+    \ from forbidden beverages and especially wine.\nNevertheless, so long they sell\
+    \ other beverages which are not forbidden to have benefit from and the person\
+    \ handles and receives benefit and pay from these beverages as well, one may be\
+    \ lenient in this particular case."
+  runDuration: 14.2313148000394
+  success: false
+- actualOutput: "\nThis custom was originally done by Chassidim due that they were\
+    \ accustomed not do say Shema when leaving or entering.\nThe reason for doing\
+    \ so wasn't just because we don\\\u2019t make Hashem His name go away from our\
+    \ eyes but also as an expression gratitude towards Him on behalf all Jews at any\
+    \ time while walking through life i.e., even if you have no specific prayer request\
+    \ during your day since every moment spent alive can be considered thankfulness\_\
+    to G-d without asking something specifically"
+  expectedOutput: "\nIt is not halachically required but it\u2019s appropriate to\
+    \ be stringent. This stringency only applies if your back is directly facing the\
+    \ Aron. It also only applies when leaving the shul, not when moving within the\
+    \ shul. If one wishes to be stringent even when moving around, it should only\
+    \ be done when directly in the line of the Aron and only within 4 Amos of it.\n\
+    Regardless, you certainly shouldn\u2019t do something which stands out and appears\
+    \ strange."
+  input: "I\u2019m kind of new in the community and there are people who walk out\
+    \ of the room with their face to the Aron and back to the door. I had someone\
+    \ tell me it\u2019s unnecessary. Do I need to stop this chumra? Or is this one\
+    \ of those things where I shouldn\u2019t listen to people laughing about the situation?"
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_19
+  order: 19
+  retrievalContext:
+  - "\nIt is not halachically required but it\u2019s appropriate to be stringent.\
+    \ This stringency only applies if your back is directly facing the Aron. It also\
+    \ only applies when leaving the shul, not when moving within the shul. If one\
+    \ wishes to be stringent even when moving around, it should only be done when\
+    \ directly in the line of the Aron and only within 4 Amos of it.\nRegardless,\
+    \ you certainly shouldn\u2019t do something which stands out and appears strange."
+  runDuration: 27.4925672999816
+  success: false
+- actualOutput: "\nThis should not cause any issue in terms that you mentioned.\n\
+    However one would need permission from his Rebbe before doing this as well\_as\
+    \ obtaining proper supervision by an experienced Shohet who has knowledge about\
+    \ Kashruth standards regarding what parts constitute \u201CT\u2019reifos\u201D\
+    \ etc\u2026\_\nRegarding your second point: yes indeed \u2013 even if they were\
+    \ Kosher animals/birds but have been slaughtered incorrectly such slaughter does\
+    \ still render them non-Kasher food because their meat/organ\u2019s become treifa"
+  expectedOutput: '
+
+    It is asur to make a bird a Neveila and certainly not with the intention of throwing
+    it out, as it is Bal Tashchis, destroying something which is useful. An exception
+    would be if a Neveila is worth the same as a kosher bird.
+
+    Practically, you should practice in a non-Jewish plant where both are worth the
+    same for them.'
+  input: ' How can I practice Shechita without violating Bal Tashchis?
+
+    When learning shechita, shochtim must learn to hold and properly shecht the animal
+    or bird. The first few cannot be eaten due to kashrus issues. Is it Mutar to practice
+    with the intent of throwing out the birds? If it is Mutar, is there a limit how
+    many birds may be used for practice?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_20
+  order: 20
+  retrievalContext:
+  - '
+
+    It is asur to make a bird a Neveila and certainly not with the intention of throwing
+    it out, as it is Bal Tashchis, destroying something which is useful. An exception
+    would be if a Neveila is worth the same as a kosher bird.
+
+    Practically, you should practice in a non-Jewish plant where both are worth the
+    same for them.'
+  runDuration: 16.493308699980844
+  success: false
+- actualOutput: "\nThe Rebbe explains it beautifully: It\u2019s all part\_of G-ds\
+    \ plan for us! See here http://www.lubavitch.com/news/article.cfm?id=2338\nIt\
+    \ also says at length elsewhere too\u2026 But if your looking just quick summary\
+    \ then yes indeed its an issue \u2013 but still under control by hashgacha protis\
+    \ etc., which he will explain later\u2026\nHere another example from Likkutei\
+    \ Sichot Volume II page #1347 footnote number three,\n"
+  expectedOutput: "\nFirst and foremost it is most important that you abide by the\
+    \ guidelines your therapist is giving you. Indeed it is a mitzvah in the Torah\
+    \ to look after our health \u2013 mental and emotional health is included as well,\
+    \ if not even more important.\nIt is True that negative thoughts can cause negative\
+    \ effects. However, this only applies for one who chooses to have negative thoughts.\
+    \ If these thoughts come to you against your will, as you have stated clearly\
+    \ that these are things that you don\u2019t want to happen, they are harmless\
+    \ and should simply be ignored.\nDwelling on the these thoughts does no good for\
+    \ anyone. Usually, a good idea during such times is to to focus to other important\
+    \ pursuits, whether Torah study or even mundane things lhavdil, which require\
+    \ your focus and attention. I trust that your therapist will be able to help you\
+    \ in these matters.\nEverybody has their unique challenge which has been given\
+    \ to them from above, as a means to improve themselves. This is not something\
+    \ that should put us off. On the contrary, this indicates the great trust that\
+    \ Hashem has in this individual that he can succeed under the circumstances.\_\
+    \_The greater the challenge, the greater the person\u2019s neshoma is and this\
+    \ indicates that there are more kochos this person receives from on High to deal\
+    \ with it.\nThe Torah advice is to take things step-by-step, not allowing us to\
+    \ become anxious about the fact that we haven\u2019t yet reached our goal. This\
+    \ is a lifelong mission to achieve our purpose in this world and it should be\
+    \ done b\u2019simcha.\nWishing you all well, especially and being able to accomplish\
+    \ these goals in a healthy manner."
+  input: "I struggle with intrusive thoughts that are negative (to say the least)\
+    \ and become so anxious and worried about how they may affect people and reality-especially\
+    \ when wishing them something not good-when Chas veShalom I would never EVER want\
+    \ that. In general, what are the implications/bearing of the effects of our thoughts?\
+    \ To what extent does thought affect things? In the end of the day everything\
+    \ is up to Hashem no? On one hand we\u2019re told to think good because this can\
+    \ affect the outcome of things and on the other hand we\u2019re told to dismiss\
+    \ thoughts and have hesech hadaas.\nWhile I would like to try to have hesech hadaas\
+    \ and ignore them, the problem is only intensified since I see there are times\
+    \ where that thing actually comes True and very close in timing. This has happened\
+    \ quite a few times. (I am currently working with a frum therapist and we\u2019\
+    re not exactly sure how to approach this, as I would like the Emes of the Torah)\
+    \ I\u2019m not sure what to believe and don\u2019t want to live with anxiety of\
+    \ always trying to have positive thoughts/avoid negative ones or the fear of what\
+    \ harm they can cause.\nI would appreciate clarification and certainty on how\
+    \ to view and deal with the ramification of our thoughts.\nA tremendous thank\
+    \ you and besoros tovos always."
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_21
+  order: 21
+  retrievalContext:
+  - "\nFirst and foremost it is most important that you abide by the guidelines your\
+    \ therapist is giving you. Indeed it is a mitzvah in the Torah to look after our\
+    \ health \u2013 mental and emotional health is included as well, if not even more\
+    \ important.\nIt is True that negative thoughts can cause negative effects. However,\
+    \ this only applies for one who chooses to have negative thoughts. If these thoughts\
+    \ come to you against your will, as you have stated clearly that these are things\
+    \ that you don\u2019t want to happen, they are harmless and should simply be ignored.\n\
+    Dwelling on the these thoughts does no good for anyone. Usually, a good idea during\
+    \ such times is to to focus to other important pursuits, whether Torah study or\
+    \ even mundane things lhavdil, which require your focus and attention. I trust\
+    \ that your therapist will be able to help you in these matters.\nEverybody has\
+    \ their unique challenge which has been given to them from above, as a means to\
+    \ improve themselves. This is not something that should put us off. On the contrary,\
+    \ this indicates the great trust that Hashem has in this individual that he can\
+    \ succeed under the circumstances.\_\_The greater the challenge, the greater the\
+    \ person\u2019s neshoma is and this indicates that there are more kochos this\
+    \ person receives from on High to deal with it.\nThe Torah advice is to take things\
+    \ step-by-step, not allowing us to become anxious about the fact that we haven\u2019\
+    t yet reached our goal. This is a lifelong mission to achieve our purpose in this\
+    \ world and it should be done b\u2019simcha.\nWishing you all well, especially\
+    \ and being able to accomplish these goals in a healthy manner."
+  runDuration: 26.961574200016912
+  success: false
+- actualOutput: "\nThe halachic issues surrounding this topic have been discussed\
+    \ extensively. The general principle that one should avoid and not purchase from\
+    \ gentile countries applies when there\u2019s no other choice.\nIn recent years\
+    \ many Jewish communities around world began purchasing these goods in large quantities\
+    \ which led some people mistakenly believe they were allowed under any circumstances\
+    \ even if it was possible otherwise \u2013 but actually we see an increase on\
+    \ those problems because now more Jews buy things made by non-Jews than ever before!\n\
+    For example: A lot has changed"
+  expectedOutput: "There is no halachic objection to buying German products. However\
+    \ there\u2019s certainly nothing wrong with people who wish to avoid doing so\
+    \ based on history."
+  input: ' What is the status of German products? Was the Rebbe against buying them?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_22
+  order: 22
+  retrievalContext:
+  - "There is no halachic objection to buying German products. However there\u2019\
+    s certainly nothing wrong with people who wish to avoid doing so based on history."
+  runDuration: 23.66427389997989
+  success: false
+- actualOutput: "\nYes.\nThis is not considered an issue of Avodah Zarah. See here:\_\
+    https://www.yeshiva.org.il/ask-a-rabbi-what-is-the-halachic-position-on-this-question\n\
+    See also this link with more information on Organ Donation and Jewish Law https:/\
+    \ /jlaw.com/Law/the-laws-of-kidney-donation-and-judaism/\nAlso see below article\
+    \ published in Yated Ne\u2019eman about kidney donations by Chareidi women which"
+  expectedOutput: '
+
+    Yes you may.'
+  input: " May I work as a software developer for a company supporting organ donation?\n\
+    \ The company matches donor organs to recipients etc."
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_23
+  order: 23
+  retrievalContext:
+  - '
+
+    Yes you may.'
+  runDuration: 24.15783989999909
+  success: false
+- actualOutput: "\nYes you may say their full first-name or just lastname.\n\u05E8\
+    \u05D0\u05D4 \u05E1\u05E7\u201D\u05D1 \u05E9\u05D5\u05D9\u05D8\u05DC\u05D5\u05D1\
+    \u05E2\u05E0\u05D9 \u05D1\u05E9\u05DE\u05D7\u05EA \u05D4\u05D3 \u05DC: \u05D0\
+    \ \u2013 \u05DE\nAlso see more on\_refael neshonos for gentiles below\u2026\_\n\
+    See also further discussion at length regarding mentioning refuel\u2019s by other\
+    \ means such as listing out loud etc., but there is no source specifically forbidding\
+    \ one from doing an actual bracho l"
+  expectedOutput: "\nDepends.\nIf you\u2019re davening for someone because it affects\
+    \ you directly, such as a co-worker, cleaning help etc., you may daven for this\
+    \ in the bracha of Shema Koleinu, as for other needs.\nIf you\u2019re davening\
+    \ for them as a mentchlich and peaceful gesture it should be done outside of Shemone\
+    \ Esrai.\nRegarding davening for non Jews, see also:\nIs it permissible to make\
+    \ a Mi Shebeirach for a sick non-Jew? If yes, how can it be done?"
+  input: " Can I mention the name of a non-Jew in the Bracha of Refaeiynu in the Shmonah\
+    \ Esrei?\nI have long lists of names of people who need healing that I insert\
+    \ in my prayers when I have the time. I have divided them into those who are Jewish\
+    \ and those who are not. Some people have told me that they don\u2019t think I\
+    \ can include the non-Jews\u2019 names in this tefillah (I realize the section\
+    \ ends with roifei choiley amoi yisrael.) Is it ok that I mention the names of\
+    \ goyim here? And if not, where can I do so?"
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_24
+  order: 24
+  retrievalContext:
+  - "\nDepends.\nIf you\u2019re davening for someone because it affects you directly,\
+    \ such as a co-worker, cleaning help etc., you may daven for this in the bracha\
+    \ of Shema Koleinu, as for other needs.\nIf you\u2019re davening for them as a\
+    \ mentchlich and peaceful gesture it should be done outside of Shemone Esrai.\n\
+    Regarding davening for non Jews, see also:\nIs it permissible to make a Mi Shebeirach\
+    \ for a sick non-Jew? If yes, how can it be done?"
+  runDuration: 31.33066360000521
+  success: false
+- actualOutput: "\nYes.\nSee here for more details about eating before making Kiddusheh\
+    \ in general \u2013\_https://www.yeshiva.org.il/ask-the-rav/article/eating-before-making-kiddosh-in-general/\n\
+    If you\u2019re worried there\u2019s room enough between Minchaim see my response\
+    \ below regarding what constitutes \u201CMinchah\u201D under these circumstances\
+    \ which I answered recently also relating specifically towards Pesaich Shabbos\
+    \ afternoon as well when it comes up around similar time periods \u2014 https:/\
+    \ / www"
+  expectedOutput: '
+
+    Although this is not the custom, there is room to be lenient if necessary, such
+    as in this case, and daven Maariv as well as make kiddush earlier, from plag hamincha
+    (check the exact time in local calendars etc.) onwards, similar to what is done
+    when accepting Early Shabbos.
+
+    Nonetheless, candle lighting may not be done until nightfall, as one may not prepare
+    from one day Yom Tov to the next.
+
+    Alternatively, one can begin eating dinner without washing prior to sunset, then
+    break till nightfall (as one may not eat without kiddush from sunset onwards),
+    then daven Maariv at nightfall, followed by candle lighting, kiddush, washing
+    etc. This way, one will not deviate from the established custom.
+
+    Remember not to prepare from one day Yom Tov till the next, until nightfall.'
+  input: ' Can we have an Early Dinner on the Second Night of Yom Tov?
+
+    On second night of Yom Tov this year, candle lighting is after 9 pm. Can we drink
+    wine with our guests at dinner earlier and then do kiddush after 9?
+
+    I was told that may not eat or drink from sunset till kiddush is made. So us much
+    older folk must wait to eat dinner at 9:15?'
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_25
+  order: 25
+  retrievalContext:
+  - '
+
+    Although this is not the custom, there is room to be lenient if necessary, such
+    as in this case, and daven Maariv as well as make kiddush earlier, from plag hamincha
+    (check the exact time in local calendars etc.) onwards, similar to what is done
+    when accepting Early Shabbos.
+
+    Nonetheless, candle lighting may not be done until nightfall, as one may not prepare
+    from one day Yom Tov to the next.
+
+    Alternatively, one can begin eating dinner without washing prior to sunset, then
+    break till nightfall (as one may not eat without kiddush from sunset onwards),
+    then daven Maariv at nightfall, followed by candle lighting, kiddush, washing
+    etc. This way, one will not deviate from the established custom.
+
+    Remember not to prepare from one day Yom Tov till the next, until nightfall.'
+  runDuration: 30.206069900013972
+  success: false
+- actualOutput: "\nThe common practice is that one should not give another his own\
+    \ brachah.\nHowever if there was no other way and you gave him your blessing because\
+    \ he asked for such or so on then this isn\u2019t considered problematic either\
+    \ since they didn\u2019 t receive something which belongs exclusively with their\
+    \ Rebbe but rather received from an ordinary Jew who also has many blessings just\
+    \ like any regular Yid\_and therefore even though technically speaking these aren\
+    \ \u2019t exclusive only upon me yet I\u2019m sure G-d knows well enough"
+  expectedOutput: "If so, should the person say/respond with amen?\nAnswers:\n1.\n\
+    A bracha can be given in writing or verbally. Each one has its own special power.\n\
+    One should respond \u201CAmen\u201D in writing.\n2.\nRegarding placing the hands\
+    \ over one\u2019s head while blessing them \u2013 Some do this. Some don\u2019\
+    t. Some use only right hand.\nThe reasons of this custom:\nTo make the recipient\
+    \ a vessel for the bracha; to unite the one blessing and the recipient; to indicate\
+    \ extra flow of blessing,\_ayin yafeh; because there are 15 joints in the hand\
+    \ corresponding to the 15 words of Birchas kohanim.\n\u05D5\u05E8\u05D0\u05D4\
+    \ \u05D2\u05DD \u05D3\u05F4\u05D4 \u05E9\u05D0\u05D5 \u05D9\u05D3\u05D9\u05DB\u05DD\
+    \ \u05EA\u05E8\u05E4\u05F4\u05D7 \u05D5\u05EA\u05E9\u05DB\u05F4\u05D6."
+  input: " 1. Is sending someone a Bracha as a WhatsApp message the same as giving\
+    \ it in person? 2. What\u2019s the Inyan of placing ones hands over someone\u2019\
+    s head when giving them a Bracha?"
+  metricsMetadata:
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Answer Relevancy
+    strictMode: false
+    success: false
+    threshold: 0.5
+  - error: Evaluation LLM outputted an invalid JSON. Please use a better evaluation
+      model.
+    evaluationModel: Mistral 7B
+    metric: Correctness (GEval)
+    strictMode: false
+    success: false
+    threshold: 0.5
+  name: test_case_26
+  order: 26
+  retrievalContext:
+  - "If so, should the person say/respond with amen?\nAnswers:\n1.\nA bracha can be\
+    \ given in writing or verbally. Each one has its own special power.\nOne should\
+    \ respond \u201CAmen\u201D in writing.\n2.\nRegarding placing the hands over one\u2019\
+    s head while blessing them \u2013 Some do this. Some don\u2019t. Some use only\
+    \ right hand.\nThe reasons of this custom:\nTo make the recipient a vessel for\
+    \ the bracha; to unite the one blessing and the recipient; to indicate extra flow\
+    \ of blessing,\_ayin yafeh; because there are 15 joints in the hand corresponding\
+    \ to the 15 words of Birchas kohanim.\n\u05D5\u05E8\u05D0\u05D4 \u05D2\u05DD \u05D3\
+    \u05F4\u05D4 \u05E9\u05D0\u05D5 \u05D9\u05D3\u05D9\u05DB\u05DD \u05EA\u05E8\u05E4\
+    \u05F4\u05D7 \u05D5\u05EA\u05E9\u05DB\u05F4\u05D6."
+  runDuration: 25.53761089994805
+  success: false
