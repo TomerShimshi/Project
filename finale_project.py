@@ -30,7 +30,7 @@ quant_config = BitsAndBytesConfig(
 #######################
 ### Load Base Model ###
 #######################
-base_model_name = "NousResearch/Llama-2-7b-chat-hf"
+base_model_name = "NousResearch/Llama-2-7b-chat-hf" # "NousResearch/Meta-Llama-3-8B-Instruct" #"unsloth/llama-3-8b-bnb-4bit"
 llama_2 = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,

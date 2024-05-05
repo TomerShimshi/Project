@@ -21,18 +21,18 @@ from deepeval.models.base_model import DeepEvalBaseLLM
 
 
 
-compute_dtype = getattr(torch, "float16")
+compute_dtype = None#getattr(torch, "float16")
 quant_config = BitsAndBytesConfig(
     load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=compute_dtype,
-    bnb_4bit_use_double_quant=False,
+   bnb_4bit_quant_type="nf4",
+   bnb_4bit_use_double_quant=True,
+   bnb_4bit_compute_dtype=torch.bfloat16
 )
 
 #######################
 ### Load Base Model ###
 #######################
-base_model_name = "NousResearch/Meta-Llama-3-8B-Instruct"
+base_model_name = "NousResearch/Meta-Llama-3-8B-Instruct" #"unsloth/llama-3-8b-bnb-4bit"
 llama_3 = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,

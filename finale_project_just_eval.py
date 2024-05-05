@@ -1,4 +1,5 @@
 import os
+import json
 import torch
 from datasets import load_dataset
 from transformers import (
@@ -8,8 +9,8 @@ from transformers import (
     TrainingArguments,
     pipeline,
 )
-from peft import LoraConfig
-from trl import SFTTrainer
+import pytest
+
 
 ### EVAL ###
 from deepeval import evaluate
@@ -18,11 +19,17 @@ from deepeval.metrics.ragas import RagasMetric
 from deepeval.test_case import LLMTestCase
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from deepeval.models.base_model import DeepEvalBaseLLM
+from deepeval.dataset import EvaluationDataset
+from deepeval.metrics import GEval
+from deepeval.test_case import LLMTestCaseParams
 
 import subprocess
 import csv
 from tqdm import tqdm
-
+def save_list_to_json(file_path: str, my_list: list):
+    with open(file_path, "w") as json_file:
+        json.dump(my_list, json_file)   
+    print(f"save the list to {file_path}")    
 def csv_to_dict(file_name):
     data_dict = {}
     
@@ -56,7 +63,7 @@ class Mistral7B(DeepEvalBaseLLM):
     def generate(self, prompt: str) -> str:
         model = self.load_model()
 
-        device = "cuda" # the device to load the model onto
+        device = "cuda" #'cpu' #"cuda" # the device to load the model onto
 
         model_inputs = self.tokenizer([prompt], return_tensors="pt").to(device)
         #model.to(device)
@@ -69,7 +76,7 @@ class Mistral7B(DeepEvalBaseLLM):
 
     def get_model_name(self):
         return "Mistral 7B"
-    
+ 
 
 compute_dtype = getattr(torch, "float16")
 quant_config = BitsAndBytesConfig(
@@ -83,10 +90,10 @@ quant_config = BitsAndBytesConfig(
 ### Load Eval Model ###
 #######################
 os.environ["DEEPEVAL_RESULTS_FOLDER"] = "dataset"
-model_id = "tuned-llama-2-7b"#"mistralai/Mistral-7B-v0.1" #"NousResearch/Meta-Llama-3-8B-Instruct" # "unsloth/llama-3-8b-bnb-4bit" #"NousResearch/Meta-Llama-3-8B-Instruct" #"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
+model_id = "mistralai/Mistral-7B-v0.1" #"yam-peleg/Hebrew-Mistral-7B" #"mistralai/Mistral-7B-v0.1" #"NousResearch/Meta-Llama-3-8B-Instruct" #"tuned-llama-2-7b"# #"NousResearch/Meta-Llama-3-8B-Instruct" # "unsloth/llama-3-8b-bnb-4bit" #"NousResearch/Meta-Llama-3-8B-Instruct" #"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
 model = AutoModelForCausalLM.from_pretrained(model_id,
    quantization_config=quant_config,
-   device_map={"": 0})
+   device_map='auto')#{"": 0})
 #"mistralai/Mistral-7B-v0.1")
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 #"mistralai/Mistral-7B-v0.1")
@@ -94,14 +101,30 @@ tokenizer = AutoTokenizer.from_pretrained(model_id)
 mistral_7b = Mistral7B(model=model, tokenizer=tokenizer)
 #print(mistral_7b.generate("Write me a joke"))
 
-model_outputs_csv_path = "dataset\\usage_dataset.csv"
+model_outputs_csv_path = "tuned_llama-3_usage_dataset.csv"
 eval_csv_dict = csv_to_dict(model_outputs_csv_path)
 key = list(eval_csv_dict.keys())[0]
-total_iterations = 5#len(eval_csv_dict[key])
-cmd = "deepeval login --confident-api-key pGKpNnRb9JDf2VwL+UZwokgCXeVPlh9W2Ls/9dNqgDU=" 
-os.system(cmd)
-event_id = subprocess.check_output(cmd, shell=True).rstrip()
-for i in tqdm(range(total_iterations), desc="Processing", unit="iterations"):
+total_iterations = 2#len(eval_csv_dict[key])//12
+#cmd = "deepeval login --confident-api-key pGKpNnRb9JDf2VwL+UZwokgCXeVPlh9W2Ls/9dNqgDU=" 
+#os.system(cmd)
+#event_id = subprocess.check_output(cmd, shell=True).rstrip()
+llm_cases = []
+json_path = "tests_results.json"
+metric = AnswerRelevancyMetric(threshold=0.5,model=mistral_7b,include_reason=True,async_mode=False,)
+metric2 =  GEval(
+    name="Correctness",
+    criteria="Determine whether the actual output is factually correct based on the expected output.",
+    # NOTE: you can only provide either criteria or evaluation_steps, and not both
+    evaluation_steps=[
+        "Check whether the facts in 'actual output' contradicts any facts in 'expected output'",
+        "You should also heavily penalize omission of detail",
+        "Vague language, or contradicting OPINIONS, are OK"
+    ],
+    evaluation_params=[LLMTestCaseParams.INPUT, LLMTestCaseParams.ACTUAL_OUTPUT],
+    async_mode= False,
+    model = mistral_7b,
+)
+for i in tqdm(range(total_iterations-1), desc="Processing", unit="iterations"):
 # Replace this with the actual output from your LLM application
 #for i in range(len(eval_csv_dict[list(eval_csv_dict.keys())[0]])):
     
@@ -109,30 +132,30 @@ for i in tqdm(range(total_iterations), desc="Processing", unit="iterations"):
     #"We offer a 30-day full refund at no extra cost."
 
     
-    metric = AnswerRelevancyMetric(
-        threshold=0.5,
-        model=mistral_7b,
-        include_reason=True,
-        #async_mode=False,
-    )
-    metric2 = ContextualPrecisionMetric(threshold=0.5, model=mistral_7b,include_reason=True)
+    
     #we do not have context so we will use the reference output as context
     #print(f"fot the following test we have input : {eval_csv_dict['question'][i]}\n actual output \
     #      = {eval_csv_dict['actual_output'][i]} \n \
     #      expected_output={eval_csv_dict['expected_output'][i]}")
+    print(f"\t running test number {i}  ")
+    print("################################")
     test_case = LLMTestCase(
-        input=eval_csv_dict['question'][i],
-        actual_output=eval_csv_dict['actual_output'][i],
-        expected_output=eval_csv_dict['expected_output'][i],
-        retrieval_context= [eval_csv_dict['expected_output'][i]]
+        input=eval_csv_dict['question'][i+1],
+        actual_output=eval_csv_dict['actual_output'][i+1],
+        expected_output=eval_csv_dict['expected_output'][i+1],
+        retrieval_context= [eval_csv_dict['expected_output'][i+1]]
         
     )
-
+    llm_cases.append(test_case)
+    
     #metric.measure(test_case)
     #print(metric.score)
     #print(metric.reason)
 
     # or evaluate test cases in bulk
-    evaluate([test_case], [metric,metric2],ignore_errors= True, print_results= True,use_cache=True)
+    #temp = evaluate([test_case], [metric,metric2],ignore_errors= True, print_results= True,use_cache=True)
     t=1
+    #results.append(temp)
+dataset = EvaluationDataset(test_cases=llm_cases)
+evaluate(dataset,[metric,metric2],ignore_errors= True, use_cache=True)
 
