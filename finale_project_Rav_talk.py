@@ -25,8 +25,8 @@ quant_config = BitsAndBytesConfig(
 ### Load Base Model ###
 #######################
 
-base_model_name = os.path.join(os.getcwd() ,"results\\tuned-llama-2-7b")
-llama_2 = AutoModelForCausalLM.from_pretrained(
+base_model_name = os.path.join(os.getcwd() ,"results_dine_tune_after_shulhan_aruch\\llama-2")
+model = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
     device_map="auto"#{"": 0}
@@ -52,26 +52,49 @@ test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train')#
 ### Set Saving Arguments ###
 ##############################
 save_path_csv_path = os.path.join(os.getcwd() , "dataset","usage_dataset.csv")
-print(f"temp save model path = {save_path_csv_path}")
+alpaca_prompt = """you are a jewish Rav, please answer the following question according to the Halakha (Jewish law) .
 
+
+### Question:
+{}
+
+### Answer:
+{}"""
+def formatting_prompts_func(examples):
+    instruction = "you are a jewish Rav, please answer the following question"
+    inputs       = examples["question"]
+    outputs      = examples["answer"]
+    texts = []
+    #global EOS_TOKEN
+    for  input, output in zip( inputs, outputs):
+        # Must add EOS_TOKEN, otherwise your generation will go on forever!
+        #text = alpaca_prompt.format(instruction, input, output) #+ EOS_TOKEN
+        text = alpaca_prompt.format( input, output) #+ EOS_TOKEN
+        texts.append(text)
+    return { "text" : texts, }
 
 # Replace this with the actual output from your LLM application
 #for i in range(len(test_dataset)):
 for item in tqdm(test_dataset, desc="Processing", unit="items"):
-    temp = item['question']#test_dataset['quastion'][i]lh
-    prompt =input("Enter question for rav:") #item['question']#test_dataset['quastion'][i]
+    ##question = item['question']#test_dataset['quastion'][i]
+    question = input('PLease enter a question for the Rav')#item['question']#test_dataset['quastion'][i]
     pipe = pipeline(
-      task="text-generation", 
-      model=llama_2, 
-      tokenizer=tokenizer, 
-      max_length=200
+      task="text-generation",
+      model=model,
+      tokenizer=tokenizer,
+      #eos_token_id=EOS_TOKEN,
+      repetition_penalty = 2.0,
+      do_sample = True,
+      max_new_tokens = 200,
     )
-    model_prompt = f"###question \n {prompt}.\n ###answer \n "
+    model_prompt = alpaca_prompt.format( question, "")
+    
     result = pipe(model_prompt)
-    actual_output = result[0]['generated_text']
-    print(f'the rav answer is: {actual_output}')
-    save_dict = {'question': prompt,'actual_output':actual_output, "expected_output":item['answer']}#test_dataset['answer'][i]}
-    append_dict_to_csv(save_dict, save_path_csv_path)
+    actual_output = result[0]['generated_text'].split("### Answer:")[1]
+    save_dict = {'question': question,'actual_output':actual_output, "expected_output":item['answer']}#test_dataset['answer'][i]}
+    #append_dict_to_csv(save_dict, save_path_csv_path)
+    for k , v in save_dict.items():
+      print (f"\n\n\ {k} : {v} n\n\n\n")
     #"We offer a 30-day full refund at no extra cost."
 
     
