@@ -75,7 +75,7 @@ def test_result_to_dict(test_result: TestResult):
         #else:
         #    
         #    result =   f"  - ✅ {metric.__name__} (score: {metric.score}, threshold: {metric.threshold}, strict: {metric.strict_mode}, evaluation model: {metric.evaluation_model}, reason: {metric.reason}, error: {metric.error})"
-        test_dict[metric.__name__]['is_successful']=metric.is_successful()    
+        test_dict[metric.__name__]['is_successful']=successful   
         test_dict[metric.__name__]['score']=metric.score
         test_dict[metric.__name__]['threshold']=metric.threshold
         test_dict[metric.__name__]['strict_mode']=metric.strict_mode
@@ -155,7 +155,7 @@ def eval():
     os.environ["DEEPEVAL_RESULTS_FOLDER"] = save_path
     
 
-    model_id = "yam-peleg/Hebrew-Mistral-7B" #"mistralai/Mistral-7B-v0.1" # #"mistralai/Mistral-7B-v0.1" #"NousResearch/Meta-Llama-3-8B-Instruct" #"tuned-llama-2-7b"# #"NousResearch/Meta-Llama-3-8B-Instruct" # "unsloth/llama-3-8b-bnb-4bit" #"NousResearch/Meta-Llama-3-8B-Instruct" #"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
+    model_id = "mistralai/Mistral-7B-v0.1" # "yam-peleg/Hebrew-Mistral-7B" # #"mistralai/Mistral-7B-v0.1" #"NousResearch/Meta-Llama-3-8B-Instruct" #"tuned-llama-2-7b"# #"NousResearch/Meta-Llama-3-8B-Instruct" # "unsloth/llama-3-8b-bnb-4bit" #"NousResearch/Meta-Llama-3-8B-Instruct" #"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
     model = AutoModelForCausalLM.from_pretrained(model_id,
        quantization_config=quant_config,
        device_map='auto')#{"": 0})
@@ -170,9 +170,6 @@ def eval():
     eval_csv_dict = csv_to_dict(model_outputs_csv_path)
     key = list(eval_csv_dict.keys())[0]
     total_iterations = 2 #len(eval_csv_dict[key])
-    #cmd = "deepeval login --confident-api-key pGKpNnRb9JDf2VwL+UZwokgCXeVPlh9W2Ls/9dNqgDU=" 
-    #os.system(cmd)
-    #event_id = subprocess.check_output(cmd, shell=True).rstrip()
     llm_cases = []
     json_path = "tests_results.json"
     metric = AnswerRelevancyMetric(threshold=0.5,
@@ -205,14 +202,6 @@ def eval():
         )
         llm_cases.append(test_case)
 
-        #metric.measure(test_case)
-        #print(metric.score)
-        #print(metric.reason)
-
-        # or evaluate test cases in bulk
-        #temp = evaluate([test_case], [metric,metric2],ignore_errors= True, print_results= True,use_cache=True)
-        t=1
-        #results.append(temp)
     dataset = EvaluationDataset(test_cases=llm_cases)
     #temp=evaluate(dataset,[metric,metric2],ignore_errors= True, use_cache=True)
     test_results=evaluate(dataset,[metric,metric2],print_results= True,ignore_errors= True, use_cache=True)
@@ -237,6 +226,7 @@ def eval():
             no_error_results.append(result)
     filleted_save_path = save_path_yaml.replace('.yaml','_filtered.yaml')
     save_list_to_json_yaml(filleted_results,filleted_save_path)
+    print(f"the accuracy percent we got is {(len(just_successful)/(len(all_results)))*100}%")
     t=1
 if __name__ == "__main__":
     eval()

@@ -134,7 +134,7 @@ test_rag(qa, prompet)
 ####################
 ### Load Dataset ###
 ####################
-train_dataset_name = "Rebe_Q_and_A_dataset_just_rebe_questions_english.csv"
+train_dataset_name = "cleaned_Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew.csv"
 test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-15%:]')
 
 ##############################
@@ -147,7 +147,7 @@ print(f"temp save model path = {save_path_csv_path}")
 # Replace this with the actual output from your LLM application
 #for i in range(len(test_dataset)):
 for item in tqdm(test_dataset, desc="Processing", unit="items"):
-    question = item['question']#test_dataset['quastion'][i]
+    question = input('PLease enter a question for the Rav \n')#item['question']#test_dataset['quastion'][i]
     
     #pipe = pipeline(
     #  task="text-generation",
