@@ -2,6 +2,7 @@ import os
 import json
 import torch
 import yaml
+import numpy as np
 from datasets import load_dataset
 from transformers import (
     AutoModelForCausalLM,
@@ -154,6 +155,7 @@ def eval():
     save_path =os.path.join( os.getcwd(),'eval_test')
     os.environ["DEEPEVAL_RESULTS_FOLDER"] = save_path
     
+    
 
     model_id = "mistralai/Mistral-7B-v0.1" # "yam-peleg/Hebrew-Mistral-7B" # #"mistralai/Mistral-7B-v0.1" #"NousResearch/Meta-Llama-3-8B-Instruct" #"tuned-llama-2-7b"# #"NousResearch/Meta-Llama-3-8B-Instruct" # "unsloth/llama-3-8b-bnb-4bit" #"NousResearch/Meta-Llama-3-8B-Instruct" #"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
     model = AutoModelForCausalLM.from_pretrained(model_id,
@@ -169,7 +171,7 @@ def eval():
     model_outputs_csv_path = "dataset\\usage_shulahn_aruch_dataset.csv"
     eval_csv_dict = csv_to_dict(model_outputs_csv_path)
     key = list(eval_csv_dict.keys())[0]
-    total_iterations = 2 #len(eval_csv_dict[key])
+    total_iterations = 3 #len(eval_csv_dict[key])
     llm_cases = []
     json_path = "tests_results.json"
     metric = AnswerRelevancyMetric(threshold=0.5,
@@ -190,14 +192,14 @@ def eval():
         #model = mistral_7b,
         model = "gpt-3.5-turbo"
     )
-    for i in tqdm(range(total_iterations-1), desc="Processing", unit="iterations"):
+    for i in tqdm(range(total_iterations), desc="Processing", unit="iterations"):
         print(f"\t running test number {i}  ")
         print("################################")
         test_case = LLMTestCase(
-            input=eval_csv_dict['question'][i+1],
-            actual_output=eval_csv_dict['actual_output'][i+1],
-            expected_output=eval_csv_dict['expected_output'][i+1],
-            retrieval_context= [eval_csv_dict['expected_output'][i+1]]
+            input=eval_csv_dict['question'][i+3],
+            actual_output=eval_csv_dict['actual_output'][i+3],
+            expected_output=eval_csv_dict['expected_output'][i+3],
+            #retrieval_context= [eval_csv_dict['expected_output'][i+1]]
 
         )
         llm_cases.append(test_case)
@@ -215,18 +217,16 @@ def eval():
     save_list_to_json_yaml(all_results,save_path_yaml)
 
     filleted_results = [result for result in all_results if   result['Answer Relevancy']['score'] != None or   result['Correctness (GEval)']['score'] > 0 ]
-    no_error_results = []
-    just_successful =[result for result in all_results if result['Answer Relevancy']['is_successful'] or result['Correctness (GEval)']['is_successful']]
-    #no_error_results = [result for result in all_results if "invalid JSON" not in  result['Answer Relevancy']['error'] or "invalid JSON" not in  result['Correctness (GEval)']['error'] ]
-    for result in all_results:
-        if  result['Answer Relevancy']['error'] == None or result['Correctness (GEval)']['error'] ==None:
-            no_error_results.append(result)
-            continue
-        if "invalid JSON" not in  result['Answer Relevancy']['error'] or "invalid JSON" not in  result['Correctness (GEval)']['error']:
-            no_error_results.append(result)
+    just_successful_answer_relevancy =[result for result in all_results if result['Answer Relevancy']['is_successful'] ]
+    just_successful_answer_correctness =[result for result in all_results if  result['Correctness (GEval)']['is_successful']]
     filleted_save_path = save_path_yaml.replace('.yaml','_filtered.yaml')
     save_list_to_json_yaml(filleted_results,filleted_save_path)
-    print(f"the accuracy percent we got is {(len(just_successful)/(len(all_results)))*100}%")
+    print(f"the accuracy percent we got for answer relevancy is {(len(just_successful_answer_relevancy)/(len(all_results)))*100}%")
+    print(f"the accuracy percent we got for answer correctness is {(len(just_successful_answer_correctness)/(len(all_results)))*100}%")
+    correctness_scores = [item['Correctness (GEval)']['score'] for item in all_results]
+    relevancy_scores = [item['Answer Relevancy']['score'] for item in all_results]
+    print(f"the mean score we got for answer correctness is {np.mean(correctness_scores)}")
+    print(f"the mean score we got for answer relevancy is {np.mean(relevancy_scores)}")
     t=1
 if __name__ == "__main__":
     eval()

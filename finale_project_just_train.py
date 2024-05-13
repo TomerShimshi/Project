@@ -24,7 +24,7 @@ alpaca_prompt = """you are a jewish Rav, please answer the following question ac
 ### Answer:
 {}"""
 def formatting_prompts_func(examples):
-    instruction = "you are a jewish Rav, please answer the following question"
+    #instruction = "you are a jewish Rav, please answer the following question"
     inputs       = examples["question"]
     outputs      = examples["answer"]
     texts = []
@@ -53,7 +53,7 @@ def train(args):
         
         base_model_name = "unsloth/llama-3-8b-bnb-4bit" #"unsloth/llama-3-8b-bnb-4bit"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Llama-2-7b-chat-hf" #"unsloth/llama-3-8b-bnb-4bit"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Meta-Llama-3-8B-Instruct" #"NousResearch/Llama-2-7b-chat-hf" # "NousResearch/Meta-Llama-3-8B-Instruct" #
     else:
-        base_model_name = "results_Sulhan_aruch\llama-2" #"NousResearch/Llama-2-7b-chat-hf" #
+        base_model_name = "results_Sulhan_aruch_test\llama-2" #"NousResearch/Llama-2-7b-chat-hf" #
     llama_3 = AutoModelForCausalLM.from_pretrained(
         base_model_name,
         quantization_config=quant_config,
@@ -73,7 +73,7 @@ def train(args):
     ####################
     ### Load Dataset ###
     ####################
-    train_dataset_name = "Rebe_Q_and_A_dataset_just_rebe_questions_english.csv"
+    train_dataset_name = "cleaned_Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew.csv"
     train_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[:70%]')#, split="train")
     test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-30%:-15%]')
     global EOS_TOKEN
@@ -95,7 +95,7 @@ def train(args):
     ### Set Training Arguments ###
     ##############################
     new_model =args.model_name #"tuned-llama-3-8b_V2"
-    save_path = os.path.join(os.getcwd() , "results_dine_tune_after_shulhan_aruch",new_model)
+    save_path = os.path.join(os.getcwd() , "results_dine_tune_after_shulhan_aruch_no_heb",new_model)
     temp_save_path = os.path.join(os.getcwd(), "tuning_results")
     print(f"temp save model path = {temp_save_path}")
     training_arguments = TrainingArguments(
@@ -161,18 +161,21 @@ def train(args):
     #################
     ### Try Model ###
     #################
-    question = "Can I eat pork?"
-    instruction = "you are a jewish Rav, please answer the following question"
-    
+    question = "Can I work on saturday?"
+        
     
     pipe = pipeline(
-      task="text-generation", 
-      model=llama_3, 
-      tokenizer=tokenizer, 
-      max_length=200,
-      eos_token_id=EOS_TOKEN,
+      task="text-generation",
+      model=llama_3,
+      tokenizer=tokenizer,
+      #eos_token_id=EOS_TOKEN,
+      repetition_penalty = 2.0,
+      do_sample = True,
+      max_new_tokens = 200,
+      top_k=10,
+      num_return_sequences=1,
     )
-    result = pipe( alpaca_prompt.format(instruction, question, ""))
+    result = pipe( alpaca_prompt.format( question, ""))
     print(result[0]['generated_text'].split(tokenizer.eos_token[0]))
 
 if __name__ == "__main__":
