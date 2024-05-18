@@ -8,6 +8,7 @@ import csv
 import re
 import os
 import yaml
+import numpy as np
 
 def remove_lines_with_substring(input_str, substring,split_by:str = "\n"):
     lines = input_str.split(split_by)  # Split the input string into lines
@@ -50,23 +51,15 @@ def append_dict_to_csv(dictionary, filename):
 
 if __name__ == "__main__":
     # first we load the text files
-    full_text_path ="dataset\\20240504_173218.json" # "dataset\\20240504_190145.json" #"dataset\\20240504_173218.json"
-    full_text =  open(full_text_path, "r", encoding='utf-8') 
-    full_text = full_text.read()
-    full_text = full_text.replace('false','False')
-    full_text = full_text.replace('true','True')
-    dict1= eval(full_text)
-    #full_text = remove_lines_with_substring(full_text,substring = "\\u", split_by= " ")
-    #tests_locations = find_location_starting_with_substring(input_str= full_text,substring='name\\',split_by=' ')
-    save_path_yaml = "dataset\sorted_deep_eval_output_new.yaml"
-    save_path_csv = save_path_yaml.replace('yaml','csv')
-    #with open(save_path, 'w', encoding='utf-8') as f:
-    #    json.dump(full_text, f)
+    full_text_path ="test_eval_save_new_with_eval_steps_gpt-3.5-turbo.yaml" # "dataset\\20240504_190145.json" #"dataset\\20240504_173218.json"
+    with open(full_text_path) as f:
+        deep_eval_dict = yaml.load(f, Loader=yaml.FullLoader)
+    scores = [item['Correctness (GEval)']['score'] for item in deep_eval_dict]
+    mean_score = np.mean(scores)
+    print(f"the corctness score is {mean_score}")
     
-    # read the json file into a dictionary
-    for test in dict1['testCases']:
-        append_dict_to_csv(test,save_path_yaml)
-    with open(save_path_yaml, 'w') as outfile:
-        yaml.dump(dict1['testCases'], outfile, default_flow_style=False)
-    t=1
+    
+    
+    
+  
     
