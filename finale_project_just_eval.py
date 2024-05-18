@@ -30,6 +30,11 @@ import subprocess
 import csv
 from tqdm import tqdm
 
+import argparse
+
+parser = argparse.ArgumentParser(description='Description of your program')
+parser.add_argument('--dataset_location', type=str,default='dataset\\usage_shulahn_aruch_dataset.csv', help='location of the csv containing the model outputs for the validation dataset')
+
 def convert_to_serializable(data):
     if isinstance(data, set):
         return list(data)
@@ -69,13 +74,6 @@ def test_result_to_dict(test_result: TestResult):
             except:
                 successful = False
 
-        #if not successful:    
-            
-        #    result =    f"  - ❌ {metric.__name__} (score: {metric.score}, threshold: {metric.threshold}, strict: {metric.strict_mode}, evaluation model: {metric.evaluation_model}, reason: {metric.reason}, error: {metric.error})"
-        #    
-        #else:
-        #    
-        #    result =   f"  - ✅ {metric.__name__} (score: {metric.score}, threshold: {metric.threshold}, strict: {metric.strict_mode}, evaluation model: {metric.evaluation_model}, reason: {metric.reason}, error: {metric.error})"
         test_dict[metric.__name__]['is_successful']=successful   
         test_dict[metric.__name__]['score']=metric.score
         test_dict[metric.__name__]['threshold']=metric.threshold
@@ -140,7 +138,7 @@ class Mistral7B(DeepEvalBaseLLM):
     def get_model_name(self):
         return "Mistral 7B"
  
-def eval():
+def eval(args):
     compute_dtype = getattr(torch, "float16")
     quant_config = BitsAndBytesConfig(
         load_in_4bit=True,
@@ -160,32 +158,28 @@ def eval():
     model_id = "mistralai/Mistral-7B-v0.1" # "yam-peleg/Hebrew-Mistral-7B" # #"mistralai/Mistral-7B-v0.1" #"NousResearch/Meta-Llama-3-8B-Instruct" #"tuned-llama-2-7b"# #"NousResearch/Meta-Llama-3-8B-Instruct" # "unsloth/llama-3-8b-bnb-4bit" #"NousResearch/Meta-Llama-3-8B-Instruct" #"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
     model = AutoModelForCausalLM.from_pretrained(model_id,
        quantization_config=quant_config,
-       device_map='auto')#{"": 0})
-    #"mistralai/Mistral-7B-v0.1")
+       device_map='auto')
     tokenizer = AutoTokenizer.from_pretrained(model_id)
-    #"mistralai/Mistral-7B-v0.1")
-
+    
     mistral_7b = Mistral7B(model=model, tokenizer=tokenizer)
     #print(mistral_7b.generate("Write me a joke"))
 
-    model_outputs_csv_path = "dataset\\usage_shulahn_aruch_dataset.csv"
+    model_outputs_csv_path = args.dataset_location #"dataset\\usage_shulahn_aruch_dataset_RAG.csv" #"dataset\\usage_shulahn_aruch_dataset.csv"
     eval_csv_dict = csv_to_dict(model_outputs_csv_path)
     key = list(eval_csv_dict.keys())[0]
-    total_iterations = 3 #len(eval_csv_dict[key])
+    total_iterations = len(eval_csv_dict[key])
     llm_cases = []
-    json_path = "tests_results.json"
     metric = AnswerRelevancyMetric(threshold=0.5,
                                    #model=mistral_7b,
                                    model = "gpt-3.5-turbo",
                                    include_reason=True,async_mode=True,)
     metric2 =  GEval(
         name="Correctness",
-        criteria="Determine whether the actual output is factually correct based on the expected output.",
-        # NOTE: you can only provide either criteria or evaluation_steps, and not both
+        #criteria="Determine whether the actual output is factually correct based on the expected output.",
         evaluation_steps=[
-            "Check whether the facts in 'actual output' contradicts any facts in 'expected output'",
-            "You should also heavily penalize omission of detail",
-            "Vague language, or contradicting OPINIONS, are OK"
+        "Check whether the facts in 'actual output' contradicts any facts in 'expected output'",
+        "You should also heavily penalize omission of detail",
+        "Vague language, or contradicting OPINIONS, are OK"
         ],
         evaluation_params=[LLMTestCaseParams.INPUT, LLMTestCaseParams.ACTUAL_OUTPUT],
         async_mode= True,
@@ -196,16 +190,15 @@ def eval():
         print(f"\t running test number {i}  ")
         print("################################")
         test_case = LLMTestCase(
-            input=eval_csv_dict['question'][i+3],
-            actual_output=eval_csv_dict['actual_output'][i+3],
-            expected_output=eval_csv_dict['expected_output'][i+3],
+            input=eval_csv_dict['question'][i],
+            actual_output=eval_csv_dict['actual_output'][i],
+            expected_output=eval_csv_dict['expected_output'][i],
             #retrieval_context= [eval_csv_dict['expected_output'][i+1]]
 
         )
         llm_cases.append(test_case)
 
     dataset = EvaluationDataset(test_cases=llm_cases)
-    #temp=evaluate(dataset,[metric,metric2],ignore_errors= True, use_cache=True)
     test_results=evaluate(dataset,[metric,metric2],print_results= True,ignore_errors= True, use_cache=True)
     # we need to convert it into a dict and than save it
     #We will convert from test to dict and save to yaml
@@ -213,21 +206,18 @@ def eval():
     for test in test_results:
         all_results.append(test_result_to_dict(test))
 
-    save_path_yaml = f"test_eval_save_new_{all_results[0]['Answer Relevancy']['evaluation_model']}.yaml"
+    save_path_yaml = f"test_eval_save_new_with_eval_steps_{all_results[0]['Answer Relevancy']['evaluation_model']}{'_RAG' if 'RAG' in model_outputs_csv_path else '' }.yaml"
     save_list_to_json_yaml(all_results,save_path_yaml)
 
-    filleted_results = [result for result in all_results if   result['Answer Relevancy']['score'] != None or   result['Correctness (GEval)']['score'] > 0 ]
     just_successful_answer_relevancy =[result for result in all_results if result['Answer Relevancy']['is_successful'] ]
     just_successful_answer_correctness =[result for result in all_results if  result['Correctness (GEval)']['is_successful']]
-    filleted_save_path = save_path_yaml.replace('.yaml','_filtered.yaml')
-    save_list_to_json_yaml(filleted_results,filleted_save_path)
     print(f"the accuracy percent we got for answer relevancy is {(len(just_successful_answer_relevancy)/(len(all_results)))*100}%")
     print(f"the accuracy percent we got for answer correctness is {(len(just_successful_answer_correctness)/(len(all_results)))*100}%")
     correctness_scores = [item['Correctness (GEval)']['score'] for item in all_results]
     relevancy_scores = [item['Answer Relevancy']['score'] for item in all_results]
     print(f"the mean score we got for answer correctness is {np.mean(correctness_scores)}")
     print(f"the mean score we got for answer relevancy is {np.mean(relevancy_scores)}")
-    t=1
 if __name__ == "__main__":
-    eval()
+    args = parser.parse_args()
+    eval(args)
 

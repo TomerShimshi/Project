@@ -21,9 +21,6 @@ parser.add_argument('--model_name', type=str,default='llama-2', choices=['llama-
 
 alpaca_prompt = """Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
 
-### Instruction:
-{}
-
 ### Question:
 {}
 
@@ -93,8 +90,8 @@ def train(args):
     except :
         base_dir = os.getcwd()
     train_dataset_name = os.path.join(base_dir, "sorted_kitzur_shulhan_aruch.csv")
-    train_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[:90%]')#, split="train")
-    test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-10%:]')
+    train_dataset = load_dataset("csv", data_files=train_dataset_name,split= "train")
+    #test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-10%:]')
     print(f"example of the created text : {train_dataset['text'][2]}")
     #########################################
     ### Load LoRA Configurations for PEFT ###
@@ -116,12 +113,12 @@ def train(args):
     ### Set Training Arguments ###
     ##############################
     new_model =args.model_name #"tuned-llama-3-8b_V2"
-    save_path = os.path.join(base_dir , "results_Sulhan_aruch",new_model)
+    save_path = os.path.join(base_dir , "results_Sulhan_aruch_finale",new_model)
     temp_save_path = os.path.join(base_dir, "tuning_results")
     print(f"temp save model path = {temp_save_path}")
     training_arguments = TrainingArguments(
         output_dir=temp_save_path,
-        num_train_epochs=1.5,
+        num_train_epochs=2.5,
         per_device_train_batch_size=1,#4,
         gradient_accumulation_steps=8,#1,
         gradient_checkpointing=True,
@@ -139,14 +136,9 @@ def train(args):
         #warmup_ratio=0.03,
         group_by_length=True,
         lr_scheduler_type= "linear", #"constant",
-        load_best_model_at_end=True,
-        #save_strategy='epoch',
-        evaluation_strategy="steps",
-        eval_steps=6,
-        save_total_limit=2,
-        eval_accumulation_steps=1,
-        per_device_eval_batch_size=1
-        #torch_compile=True,
+        #load_best_model_at_end=True,
+        save_strategy='steps', #'epoch',
+        
     )
     print(f"starting train with args = {training_arguments}")
     ##########################
@@ -155,7 +147,7 @@ def train(args):
     trainer = SFTTrainer(
         model=llama_3,
         train_dataset=train_dataset,
-        eval_dataset= test_dataset,
+        #eval_dataset= test_dataset,
         peft_config=peft_config,
         dataset_text_field="text",
         max_seq_length=None,
@@ -186,8 +178,7 @@ def train(args):
       #eos_token_id=EOS_TOKEN,
       repetition_penalty = 2.0,
       do_sample = True,
-      max_new_tokens = 100,
-      early_stopping = True,
+      max_new_tokens = 200,
     )
     result =pipe( alpaca_prompt.format(question, ""))
     print(result[0]['generated_text'])

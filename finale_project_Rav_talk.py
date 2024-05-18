@@ -25,7 +25,7 @@ quant_config = BitsAndBytesConfig(
 ### Load Base Model ###
 #######################
 
-base_model_name = os.path.join(os.getcwd() ,"results_dine_tune_after_shulhan_aruch\\llama-2")
+base_model_name = os.path.join(os.getcwd() ,"results_dine_tune_after_shulhan_aruch_no_heb\\llama-2")
 model = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
@@ -45,7 +45,7 @@ tokenizer.padding_side = "right"
 ####################
 ### Load Dataset ###
 ####################
-train_dataset_name = "Rebe_Q_and_A_dataset_just_rebe_questions_english.csv"
+train_dataset_name = "cleaned_Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew.csv"
 test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train')#[-20%:]')
 
 ##############################
@@ -77,7 +77,7 @@ def formatting_prompts_func(examples):
 #for i in range(len(test_dataset)):
 for item in tqdm(test_dataset, desc="Processing", unit="items"):
     ##question = item['question']#test_dataset['quastion'][i]
-    question = input('PLease enter a question for the Rav')#item['question']#test_dataset['quastion'][i]
+    question = input('PLease enter a question for the Rav \n')#item['question']#test_dataset['quastion'][i]
     pipe = pipeline(
       task="text-generation",
       model=model,
@@ -86,6 +86,9 @@ for item in tqdm(test_dataset, desc="Processing", unit="items"):
       repetition_penalty = 2.0,
       do_sample = True,
       max_new_tokens = 200,
+      top_k=10,
+      num_return_sequences=1,
+      
     )
     model_prompt = alpaca_prompt.format( question, "")
     
@@ -94,7 +97,7 @@ for item in tqdm(test_dataset, desc="Processing", unit="items"):
     save_dict = {'question': question,'actual_output':actual_output, "expected_output":item['answer']}#test_dataset['answer'][i]}
     #append_dict_to_csv(save_dict, save_path_csv_path)
     for k , v in save_dict.items():
-      print (f"\n\n\ {k} : {v} n\n\n\n")
+      print (f"\n\n\ {k} : {v} \n\n\n")
     #"We offer a 30-day full refund at no extra cost."
 
     
