@@ -81,7 +81,7 @@ for item in tqdm(test_dataset, desc="Processing", unit="items"):
       #eos_token_id=EOS_TOKEN,
       repetition_penalty = 2.0,
       do_sample = True,
-      max_new_tokens = 200,
+      max_new_tokens = 400,
       top_k=10,
       num_return_sequences=1,
     )

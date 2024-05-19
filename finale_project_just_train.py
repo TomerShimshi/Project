@@ -73,7 +73,7 @@ def train(args):
     ####################
     ### Load Dataset ###
     ####################
-    train_dataset_name = "cleaned_Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew.csv"
+    train_dataset_name = "cleaned_Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew_v2.csv"
     train_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[:70%]')#, split="train")
     test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-30%:-15%]')
     global EOS_TOKEN
@@ -95,12 +95,12 @@ def train(args):
     ### Set Training Arguments ###
     ##############################
     new_model =args.model_name #"tuned-llama-3-8b_V2"
-    save_path = os.path.join(os.getcwd() , "results_dine_tune_after_shulhan_aruch_no_heb",new_model)
+    save_path = os.path.join(os.getcwd() , "results_fine_tune_after_shulhan_aruch_no_heb_V3",new_model)
     temp_save_path = os.path.join(os.getcwd(), "tuning_results")
     print(f"temp save model path = {temp_save_path}")
     training_arguments = TrainingArguments(
         output_dir=temp_save_path,
-        num_train_epochs=1.5,
+        num_train_epochs=2,
         per_device_train_batch_size=1,#4,
         gradient_accumulation_steps=8,#1,
         gradient_checkpointing=True,
@@ -161,7 +161,7 @@ def train(args):
     #################
     ### Try Model ###
     #################
-    question = "Can I work on saturday?"
+    question = "Can I eat pork?"
         
     
     pipe = pipeline(
