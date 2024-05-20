@@ -129,7 +129,7 @@ There are many examples and guides on how to use RAG for a specific LLM  like fo
 \subsection{Data collection and prompt preparation}
 Since all of the Rav answers are based on the Jewish laws (the halcka) we couldn't just use a question and answer dataset (as we initially taught) so we understand that the first step in creating our dataset booth for RAG and for fine tuning a pretrained model is to  first have a dataset containing the majority of the Jewish laws for that we have collected the English version of the \href{https://en.wikipedia.org/wiki/Kitzur_Shulchan_Aruch}{ Kitzur Shulhan Aruch} book since it contains most of the Jewish laws and customs while still being a relatively short text so that we can perform RAG\ fine tuning on it.
 The second step for the LLM fine tuning to answer Rav question is to find the relevant dataset containaing real Rav questions and answers  and since that there is no known dataset for Rav questions we had to create a dataset ourselves.For this task we had to find a relevant site to perform data scraping from, and since most the open source models are best suited for the english language rather that the Hebrew language we performed the data scraping from an English site namely \href{https://asktherav.com/ }{Ask a Rav} site which is full of real questions and answers in English. From this site we comprised our dataset of real Rav Quaestion and answers as can be seen on table 1.
-Since some of the questions\ answers on the site asked using some Hebrew words inside them (usually old Hebrew words) and since we know that the model do not handle Hebrew well we have decided to remove all these questions/ answers from the dataset, this reduced our dataset from a 1095 to 756 only English question and answers.
+Since some of the questions\ answers on the site asked using some Hebrew words inside them (usually old Hebrew words) and since we know that the model do not handle Hebrew well we have decided to remove all these questions/ answers from the dataset, leaving us with a dataset of 1160 only English Q\& A.
 Here is an example of a one question and answer used in our dataset.\\
 Question:\\
  May I put a frozen bag of vegetables etc. on my body on Shabbos as it might melt from my body heat?
@@ -188,18 +188,18 @@ For the model fine tuning we have split the fine tuning into two.
 In the first part of the fine tuning we just fine tuned the model on the Kitzur Sulhan Aruch dataset in order to provide the model context regarding the Jewish laws. in this part of the training we used the full Kitzur Sulhan Aruch dataset without splitting it into a train and test dataset since the model needed to train and see the full book for it to know all the Jewish laws, in this part of the train we just fed the raw data into the model without any other instructions to it, we ran this training loop for 2.5 epochs (all the training code is attached to the submission of this paper).
 Lastly we performed a second fine tuning step this time with the question and answers dataset along with the previously mentioned model prompt since we have used HuggingFace SFTTrainer (Supervised Fine Tuning Trainer) in order to perform our model's fine tuning this we wanted to take levrage of its capability to load the best model at the end (based on its loss on the test dataset) for this reason we have split our Rav questions and answers dataset into 3 groups as followos: 
 \begin{enumerate}
-    \item train dataset: which is 70\% of the dataset, 530 questions and answers, that the model has trained on.
-    \item evaluation datasetd: which is 15\% of the dataset, 113 questions and answers, that model was evaluated on during training.
-    \item validation datasetd: which is 15\% of the , 113 questions and answers, that model was validate on in the finale model assement step 
+    \item train dataset: which is 70\% of the dataset, 812 questions and answers, that the model has trained on.
+    \item evaluation datasetd: which is 15\% of the dataset, 174 questions and answers, that model was evaluated on during training.
+    \item validation datasetd: which is 15\% of the , 174 questions and answers, that model was validate on in the finale model assement step 
 \end{enumerate}
 As generally recorded for the training of a deep learning model, like for example \href{https://encord.com/blog/train-val-test-split/#:~:text=Training%2C%20Validation%2C%20and%20Test%20Set%3A%20Key%20Takeaways,-Here%20are%20the&text=The%20optimal%20split%20ratio%20depends,10%2D20%25%20test%20data. }{in this guide }
-We have fine tuned the model on the Q&A dataset for another 1.5 to try and teach it how to handel Rav Questions
+We have fine tuned the model on the Q\&A dataset for another 2 epochs to try and teach it how to handel Rav Questions
 Attached is en example of answer provided by our fine tuned llama2 model after this stage:
 \begin{verbatim}
 ### Question:
     Can I eat pork?
 ### Answer
-It is forbidden.
+No.
 \end{verbatim}
 
 \begin{figure}
@@ -264,18 +264,9 @@ The test that we have decided to use 2 methods for model evaluation:
     The AnswerRelevancyMetric first uses an LLM to extract all statements made in the actual\_output, before using the same LLM to classify whether each statement is relevant to the input.
      \item \href{https://docs.confident-ai.com/docs/metrics-llm-evals}{G-Eval}: G-Eval is a framework that uses LLMs with chain-of-thoughts (CoT) to evaluate LLM outputs based on ANY custom criteria. The G-Eval metric is the most verstile type of metric deepeval has to offer, and is capable of evaluating almost any use case with human-like accuracy.
      More specifically we decided to test each models answer correctness when compared to the expected output.
-     We have used the following eveluation\_stps for this task:
-     \begin{verbatim}
-evaluation_steps=[
-"Check whether the facts in 'actual 
-output' contradicts any facts in
-'expected output'",
-"You should also heavily penalize
-omission of detail",
-"Vague language, or contradicting
-OPINIONS, are OK"
-]
-    \end{verbatim}
+     We have used the following criteria for this task:
+     criteria="Determine whether the actual output is factually correct based on the expected output."
+     
     
 \end{enumerate}
 Since the open source e \href{https://mistral.ai/news/announcing-mistral-7b/ }{mistral\_7b model} was insufficaint model to perform our deep\_eval test with it we had to use the paid  GPT3.5-Turbo model in order to perform our model evaluation.
@@ -289,8 +280,8 @@ Since the open source e \href{https://mistral.ai/news/announcing-mistral-7b/ }{m
         model & Relevancy score & Correctness score   \\
         \midrule
         
-        Fine-Tuned & 54.9\% & 31.8\%  \\
-        RAG & 62.5\% & 37.6\% \\
+        Fine-Tuned & 58.1\% & 22\%  \\
+        RAG & 69.9\% & 26.2\% \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -301,44 +292,44 @@ The json and yaml files containing all the evaluation results are attached to th
 For the fine tuned model we got a accuracy relevancy score of 0.549 and answer correctness score of 0.318.
 Meaning that our fine tuned model did not manged to fully simulate a Rav's answers to the given input question, that is to be expected since it no trivial task to answer these types of questions.
 we will now show an example of the deep\_eval outputs score for each of the metrics:
-For the randomly selected test case number 61 we got:\\
+For the randomly selected test case number 147 we got:\\
 Model input :\\
-How can I pay back for damaging items during my youth? \\
-I’m embarrassed to say but when I was 10 or 11, our teacher gave us books in the classroom library that we could take out and use and then return. I dirtied some of the books, purposely, and it’s disgusting that I did that. It’s more than 25 years later and I want to pay back for what I did, but I don’t remember how many books it entailed (I used to read a lot, so it was probably many books), and I’m not sure if it was the teachers’ books or the schools’ books. How can I pay back?\\
+ I know that one cannot leave the room in middle of Torah reading. How about Haftorah or Megillah (he was already Yotze)?\\
 Model output:\\
 
-You should contact your old school/teacher(if still alive). They will have an idea about which specific book belonged them since they would keep track as well at least until there were no longer any original copies left over from their time period etc.. If possible offer payment equal value per year passed with additional amount depending on severity damage done ect., otherwise just give cash equivalent worth total number days past till now including age range while reading these types off things plus extra amounts based upon degree harm caused by actions taken against property belonging another person without permission! For example someone who had stolen food item might owe \$X because he broke trust between himself \& owner; whereas one breaking window wouldn'thave same obligation though both cases involve destruction something else owned rightfully belongs him too.</p>It is important note however that repayment cannot be made through monetary means alone unless specifically agreed beforehand such instance wherein case money given freely rather gift instead reparations \\
+You may do so. \\
 
 Expected output: \\
 
-
-From the letter of the law you aren’t obligated to compensate for damages you have incurred before the age of Bar Mitzvah at all. However, beyond the letter of the law, lifnim meshuras hadin, you should compensate however much you’re able to.
-Practically, you should try reaching out (anonymously) to the teacher to see if they remember whose books they were and compensate them until they forgive you.
-Otherwise, you should make a donation to the school in a amount which is approximately the amount you estimate the damage. \\
+During Haftorah one should ideally not leave, unless absolutely necessary, but it’s not forbidden, unless there will not be ten people when he leaves.
+During Megillah reading, one may leave if there are ten people there, but there is room to be stringent. \\
 
 For the Answer relevancy score we got a score of 1.0 due to the following reason: \\
-The score is 1.00 because the answer directly addresses the question asked in the input without any irrelevant statements. Great job!\\
+The score is 1.00 because the response directly addresses and provides a relevant answer to the question asked in the input. Great job!\\
 
-For the Answer Correctness  we got a score of 0.504 with the following reason: \\
-The response provides some guidance on how to pay back for damaging items, but lacks clarity and specific details.
+For the Answer Correctness  we got a score of 0.195 with the following reason: \\
+The actual output does not align with the expected output in terms of accuracy and completeness.
 
 
 \subsubsection{RAG Evaluation Results}
-For RAG model we got a accuracy relevancy mean score of 0.625 and answer correctness score of 0.3763 we will now show an example of the deep\_eval outputs score for each of the metrics:
+For RAG model we got a accuracy relevancy mean score of 69.9\% and answer correctness score of 26.2\% we will now show an example of the deep\_eval outputs score for each of the metrics:
 
-For the randomly selected test case number 61 we got:   
+For the randomly selected test case number 147 we got:   
 The input and expected is the same as shown in the previous section, the model actual output is:\\
-Thank You! As far too often happens here on Quora, this person has come seeking advice from me about something they should have taken care off long ago! But since its now been brought forward Im happy help them find their way through halachic process which may be able provide closure regarding past actions   The first thing i would suggest Is consult With local Rabbi Or Jewish Community Leader To Discuss Options Available Under Hebrew Law And Tradition In Regards Payback Processes.. Its important note That Any Form Of Restorative Justice Must Always Follow Proper Legality Guidelines Set forth By Local Authorities Before Movement Can Begin On Actual Repair Work... So Please Do Not Attemp any form action Without First Consult Professional Help From Qualified Individual Who Has Knowledge About Both secular Laws AND Religious Customary Practices Within Your Area... Once Allowed Steps Have Begun Then We Will Need More Information Concernings Specific Details Surrounding Damaged Items Books Such AS Number Count Quantity Conditions Et Al This Would Allow Us Better Assess Situations Neccesarry Measures Could Take Place Toward Resolving Matter At Hand....\\
+According  halakhic sources, it seems clear than any time during which torat hatorahtis not ongoing and therefore leaving after haftora/megila wouldnot violate this prohibition since its no longer "in midst"of tehorath hatotherefore i do knoow\\
 
-For the Answer relevancy score we got a score of 0.86 due to the following reason:\\
-The score is 0.86 because the response does not offer specific guidance on how to address the situation of paying back for damaging items during youth, but still contains relevant advice on handling the situation.
-For the Answer Correctness  we got a score of 0.279 with the following reason:\\
-The response heavily penalizes omission of detail and suggests consulting with a Rabbi or Jewish Community Leader to discuss payback options under Hebrew Law, but it does not directly address the specific issue of paying back for damaging items during youth
+For the Answer relevancy score we got a score of 1.0 due to the following reason:\\
+Great job! The score is 1.00 because the response directly addresses and provides relevant information to the specific questions asked in the input. Keep up the good work!
+For the Answer Correctness  we got a score of 0.254 with the following reason:\\
+The text does not align with the expected input and output comparison and lacks clarity.
 
 \section{Conclusions}
-In conclusion we we can see that for this specific case of answering Rav questions it seems that the RAG provides a bit better answers when compared to the fine tuned model. this is surprising to us since we know that it is not enough to just know all the Jewish laws in order to answer a Rav question, some of them can be just related to the Jewish way of life. which made us initially think that the fine tuned will be better adopted to these types of questions, but since our dataset is quite small (756 A\& A in total) it is possible that there were not many questions of this sort in the validation dataset.
+In conclusion we we can see that for this specific case of answering Rav questions it seems that the RAG provides better answers when compared to the fine tuned model. this is surprising to us since we know that it is not enough to just know all the Jewish laws in order to answer a Rav question, some of them can be just related to the Jewish way of life. which made us initially think that the fine tuned will be better adopted to these types of questions, but since our dataset is quite small ( 1160 A\& A in total) it is possible that there were not many questions of this sort in the validation dataset.
 We are very pleased with the results we have got since it is not a trivial deal to answer Rav question, since for a human to be able to answer such questions in a relevant way means that this person has to study the Jewish laws and customs for 5-6 years  \href{https://hds.harvard.edu/academics/ministry-studies/denominational-instruction/ordination-requirements/jewish-ordination#:~:text=This%20is%20a%20process%20that,fields%20of%20study%20or%20work. }{as explained here}  and we manged to get descent results with just a few weeks and with Little compute power and a relatively small dataset to train/ validate on. so we believe that if we had access to a stronger compute power we would have gotten even better results.
-We might not have build a perfect Rav to consult with but we believe that for an Orthodox Jew who does not have a Rav to consult with our RAG model might be good enough to answer hes imidiate reltivly easy questions at least until he get a full validated answer from an official Rav (over the internet or by other means of combination to the RAV)
+
+We might not have build a perfect Rav to consult with but we believe that for an Orthodox Jew who does not have a Rav to consult with our RAG model might be good enough to answer hes immediate relatively easy questions at least until he get a full validated answer from an official Rav (over the internet or by other means of combination to the RAV).
+We have uploaded the model to \href{https://huggingface.co/tomer-shimshi/llama2-Rav?text=My+name+is+Thomas+and+my+main}{hugging face} and uploaded a file attached to this report called finale\_project\_Rav\_talk.py please do try to ask question to the Rav and experience our end results.
+On top of that we have also shared the RAG\_llamma-2\_Rav\_talk.py script which enabels you to also test Our RAG pipeline And we do encourage to try and use them, we tested it ourselves and booth models manged to give a pretty good answer to every question that we manged to come up with. 
 Our experiment can be applied in a similar way on many different specific task that one can think of and might need to build a spesific cheat bot for.
 We really enjoyed making this project and want to give a special thanks to Maor Ivgy for all the support in making this project.
 
