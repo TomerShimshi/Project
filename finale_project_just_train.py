@@ -53,8 +53,8 @@ def train(args):
         
         base_model_name = "unsloth/llama-3-8b-bnb-4bit" #"unsloth/llama-3-8b-bnb-4bit"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Llama-2-7b-chat-hf" #"unsloth/llama-3-8b-bnb-4bit"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Meta-Llama-3-8B-Instruct" #"NousResearch/Llama-2-7b-chat-hf" # "NousResearch/Meta-Llama-3-8B-Instruct" #
     else:
-        base_model_name = "results_Sulhan_aruch_test\llama-2" #"NousResearch/Llama-2-7b-chat-hf" #
-    llama_3 = AutoModelForCausalLM.from_pretrained(
+        base_model_name = "results_fine_tune_after_shulhan_aruch_no_heb_V3\llama-2" #"results_Sulhan_aruch_test\llama-2" #"NousResearch/Llama-2-7b-chat-hf" #
+    model = AutoModelForCausalLM.from_pretrained(
         base_model_name,
         quantization_config=quant_config,
         device_map="auto"#{"": 0}
@@ -100,7 +100,7 @@ def train(args):
     print(f"temp save model path = {temp_save_path}")
     training_arguments = TrainingArguments(
         output_dir=temp_save_path,
-        num_train_epochs=2,
+        num_train_epochs=3,
         per_device_train_batch_size=1,#4,
         gradient_accumulation_steps=8,#1,
         gradient_checkpointing=True,
@@ -133,7 +133,7 @@ def train(args):
     ### Set SFT Parameters ###
     ##########################
     trainer = SFTTrainer(
-        model=llama_3,
+        model=model,
         train_dataset=train_dataset,
         eval_dataset= test_dataset,
         peft_config=peft_config,
@@ -166,7 +166,7 @@ def train(args):
     
     pipe = pipeline(
       task="text-generation",
-      model=llama_3,
+      model=model,
       tokenizer=tokenizer,
       #eos_token_id=EOS_TOKEN,
       repetition_penalty = 2.0,

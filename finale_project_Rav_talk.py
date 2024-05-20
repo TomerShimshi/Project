@@ -25,7 +25,7 @@ quant_config = BitsAndBytesConfig(
 ### Load Base Model ###
 #######################
 
-base_model_name = os.path.join(os.getcwd() ,"results_dine_tune_after_shulhan_aruch_no_heb\\llama-2")
+base_model_name = "tomer-shimshi/llama2-Rav" #os.path.join(os.getcwd() ,"results_fine_tune_after_shulhan_aruch_no_heb_V3\llama-2")
 model = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
@@ -61,7 +61,6 @@ alpaca_prompt = """you are a jewish Rav, please answer the following question ac
 ### Answer:
 {}"""
 def formatting_prompts_func(examples):
-    instruction = "you are a jewish Rav, please answer the following question"
     inputs       = examples["question"]
     outputs      = examples["answer"]
     texts = []
@@ -75,9 +74,10 @@ def formatting_prompts_func(examples):
 
 # Replace this with the actual output from your LLM application
 #for i in range(len(test_dataset)):
-for item in tqdm(test_dataset, desc="Processing", unit="items"):
+question = input('Please enter a question for the Rav \n Enter empty string to quite \n')
+while len(question)>1:
     ##question = item['question']#test_dataset['quastion'][i]
-    question = input('PLease enter a question for the Rav \n')#item['question']#test_dataset['quastion'][i]
+    
     pipe = pipeline(
       task="text-generation",
       model=model,
@@ -85,19 +85,19 @@ for item in tqdm(test_dataset, desc="Processing", unit="items"):
       #eos_token_id=EOS_TOKEN,
       repetition_penalty = 2.0,
       do_sample = True,
-      max_new_tokens = 200,
-      top_k=10,
-      num_return_sequences=1,
+      max_new_tokens = 400,
+      #top_k=10,
+      #num_return_sequences=1,
       
     )
     model_prompt = alpaca_prompt.format( question, "")
     
     result = pipe(model_prompt)
     actual_output = result[0]['generated_text'].split("### Answer:")[1]
-    save_dict = {'question': question,'actual_output':actual_output, "expected_output":item['answer']}#test_dataset['answer'][i]}
+   
     #append_dict_to_csv(save_dict, save_path_csv_path)
-    for k , v in save_dict.items():
-      print (f"\n\n\ {k} : {v} \n\n\n")
+    print(f"The Rav answer is {actual_output} \n \n")
+    question = input('Please enter a question for the Rav \n Enter empty string to quite \n')#item['question']#test_dataset['quastion'][i]
     #"We offer a 30-day full refund at no extra cost."
 
     

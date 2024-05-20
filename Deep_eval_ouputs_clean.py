@@ -10,20 +10,7 @@ import os
 import yaml
 import numpy as np
 
-def remove_lines_with_substring(input_str, substring,split_by:str = "\n"):
-    lines = input_str.split(split_by)  # Split the input string into lines
-    filtered_lines = [line for line in lines if substring not in line ]  # Filter out lines that end with the given substring
-    output_str = split_by.join(filtered_lines)  # Join the filtered lines back into a string
-    return output_str
 
-def parse_string_by_substring(input_str, substring):
-    pattern = re.compile(rf'(?<={re.escape(substring)}).*?(?={re.escape(substring)})', re.DOTALL)
-    parsed_output = '\n'.join(pattern.findall(input_str))
-    return parsed_output
-def find_location_starting_with_substring(input_str, substring ,split_by:str = "\n"):
-    lines = input_str.split(split_by)  # Split the input string into lines
-    matching_lines = [index + 1 for index, line in enumerate(lines) if substring in line]  # Enumerate through lines and find those that start with the given substring
-    return matching_lines
 
 def pars_full_text(input_str:str, lines_locations:list):
     all_lines = input_str.split('\n')

@@ -47,7 +47,10 @@ query_pipeline = transformers.pipeline(
         torch_dtype=torch.float16,
         device_map="auto",
         repetition_penalty = 2.0,
-        max_new_tokens = 400,)
+        max_new_tokens = 400,
+        #top_k=10,
+        #num_return_sequences=1,
+        )
 
 alpaca_prompt = """you are a jewish Rav, please answer the following question according to the Halakha (Jewish law) .
 
@@ -134,7 +137,7 @@ test_rag(qa, prompet)
 ####################
 ### Load Dataset ###
 ####################
-train_dataset_name = "cleaned_Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew.csv"
+train_dataset_name = "cleaned_Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew_v2.csv"
 test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-15%:]')
 
 ##############################
@@ -147,7 +150,7 @@ print(f"temp save model path = {save_path_csv_path}")
 # Replace this with the actual output from your LLM application
 #for i in range(len(test_dataset)):
 for item in tqdm(test_dataset, desc="Processing", unit="items"):
-    question = input('PLease enter a question for the Rav \n')#item['question']#test_dataset['quastion'][i]
+    question =item['question']#test_dataset['quastion'][i]
     
     #pipe = pipeline(
     #  task="text-generation",
@@ -163,7 +166,7 @@ for item in tqdm(test_dataset, desc="Processing", unit="items"):
     result = test_rag(qa,query=model_prompt)
     actual_output = result.split("Helpful Answer:")[1]
     save_dict = {'question': question,'actual_output':actual_output, "expected_output":item['answer']}#test_dataset['answer'][i]}
-    append_dict_to_csv(save_dict, save_path_csv_path)
+    #append_dict_to_csv(save_dict, save_path_csv_path)
     for k , v in save_dict.items():
       print (f" {k} : {v}")
     #"We offer a 30-day full refund at no extra cost."

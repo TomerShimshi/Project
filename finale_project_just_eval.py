@@ -33,7 +33,7 @@ from tqdm import tqdm
 import argparse
 
 parser = argparse.ArgumentParser(description='Description of your program')
-parser.add_argument('--dataset_location', type=str,default='dataset\\usage_shulahn_aruch_dataset.csv', help='location of the csv containing the model outputs for the validation dataset')
+parser.add_argument('--dataset_location', type=str,default='dataset\\usage_shulahn_aruch_dataset_RAG.csv', help='location of the csv containing the model outputs for the validation dataset')
 
 def convert_to_serializable(data):
     if isinstance(data, set):
@@ -154,6 +154,7 @@ def eval(args):
     os.environ["DEEPEVAL_RESULTS_FOLDER"] = save_path
     
     
+    
 
     model_id = "mistralai/Mistral-7B-v0.1" # "yam-peleg/Hebrew-Mistral-7B" # #"mistralai/Mistral-7B-v0.1" #"NousResearch/Meta-Llama-3-8B-Instruct" #"tuned-llama-2-7b"# #"NousResearch/Meta-Llama-3-8B-Instruct" # "unsloth/llama-3-8b-bnb-4bit" #"NousResearch/Meta-Llama-3-8B-Instruct" #"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"#"mistralai/Mistral-7B-v0.1"#"mistral-community/Mixtral-8x22B-v0.1"
     model = AutoModelForCausalLM.from_pretrained(model_id,
@@ -175,12 +176,12 @@ def eval(args):
                                    include_reason=True,async_mode=True,)
     metric2 =  GEval(
         name="Correctness",
-        #criteria="Determine whether the actual output is factually correct based on the expected output.",
-        evaluation_steps=[
-        "Check whether the facts in 'actual output' contradicts any facts in 'expected output'",
-        "You should also heavily penalize omission of detail",
-        "Vague language, or contradicting OPINIONS, are OK"
-        ],
+        criteria="Determine whether the actual output is factually correct based on the expected output.",
+        #evaluation_steps=[
+        #"Check whether the facts in 'actual output' contradicts any facts in 'expected output'",
+        #"You should also heavily penalize omission of detail",
+        #"Vague language, or contradicting OPINIONS, are OK"
+        #],
         evaluation_params=[LLMTestCaseParams.INPUT, LLMTestCaseParams.ACTUAL_OUTPUT],
         async_mode= True,
         #model = mistral_7b,

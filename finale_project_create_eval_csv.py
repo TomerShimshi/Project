@@ -20,8 +20,7 @@ from Rebe_QA_data_scrape_english_site import append_dict_to_csv
 ####################
 ### Load Dataset ###
 ####################
-train_dataset_name = "cleaned_Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew.csv"
-test_for_len = load_dataset("csv", data_files=train_dataset_name,split='train')
+train_dataset_name = "cleaned_Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew_v2.csv"
 test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train[-15%:]')
 
 alpaca_prompt = """you are a jewish Rav, please answer the following question according to the Halakha (Jewish law) .
@@ -43,7 +42,7 @@ quant_config = BitsAndBytesConfig(
     bnb_4bit_compute_dtype=compute_dtype,
     bnb_4bit_use_double_quant=False,
 )
-base_model_name = os.path.join(os.getcwd() ,"results_dine_tune_after_shulhan_aruch_no_heb\llama-2\\")
+base_model_name = os.path.join(os.getcwd() ,"results_fine_tune_after_shulhan_aruch_no_heb_V3\llama-2")
 model = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
@@ -82,8 +81,8 @@ for item in tqdm(test_dataset, desc="Processing", unit="items"):
       repetition_penalty = 2.0,
       do_sample = True,
       max_new_tokens = 400,
-      top_k=10,
-      num_return_sequences=1,
+      #top_k=10,
+      #num_return_sequences=1,
     )
     model_prompt = alpaca_prompt.format( question, "")
     
