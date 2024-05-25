@@ -31,7 +31,6 @@ def formatting_prompts_func(examples):
     #global EOS_TOKEN
     for  input, output in zip( inputs, outputs):
         # Must add EOS_TOKEN, otherwise your generation will go on forever!
-        #text = alpaca_prompt.format(instruction, input, output) + EOS_TOKEN
         text = alpaca_prompt.format( input, output) + EOS_TOKEN
         texts.append(text)
     return { "text" : texts, }
@@ -112,20 +111,18 @@ def train(args):
         weight_decay=0.001,
         tf32=False,
         fp16=True,
-        #bf16=True,
         max_grad_norm=0.3,
         max_steps=-1,
-        #warmup_ratio=0.03,
         group_by_length=True,
         lr_scheduler_type= "linear", #"constant",
         load_best_model_at_end=True,
-        #save_strategy='epoch',
+        
         evaluation_strategy="steps",
         eval_steps=25,
         save_total_limit=2,
         eval_accumulation_steps=1,
         per_device_eval_batch_size=1
-        #torch_compile=True,
+
     )
     print(f"starting train with args = {training_arguments}")
 
@@ -168,7 +165,6 @@ def train(args):
       task="text-generation",
       model=model,
       tokenizer=tokenizer,
-      #eos_token_id=EOS_TOKEN,
       repetition_penalty = 2.0,
       do_sample = True,
       max_new_tokens = 200,
