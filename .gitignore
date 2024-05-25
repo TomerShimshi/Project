@@ -4,3 +4,10 @@ tuning_results_old
 tuned-llama-2-7b
 colab_outputs_llama-2
 results_local
+results_Sulhan_aruch
+results_dine_tune_after_shulhan_aruch
+results_dine_tune_after_shulhan_aruch_no_heb
+Eval_outputs
+eval_test
+results_fine_tune_after_shulhan_aruch_no_heb_V3\llama-2
+results_Sulhan_aruch_test

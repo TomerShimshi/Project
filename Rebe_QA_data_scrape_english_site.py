@@ -7,6 +7,7 @@ import re
 import csv
 import time
 import os
+import unicodedata
 
 def get_Q_and_A_from_text(text):
     paragraphs = re.split(r'\n+', text.strip())
@@ -53,8 +54,10 @@ def get_Q_and_A_from_text(text):
     # Join answer lines to form the answer
     answer = "\n".join(answer_lines)
     question = "\n".join(question_lines)
-    question = question.replace("'",'')
-    answer = answer.replace("'",'')
+    #question = question.replace("'",'')
+    #answer = answer.replace("'",'')
+    question = has_hebrew_letter(question)
+    answer = has_hebrew_letter(answer)
     return question, answer
 
 def append_dict_to_csv(dictionary, filename):
@@ -69,21 +72,33 @@ def append_dict_to_csv(dictionary, filename):
             writer.writeheader()
         writer.writerow(dictionary)
 
+
+
 def has_english_letter(s):
     for char in s:
         if char.isalpha(): #and char.isascii():
             return True
     return False
+def remove_hebrew_letters(input_string):
+    letters = ['א','ב','ג','ד','ה','ו','ז','ח','ט','י','כ','ל','מ','נ','ס','ע','פ','צ','ק','ר','ש','ת','ך','ף','ם','ן']
+    for letter in letters:
+        input_string = input_string.replace(letter,"")
+    return input_string
+def has_hebrew_letter(input_string):
+    letters = ['א','ב','ג','ד','ה','ו','ז','ח','ט','י','כ','ל','מ','נ','ס','ע','פ','צ','ק','ר','ש','ת','ך','ף','ם','ן']
+    for letter in letters:
+        if letter in input_string:
+        #input_string = input_string.replace(letter,"")
+            return ""
+    return input_string
 
 
 if __name__ == "__main__":
     # Replace this URL with the URL of the Hebrew web page you want to scrape
-    output_file_path = "Rebe_Q_and_A_dataset_just_rebe_questions_english.txt"
+    output_file_path = "Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew_v2.txt"
     csv_output_file = output_file_path.replace(".txt",".csv")
     num_of_questions = 0
     for i in range(1,1000000):
-        #we stoped here 53288
-        #time.sleep(0.25)
         url = f"https://asktherav.com/{i}/"
 
         # Send an HTTP request to the web page
@@ -121,4 +136,7 @@ if __name__ == "__main__":
                 print(f"no QA was found for idx {i}")
         else:
             print(f"Failed to retrieve the web page. Status code: {response.status_code}")
-    print(f"total number of questions saved:{num_of_questions}")
+            if response.status_code ==503:
+                time.sleep(30)
+                
+        print(f"total number of questions saved:{num_of_questions}")
