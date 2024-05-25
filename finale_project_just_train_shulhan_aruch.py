@@ -58,19 +58,19 @@ def train(args):
     )
     if args.model_name == 'llama-3':
         base_model_name = "NousResearch/Meta-Llama-3-8B-Instruct" #"unsloth/llama-3-8b-bnb-4bit",#"/content/drive/MyDrive/NLP_proj/results_v3/llama-3" #
-        llama_3 = AutoModelForCausalLM.from_pretrained(
+    else:
+        base_model_name = "NousResearch/Llama-2-7b-chat-hf" #
+        model = AutoModelForCausalLM.from_pretrained(
+        base_model_name,
+        quantization_config=quant_config,
+        device_map="auto")
+    model = AutoModelForCausalLM.from_pretrained(
         base_model_name,
         quantization_config=quant_config,
         device_map="auto",
          )#{"": 0})
-    else:
-        base_model_name = "NousResearch/Llama-2-7b-chat-hf" #
-        llama_3 = AutoModelForCausalLM.from_pretrained(
-        base_model_name,
-        quantization_config=quant_config,
-        device_map="auto")#{"": 0})
 
-    llama_3.generate_config = generate_config
+    model.generate_config = generate_config
     print(f"using model = {base_model_name}\n\n")
     ######################
     ### Load Tokenizer ###
@@ -128,16 +128,11 @@ def train(args):
         learning_rate=2e-4,
         warmup_steps= len(train_dataset)//6,
         weight_decay=0.001,
-        #tf32=False,
-        #fp16=True,
-        #bf16=True,
         max_grad_norm=0.3,
         max_steps=-1,
-        #warmup_ratio=0.03,
         group_by_length=True,
-        lr_scheduler_type= "linear", #"constant",
-        #load_best_model_at_end=True,
-        save_strategy='steps', #'epoch',
+        lr_scheduler_type= "linear", 
+        save_strategy='steps', 
         
     )
     print(f"starting train with args = {training_arguments}")
@@ -145,9 +140,8 @@ def train(args):
     ### Set SFT Parameters ###
     ##########################
     trainer = SFTTrainer(
-        model=llama_3,
+        model=model,
         train_dataset=train_dataset,
-        #eval_dataset= test_dataset,
         peft_config=peft_config,
         dataset_text_field="text",
         max_seq_length=None,
@@ -173,12 +167,11 @@ def train(args):
     question = "Can I eat pork?"
     pipe = pipeline(
       task="text-generation",
-      model=llama_3,
+      model=model,
       tokenizer=tokenizer,
-      #eos_token_id=EOS_TOKEN,
       repetition_penalty = 2.0,
       do_sample = True,
-      max_new_tokens = 200,
+      max_new_tokens = 400,
     )
     result =pipe( alpaca_prompt.format(question, ""))
     print(result[0]['generated_text'])
