@@ -44,6 +44,10 @@ if __name__ == "__main__":
     scores = [item['Correctness (GEval)']['score'] for item in deep_eval_dict]
     mean_score = np.mean(scores)
     print(f"the corctness score is {mean_score}")
+    scores = [item['Answer Relevancy']['score'] for item in deep_eval_dict]
+    mean_score = np.mean(scores)
+    print(f"the relevancy score is {mean_score}")
+    t=1
     
     
     

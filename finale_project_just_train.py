@@ -24,7 +24,6 @@ alpaca_prompt = """you are a jewish Rav, please answer the following question ac
 ### Answer:
 {}"""
 def formatting_prompts_func(examples):
-    #instruction = "you are a jewish Rav, please answer the following question"
     inputs       = examples["question"]
     outputs      = examples["answer"]
     texts = []
@@ -52,7 +51,7 @@ def train(args):
         
         base_model_name = "unsloth/llama-3-8b-bnb-4bit" #"unsloth/llama-3-8b-bnb-4bit"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Llama-2-7b-chat-hf" #"unsloth/llama-3-8b-bnb-4bit"#"NousResearch/Meta-Llama-3-8B" #"NousResearch/Meta-Llama-3-8B-Instruct" #"NousResearch/Llama-2-7b-chat-hf" # "NousResearch/Meta-Llama-3-8B-Instruct" #
     else:
-        base_model_name = "results_fine_tune_after_shulhan_aruch_no_heb_V3\llama-2" #"results_Sulhan_aruch_test\llama-2" #"NousResearch/Llama-2-7b-chat-hf" #
+        base_model_name = "results_Sulhan_aruch_test\llama-2" #"NousResearch/Llama-2-7b-chat-hf" #
     model = AutoModelForCausalLM.from_pretrained(
         base_model_name,
         quantization_config=quant_config,
@@ -83,9 +82,9 @@ def train(args):
     ### Load LoRA Configurations for PEFT ###
     #########################################
     peft_config = LoraConfig(
-        lora_alpha = 32,#16,
-        lora_dropout=0,#0.1,
-        r=8,#64,
+        lora_alpha = 32,
+        lora_dropout=0.1,
+        r=8,
         bias="none",
         task_type="CAUSAL_LM",
     )
@@ -116,7 +115,6 @@ def train(args):
         group_by_length=True,
         lr_scheduler_type= "linear", #"constant",
         load_best_model_at_end=True,
-        
         evaluation_strategy="steps",
         eval_steps=25,
         save_total_limit=2,
@@ -167,7 +165,7 @@ def train(args):
       tokenizer=tokenizer,
       repetition_penalty = 2.0,
       do_sample = True,
-      max_new_tokens = 200,
+      max_new_tokens = 400,
       top_k=10,
       num_return_sequences=1,
     )

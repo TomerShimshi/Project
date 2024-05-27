@@ -45,8 +45,8 @@
 %
 % and set <dim> to something 5cm or larger.
 
-\title{NLP finale course project:Application of LLM (llama-2) to
-answer Rav Questions }
+\title{NLP Final Project: LLM Application (llama-2) For
+Jewish Rabbi Question Answering}
 
 % Author information can be set in various styles:
 % For several authors from the same institution:
@@ -80,32 +80,30 @@ answer Rav Questions }
 \begin{document}
 \maketitle
 \begin{abstract}
-In recent years the have been a increase in the popularity of LLM and theire ability to solve tasks that were considered to be above computer level such as writing a report or planing a trip abroad.
-In the following paper we will apply two state of the art techniques to use an open source LLM to try and solve a problem it was not trained on and have most likely have never seen before, namely we will compare fine-tuning an LMM and  Retrieval-Augmented Generation (RAG) in order to give the LLM the ability to solve the specific task of answering a Jewish Rav question. The reason we chose this specific case is due to its Niche field which is a good way to show that if we succeed on this task we can apply the results we recive into many other fildes og life that no one tried to apply LLMs on.
-In our project we found that for our specific task the RAG pipline proved more cabaple than the fine tuning approach but over all booth gave descent results.
+In recent years, there has been an increase in the popularity of large language models (LLMs) and their ability to perform tasks that were previously considered beyond the capabilities of computers, such as writing reports or planning trips abroad. In the following paper, we examined the generalization ability of a LLM to solve a very unique and specific task, answering a Jewish Rabbi questions, a domain that most likely it wasn't exposed to during its training processes. We apply and compare two state of the art techniques, fine-tuning an LMM and Retrieval-Augmented Generation (RAG), and use an open source LLM to solve this problem. The reason we choose this specific case is due to its niche field, which is a good way to show that if we succeed on this task we can apply the results we would receive into many other fields that no one tried to apply LLMs on before.
+In our project, we found that for our specific task the RAG pipeline was proved as more capable than the classic the fine-tuning approach, but over all both gave descent results.
 \end{abstract}
 
 \section{Introduction}
-
-In the following paper we will try to use an LLM model on a specific task that it has yet to see before namely we will try to test whether a LLM is capable of answering Rav questions. For that we will first define the basic terms of the specific use case we tested in our terms of out project:
-A Rav Question is question asked by a Jewish person to hes Rav , a Rav is a Jewish man who studied the Halacha laws for many years and is considered a authority in the matter, the Rav needs to answer the given question according to the Jewish tradition laws. The questions can be about anything. In the Jewish tradition it is a custom to seek guidance from your Rav about any life question you may have. If this project will succeed it can help many remote orthodox Jews  that do not have a frequent access to a near by Rav but do require answers for they're immediate questions, and since it is much more scale able to use a LLM to answer all these question rather than a real human Rav it can revolutionize the entire Jewish world.  
-We know that LLMs are good with at answering questions but it is not so trivial to answer Rav Quastion and not many people are qualified to answer them.
-In order to achieve this goal we will try two different approaches and try to validate which is the prefers approach:
+In the following paper we will try to use an LLM model for solving a specific task, that it has yet to see before, namely we will try to test whether a LLM is capable of answering questions from a very unique domain - Rabbi questions. For that we will first define the basic terms of the specific use case we tested in our project:
+A Rabbi Question is question asked by a Jewish person to his Rabbi, Which is a Jewish man who studied the "Halacha" laws for many years and is considered a authority in the matter. The Rabbi needs to answer the given question according to the Jewish tradition laws. The questions can be about anything. In the Jewish tradition it is a custom to seek guidance from your Rabbi about any life question you may have. If this project will succeed it can help many remote orthodox Jews  that do not have a frequent access to a nearby Rabbi but do require answers for their immediate questions, and since it is much more scale-able to use a LLM to answer all these questions, rather than a real human Rabbi it can revolutionize the entire Jewish world.  
+We know that LLMs are good with questions answering but it is not so trivial to answer Rabbi questions and not many people are qualified to do so.
+In order to achieve this goal we will try two different approaches and check which one is better:
 \begin{enumerate}
-    \item Model Fine tuning: fine tune an LLM on the specific task of answering Rav questions. For that we first fine tuned the model on  \href{https://www.sefaria.org.il/Kitzur_Shulchan_Arukh.1.7?lang=en}{ Kitzur Shulha Aruch} which is a book that summaries all the Jewish halacka laws and then perform a second fine tuning using a dataset we collected from the \href{https://asktherav.com/ }{Ask a Rav}) website to try and teach the model how to properly answer this type of questions.
-    \item Retrieval-Augmented Generation (RAG): We used this approach in order to supply our LLMs the  \href{https://www.sefaria.org.il/Kitzur_Shulchan_Arukh.1.7?lang=en}{ Kitzur Shulha Aruch} so that it will be able to answer any question being asked according to the Halacka laws specified in the retrieval dataset
+    \item Model Fine tuning: fine tune an LLM on the specific task of answering Rabbi questions. For that we first fine tuned the model on  \href{https://www.sefaria.org.il/Kitzur_Shulchan_Arukh.1.7?lang=en}{ Kitzur Shulha Aruch} which is a book that summaries most of the Jewish halacka laws and then perform a second fine tuning using a dataset we collected from the \href{https://asktherav.com/ }{"Ask a Rav"} website to try and teach the model how to properly answer this type of questions.
+    \item Retrieval-Augmented Generation (RAG): We used this approach in order to supply our LLMs the most meaningful part from  \href{https://www.sefaria.org.il/Kitzur_Shulchan_Arukh.1.7?lang=en}{ "Kitzur Shulha Aruch"} so with that as an additional prompt it will be able to answer any question being asked according to the "Halacka" laws specified in the retrieval dataset.
 \end{enumerate}
-In our project we chose to use meta \href{https://llama.meta.com/llama2/}{ llama-2 7b } model for the application of our task as it is a state of the art open source LLM.
+In our project we choose to use "Meta"s \href{https://llama.meta.com/llama2/}{ "llama-2 7b" } model, which is one of the state of the art open source LLMs.
 
 
 \section{Related work}
-Ever since Meta released they're open source llama-2 model there has been a lot of people from the \href{https://huggingface.co/ }{Hugging face community}) that used this open source model and fine tuned it on they're own dataset, examples for that can be found in the following guides:  \href{https://deci.ai/blog/fine-tune-llama-2-with-lora-for-question-answeringo/ }{guide No.1} or \href{https://www.confident-ai.com/blog/the-ultimate-guide-to-fine-tune-llama-2-with-llm-evaluations }{guide No.2}. And in general in the recent years fine tuning a LLM has became a lot more common. following that is what made us decide on fine tuning our llama-2 model to be able to answer Rav questions.
+Ever since Meta released they're open source llama-2 model there has been a lot of people from the \href{https://huggingface.co/ }{Hugging face community}) that used this open source model and fine tuned it on they're own dataset, examples for that can be found in the following guides:  \href{https://www.datacamp.com/tutorial/fine-tuning-llama-2 }{guide No.1} or \href{https://www.confident-ai.com/blog/the-ultimate-guide-to-fine-tune-llama-2-with-llm-evaluations }{guide No.2}. And in general in the recent years fine tuning a LLM has became a lot more common. following that is what made us decide on fine tuning our llama-2 model to be able to answer Rav questions.
 Although fine tuning LLMs for specific tasks have became very common in the recent years we have yet to witness a model that was trained for the specific task of answering Rav questions.
 
 In the of Retrieval-Augmented Generation (RAG) case, recently there has been an increase in the popularity of using RAG in order to have an LLM capable of answering questions on areas it have not seen in its initial training. given that it has access to a specific dataset provided by the user.
 There are many examples and guides on how to use RAG for a specific LLM  like for example 
- \href{https://www.kaggle.com/code/gpreda/rag-using-llama-2-langchain-and-chromadb/notebook#Retrieval-Augmented-Generation }{guide No.1}
- or \href{https://blog.demir.io/hands-on-with-rag-step-by-step-guide-to-integrating-retrieval-augmented-generation-in-llms-ac3cb075ab6f }{guide No.2}. even tough that RAG is increasingly more popular these days we have yet to see any example of using a RAG pipeline combined with Jewish laws in order to create a Jewish Rav capable of answering question according to the Jewish laws, so from use case point of view our work has never been tested before .
+ \href{https://www.kaggle.com/code/gpreda/rag-using-llama-2-langchain-and-chromadb/notebook#Retrieval-Augmented-Generation }{ RAG guide No.1}
+ or \href{https://blog.demir.io/hands-on-with-rag-step-by-step-guide-to-integrating-retrieval-augmented-generation-in-llms-ac3cb075ab6f }{RAG guide No.2}. even tough that RAG is increasingly more popular these days we have yet to see any example of using a RAG pipeline combined with Jewish laws in order to create a Jewish Rav capable of answering question according to the Jewish laws, so from use case point of view our work has never been tested before .
  
 
 \begin{table}[htbp]
@@ -127,9 +125,9 @@ There are many examples and guides on how to use RAG for a specific LLM  like fo
 
 \section{Training and Data collection}
 \subsection{Data collection and prompt preparation}
-Since all of the Rav answers are based on the Jewish laws (the halcka) we couldn't just use a question and answer dataset (as we initially taught) so we understand that the first step in creating our dataset booth for RAG and for fine tuning a pretrained model is to  first have a dataset containing the majority of the Jewish laws for that we have collected the English version of the \href{https://en.wikipedia.org/wiki/Kitzur_Shulchan_Aruch}{ Kitzur Shulhan Aruch} book since it contains most of the Jewish laws and customs while still being a relatively short text so that we can perform RAG\ fine tuning on it.
-The second step for the LLM fine tuning to answer Rav question is to find the relevant dataset containaing real Rav questions and answers  and since that there is no known dataset for Rav questions we had to create a dataset ourselves.For this task we had to find a relevant site to perform data scraping from, and since most the open source models are best suited for the english language rather that the Hebrew language we performed the data scraping from an English site namely \href{https://asktherav.com/ }{Ask a Rav} site which is full of real questions and answers in English. From this site we comprised our dataset of real Rav Quaestion and answers as can be seen on table 1.
-Since some of the questions\ answers on the site asked using some Hebrew words inside them (usually old Hebrew words) and since we know that the model do not handle Hebrew well we have decided to remove all these questions/ answers from the dataset, leaving us with a dataset of 1160 only English Q\& A.
+Since all of the Rav answers are based on the Jewish laws (the halcka) we couldn't just use a question and answer dataset (as we initially taught) so we understand that the first step in creating our dataset booth for RAG and for fine tuning a pre-trained model is to  first have a dataset containing the majority of the Jewish laws for that we have collected the English version of the \href{https://pdfcoffee.com/kitzur-shulchan-aruch-pdf-free.html}{ Kitzur Shulhan Aruch} book since it contains most of the Jewish laws and customs while still being a relatively short text so that we can perform RAG\ fine tuning on it.
+The second step for the LLM fine tuning to answer Rav question is to find the relevant dataset containing real Rav questions and answers  and since that there is no known dataset for Rav questions we had to create a dataset ourselves.For this task we had to find a relevant site to perform data scraping from, and since most the open source models are best suited for the English language rather that the Hebrew language we performed the data scraping from an English site namely \href{https://asktherav.com/ }{Ask a Rav} site which is full of real questions and answers in English. From this site we comprised our dataset of real Rav Questions and answers as can be seen on table 1.
+Since some of the questions\ answers on the site were asked using some Hebrew words inside them (usually old Hebrew words) and since we know that the model do not handle Hebrew well we have decided to remove all these questions/ answers from the dataset, leaving us with a dataset of 1160 only English Q\& A.
 Here is an example of a one question and answer used in our dataset.\\
 Question:\\
  May I put a frozen bag of vegetables etc. on my body on Shabbos as it might melt from my body heat?
@@ -140,8 +138,8 @@ Answer:\\
 1) One may handle ice packs to cool off with, since only a small amount of water is melted, there is no intention of melting them and the melted water is going to waste. Melting ice is problematic when one actively melts it, or even when no action is taken if this his intention, for example if wants to melt it save the melted water – which is not applicable in this case.
 However, frozen food items like meat and vegetables should not be used since they are muktzah.\\
 2) Since you want to melt the milk, you should not purposely use it to cool off so as to proactively melt it.\\
-3) Cold towels that are not wet and will not become squeezed is permissible to use\\
-After we finished collection the data we needed to create the model prompt, in order for it to fit to the task at hand we created the following prompt in order to feed it into the the model : \\
+3) Cold towels that are not wet and will not become squeezed is permissible to use.\\
+After we finished the data collection we needed to create the model prompt, in order for it to fit to the task at hand we created the following prompt in order to feed it into the the model : \\
 you are a jewish Rav, please answer the following question according to the Halakha (Jewish law) .\\
 \#\#\# Question:\\
 \\
@@ -150,7 +148,7 @@ you are a jewish Rav, please answer the following question according to the Hala
 Where the EOS TOKEN stands for the token which the tokenizer was trained on to mark the end of sentence.
 After finishing the data collection and prompt creation we loaded the model and started the model training.
 \subsection{Model loading}
-The model which have tested in this project is  \href{https://huggingface.co/NousResearch/Llama-2-7b-chat-hf }{meta llama-2 7B} (where the B stands for the models number of parameters in billion) As such it is are vary large model that consume a lot of RAM on the GPU in order to still be able to load and fine tune them on the provided GPU we have used \href{https://pypi.org/project/bitsandbytes/}{bitsandbytes} python library which essentially enables accessible large language models via k-bit quantization for PyTorch. bitsandbytes provides three main features for dramatically reducing memory consumption for inference and training:
+The model which have tested in this project is  \href{https://huggingface.co/NousResearch/Llama-2-7b-chat-hf }{meta llama-2 7B} (where the B stands for the models number of parameters in billion) As such it is a vary large model that consume a lot of RAM on the GPU in order to still be able to load and fine tune them on the provided GPU we have used \href{https://pypi.org/project/bitsandbytes/}{bitsandbytes} python library which essentially enables accessible large language models via k-bit quantization for PyTorch. bitsandbytes provides three main features for dramatically reducing memory consumption for inference and training:
 \begin{enumerate}
     \item 8-bit optimizers uses block-wise quantization to maintain 32-bit performance at a small fraction of the memory cost.
     \item LLM.Int() or 8-bit quantization enables large language model inference with only half the required memory and without any performance degradation. This method is based on vector-wise quantization to quantize most features to 8-bits and separately treating outliers with 16-bit matrix multiplication.
@@ -159,7 +157,7 @@ The model which have tested in this project is  \href{https://huggingface.co/Nou
 
 
 
-We loaded the model using 4 bit quantization which enabled us to load the quantized model and fine tune just small set of trainable low-rank adaptation (\href{https://huggingface.co/papers/2106.09685}{LoRA}) weights. by doing so we manged to speed up each training step and use a lesser GPU in order to load the model.
+We loaded the model using 4 bit quantization which enabled us to load the quantized model and fine tune just small set of trainable low-rank adaptation (\href{https://huggingface.co/docs/peft/main/en/conceptual_guides/lora}{LoRA}) weights. by doing so we manged to speed up each training step and use a lesser GPU in order to load the model.
 We used the following parameters for the model loading:
 \begin{verbatim}
 BitsAndBytesConfig(
@@ -170,7 +168,7 @@ BitsAndBytesConfig(
 )
 \end{verbatim}
 \subsection{Fine Tuning}
-As explained in the previous subsection after defining the Quantization profile for the model loading we defined the trainable low-rank adaptation (LoRA) weights. The advantages of using LoRA are as follows:  
+As explained in the previous subsection after defining the Quantization profile for the model loading we defined the trainable low-rank adaptation (\href{https://huggingface.co/docs/peft/main/en/conceptual_guides/lora}{LoRA}) weights. The advantages of using \href{https://huggingface.co/docs/peft/main/en/conceptual_guides/lora}{LoRA} are as follows:  
 LoRA enhances the training and adaptation efficiency of large language models like OpenAI’s GPT-3 and Meta’s LLaMA. Traditional fine-tuning methods require updating all model parameters, which is computationally intensive. LoRA, instead, introduces low-rank matrices that only modify a subset of the original model's weights. These matrices are small compared to the full set of parameters, enabling more efficient updates.
 The approach focuses on altering the weight matrices in the transformer layers of the model, specifically targeting the most impact-full parameters. This selective updating streamlines the adaptation process, making it significantly quicker and more efficient. It allows the model to adapt to new tasks or datasets without the need to extensively retrain the entire model.
 By doing so we were able to fine our llama model using a single GPU and in a matter of a few hours (as oppose to model retraining which according to meta the training of llama-2 7B took \href{https://huggingface.co/meta-llama/Llama-2-7b-chat-hf}{184320 GPU hours})
@@ -184,16 +182,26 @@ LoraConfig(
     task_type="CAUSAL_LM",
 )
 \end{verbatim}
+Where the main parameters shown above stanfs for:
+\begin{itemize}
+    \item r: the rank of the update matrices, expressed in int. Lower rank results in smaller update matrices with fewer trainable parameters.
+    \item lora\_alpha: LoRA scaling factor.
+    \item bias: Specifies if the bias parameters should be trained. Can be 'none', 'all' or 'lora\_only'.
+    \item lora\_dropout (float) — The dropout probability for Lora layers.
+\end{itemize}
+The full documentation can be found  \href{https://huggingface.co/docs/peft/en/package_reference/lora}{here}.\\
+
+
 For the model fine tuning we have split the fine tuning into two.
-In the first part of the fine tuning we just fine tuned the model on the Kitzur Sulhan Aruch dataset in order to provide the model context regarding the Jewish laws. in this part of the training we used the full Kitzur Sulhan Aruch dataset without splitting it into a train and test dataset since the model needed to train and see the full book for it to know all the Jewish laws, in this part of the train we just fed the raw data into the model without any other instructions to it, we ran this training loop for 2.5 epochs (all the training code is attached to the submission of this paper).
+In the first part of the fine tuning we just fine tuned the model on the Kitzur Sulhan Aruch dataset in order to provide the model context regarding the Jewish laws. in this part of the training we used the full Kitzur Sulhan Aruch dataset without splitting it into a train and test dataset since the model needed to train and see the full book for it to know the Jewish laws, in this part of the train we just fed the raw data into the model without any other instructions to it, we ran this training loop for 2.5 epochs (all the training code is attached to the submission of this paper).
 Lastly we performed a second fine tuning step this time with the question and answers dataset along with the previously mentioned model prompt since we have used HuggingFace SFTTrainer (Supervised Fine Tuning Trainer) in order to perform our model's fine tuning this we wanted to take levrage of its capability to load the best model at the end (based on its loss on the test dataset) for this reason we have split our Rav questions and answers dataset into 3 groups as followos: 
 \begin{enumerate}
     \item train dataset: which is 70\% of the dataset, 812 questions and answers, that the model has trained on.
     \item evaluation datasetd: which is 15\% of the dataset, 174 questions and answers, that model was evaluated on during training.
     \item validation datasetd: which is 15\% of the , 174 questions and answers, that model was validate on in the finale model assement step 
 \end{enumerate}
-As generally recorded for the training of a deep learning model, like for example \href{https://encord.com/blog/train-val-test-split/#:~:text=Training%2C%20Validation%2C%20and%20Test%20Set%3A%20Key%20Takeaways,-Here%20are%20the&text=The%20optimal%20split%20ratio%20depends,10%2D20%25%20test%20data. }{in this guide }
-We have fine tuned the model on the Q\&A dataset for another 2 epochs to try and teach it how to handel Rav Questions
+As generally recommended for the training of a deep learning model, like for example \href{https://encord.com/blog/train-val-test-split/#:~:text=Training%2C%20Validation%2C%20and%20Test%20Set%3A%20Key%20Takeaways,-Here%20are%20the&text=The%20optimal%20split%20ratio%20depends,10%2D20%25%20test%20data. }{in this guide }
+We have fine tuned the model on the Q\&A dataset for another 2 epochs to try and teach it how to handle Rav Questions
 Attached is en example of answer provided by our fine tuned llama2 model after this stage:
 \begin{verbatim}
 ### Question:
@@ -206,12 +214,12 @@ No.
     \centering
     \includegraphics[width=1\linewidth]{RAG_flow.png}
     \caption{RAG flow}
-    \label{fig:RAG_flowl}
+    \label{fig:RAG_flow}
 \end{figure}
    
 
 \subsection{Retrieval-Augmented Generation (RAG)}
-For our experiment we have also tested a different approach which is raising in popularity lately which is Retrieval-Augmented Generation (RAG) Which is a technique for enhancing the accuracy and reliability of generative AI models with facts fetched from external sources. as explained \href{https://www.databricks.com/glossary/retrieval-augmented-generation-rag#:~:text=An%20easy%20and%20popular%20way,augmented%20context%20for%20the%20LLM. }{in this site } and as can be seen on \ref{fig:RAG flow} fig
+For our experiment we have also tested a different approach which is raising in popularity lately which is Retrieval-Augmented Generation (RAG). Which is a technique for enhancing the accuracy and reliability of generative AI models with facts fetched from external sources. as explained \href{https://www.databricks.com/glossary/retrieval-augmented-generation-rag#:~:text=An%20easy%20and%20popular%20way,augmented%20context%20for%20the%20LLM. }{in this site } and as can be seen on fig \ref{fig:RAG_flow} 
 In our case we have taken the Kitzur Shulahn Aruch dataset that we have previously used to fine tune out LLM and this time we provided it into the model as context so that it will answer the given question according to it.  
 For this we have used the \href{https://python.langchain.com/v0.1/docs/get_started/introduction/}{langchain} python library as explained \href{https://www.kaggle.com/code/gpreda/rag-using-llama-2-langchain-and-chromadb/notebook#Retrieval-Augmented-Generation }{in this guide }.
 For the retrieval part we have used the all-mpnet-base-v2 which is a sentence-transformers model that maps sentences and paragraphs to a 768 dimensional dense vector space as explained  \href{https://huggingface.co/sentence-transformers/all-mpnet-base-v2 }{in the model page } on hugging face .
@@ -252,10 +260,10 @@ Example of the validation csv
 
 \subsection{Evaluation pipeline}
 
-For the validation of the model we compared booth the RAG and fine tuned model on the validation dataset which is comprised of  15\% percent of the question and answer dataset taken from the \href{https://asktherav.com/ }{Ask a Rav} web site.
+For the validation of the model we compared booth the RAG and fine tuned model on the validation dataset which is comprised of  15\% of the question and answer dataset taken from the \href{https://asktherav.com/ }{Ask a Rav} web site.
 In order to perform a full evaluation of the answers received from our LLM we used the deepeval  \href{https://docs.confident-ai.com/ }{python package}.
 In order to separate the models run (RAG / fine-tuned) we performed a preliminary step to the evaluation full. we ran booth versions of the model on the validation dataset to create a csv containing question, model output, expected output as can be seen on  \href{#tab:example}{Table \ref*{validation csv example}} that way we completely separated the model outputs generation pipeline  from the model validation pipeline.
-The test that we have decided to use 2 methods for model evaluation:
+For the test that we have decided to use 2 methods for model evaluation:
 \begin{enumerate}
     \item   \href{https://docs.confident-ai.com/docs/metrics-answer-relevancy }{Answer Relevancy}: The answer relevancy metric measures the quality of our generator by evaluating how relevant the actual\_output of our LLM application is compared to the provided input. deepeval's answer relevancy metric is a self-explaining LLM-Eval, meaning it outputs a reason for its metric score.
     The Answer Relevancy Metric score is calculated according to the following equation:
@@ -269,7 +277,7 @@ The test that we have decided to use 2 methods for model evaluation:
      
     
 \end{enumerate}
-Since the open source e \href{https://mistral.ai/news/announcing-mistral-7b/ }{mistral\_7b model} was insufficaint model to perform our deep\_eval test with it we had to use the paid  GPT3.5-Turbo model in order to perform our model evaluation.
+Since the open source e \href{https://mistral.ai/news/announcing-mistral-7b/ }{mistral\_7b model} was insufficient model to perform our deep\_eval test with it we had to use the paid  GPT3.5-Turbo model in order to perform our model evaluation.
 
 \begin{table}[htbp]
     \centering
@@ -289,9 +297,9 @@ Since the open source e \href{https://mistral.ai/news/announcing-mistral-7b/ }{m
 \subsection{Evaluation Results}
 The json and yaml files containing all the evaluation results are attached to this report
 \subsubsection{Fine tuned model Evaluation Results}
-For the fine tuned model we got a accuracy relevancy score of 0.549 and answer correctness score of 0.318.
-Meaning that our fine tuned model did not manged to fully simulate a Rav's answers to the given input question, that is to be expected since it no trivial task to answer these types of questions.
-we will now show an example of the deep\_eval outputs score for each of the metrics:
+For the fine tuned model we got a accuracy relevancy score of 58.1\% and answer correctness score of 22\%.
+Meaning that our fine tuned model did not manged to fully simulate a Rav's answers to the given input question, that is to be expected since it no trivial task to answer these types of questions.\\
+We will now show an example of the deep\_eval outputs score for each of the metrics:
 For the randomly selected test case number 147 we got:\\
 Model input :\\
  I know that one cannot leave the room in middle of Torah reading. How about Haftorah or Megillah (he was already Yotze)?\\

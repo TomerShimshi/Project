@@ -139,7 +139,7 @@ test_rag(qa, prompet)
 
 # Replace this with the actual output from your LLM application
 #for i in range(len(test_dataset)):
-question = input('Please enter a question for the Rav \n Enter empty string to quite \n')
+question = input('Please enter a question for the Rav \n Enter empty string to quit \n')
 while len(question)>1:   
     
     model_prompt = alpaca_prompt.format( question, "")
@@ -147,4 +147,4 @@ while len(question)>1:
     result = test_rag(qa,query=model_prompt)
     actual_output = result.split("Helpful Answer:")[1]
     print(f"The Rav answer is {actual_output} \n \n")
-    question = input('Please enter a question for the Rav \n Enter empty string to quite \n')
+    question = input('Please enter a question for the Rav \n Enter empty string to quit \n')

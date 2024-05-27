@@ -74,7 +74,7 @@ def formatting_prompts_func(examples):
 
 # Replace this with the actual output from your LLM application
 #for i in range(len(test_dataset)):
-question = input('Please enter a question for the Rav \n Enter empty string to quite \n')
+question = input('Please enter a question for the Rav \n Enter empty string to quit \n')
 while len(question)>1:
     ##question = item['question']#test_dataset['quastion'][i]
     
@@ -97,7 +97,7 @@ while len(question)>1:
    
     #append_dict_to_csv(save_dict, save_path_csv_path)
     print(f"The Rav answer is {actual_output} \n \n")
-    question = input('Please enter a question for the Rav \n Enter empty string to quite \n')#item['question']#test_dataset['quastion'][i]
+    question = input('Please enter a question for the Rav \n Enter empty string to quit \n')#item['question']#test_dataset['quastion'][i]
     #"We offer a 30-day full refund at no extra cost."
 
     

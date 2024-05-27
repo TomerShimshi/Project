@@ -97,9 +97,9 @@ def train(args):
     ### Load LoRA Configurations for PEFT ###
     #########################################
     peft_config = LoraConfig(
-        lora_alpha = 32,#16,
+        lora_alpha = 32,
         lora_dropout=0.1,
-        r=8,#64,
+        r=8,
         bias="none",
         task_type="CAUSAL_LM",
     )
@@ -113,7 +113,7 @@ def train(args):
     ### Set Training Arguments ###
     ##############################
     new_model =args.model_name #"tuned-llama-3-8b_V2"
-    save_path = os.path.join(base_dir , "results_Sulhan_aruch_finale",new_model)
+    save_path = os.path.join(base_dir , "results_Sulhan_aruch",new_model)
     temp_save_path = os.path.join(base_dir, "tuning_results")
     print(f"temp save model path = {temp_save_path}")
     training_arguments = TrainingArguments(
