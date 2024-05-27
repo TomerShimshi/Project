@@ -60,16 +60,11 @@ def train(args):
         base_model_name = "NousResearch/Meta-Llama-3-8B-Instruct" #"unsloth/llama-3-8b-bnb-4bit",#"/content/drive/MyDrive/NLP_proj/results_v3/llama-3" #
     else:
         base_model_name = "NousResearch/Llama-2-7b-chat-hf" #
-        model = AutoModelForCausalLM.from_pretrained(
-        base_model_name,
-        quantization_config=quant_config,
-        device_map="auto")
     model = AutoModelForCausalLM.from_pretrained(
         base_model_name,
         quantization_config=quant_config,
         device_map="auto",
-         )#{"": 0})
-
+         )
     model.generate_config = generate_config
     print(f"using model = {base_model_name}\n\n")
     ######################
