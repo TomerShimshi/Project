@@ -25,7 +25,7 @@ quant_config = BitsAndBytesConfig(
 ### Load Base Model ###
 #######################
 
-base_model_name = "tomer-shimshi/llama2-Rav" #os.path.join(os.getcwd() ,"results_fine_tune_after_shulhan_aruch_no_heb_V3\llama-2")
+base_model_name = "tomer-shimshi/llama2-Rav" #"results_fine_tune_after_shulhan_aruch_no_heb_V4\llama-2" #"tomer-shimshi/llama2-Rav" #os.path.join(os.getcwd() ,"results_fine_tune_after_shulhan_aruch_no_heb_V3\llama-2")
 model = AutoModelForCausalLM.from_pretrained(
     base_model_name,
     quantization_config=quant_config,
@@ -85,15 +85,15 @@ while len(question)>1:
       #eos_token_id=EOS_TOKEN,
       repetition_penalty = 2.0,
       do_sample = True,
-      max_new_tokens = 400,
-      #top_k=10,
+      max_new_tokens = 600,
+      top_k=10,
       #num_return_sequences=1,
       
     )
     model_prompt = alpaca_prompt.format( question, "")
     
     result = pipe(model_prompt)
-    actual_output = result[0]['generated_text'].split("### Answer:")[1]
+    actual_output = result[0]['generated_text'].split("### Answer:")[1].replace('/r','').replace('\n','')
    
     #append_dict_to_csv(save_dict, save_path_csv_path)
     print(f"The Rav answer is {actual_output} \n \n")
