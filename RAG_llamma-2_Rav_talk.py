@@ -12,6 +12,8 @@ from langchain.embeddings import HuggingFaceEmbeddings
 from langchain.chains import RetrievalQA
 from langchain.vectorstores import Chroma
 
+from langchain import PromptTemplate
+
 
 ##Just for Eval
 import os
@@ -80,7 +82,7 @@ def test_model(tokenizer, pipeline, question):
         top_k=10,
         num_return_sequences=1,
         eos_token_id=tokenizer.eos_token_id,
-        max_new_tokens = 100,)
+        max_new_tokens = 400,)
     for seq in sequences:
         print(f"Result: {seq['generated_text']}")
     
@@ -109,16 +111,54 @@ vectordb = Chroma.from_documents(documents=all_splits, embedding=embeddings, per
 #Initialize chain
 retriever = vectordb.as_retriever()
 
+################################
+################################
+# Test new prompt
+################################
+################################
+template = '''
+If you don't know the answer, just say that you don't know.
+Don't try to make up an answer.
+{context}
+
+Respond as a jewish Rav and please answer the following question according to the Halakha (Jewish law) . %s
+
+Question: {question}
+Answer:
+'''
+prompt = PromptTemplate(
+    template=template , 
+    input_variables=[
+        'context', 
+        'question',
+    ]
+)
+
+
+qa_new = RetrievalQA.from_chain_type(
+    llm=llm, 
+    #chain_type="stuff", 
+    retriever=retriever,
+    chain_type_kwargs={"prompt": prompt},
+    #verbose=True
+)
+
 qa = RetrievalQA.from_chain_type(
     llm=llm, 
     chain_type="stuff", 
-    retriever=retriever, 
+    retriever=retriever,
+    #chain_type_kwargs={"prompt": prompt},
     #verbose=True
 )
-def test_rag(qa, query):
+
+def test_rag(qa, query,test_pipeline = 'new'):
     #print(f"Query: {query}\n")
     time_1 = time()
-    result = qa.run(query)
+    #result = qa.run(query)
+    if test_pipeline == 'new':
+        result = qa_new.run({"query": query})
+    else:
+       result = qa.run(query) 
     time_2 = time()
     print(f"Inference time: {round(time_2-time_1, 3)} sec.")
     #print("\nResult: ", result)
@@ -142,9 +182,15 @@ test_rag(qa, prompet)
 question = input('Please enter a question for the Rav \n Enter empty string to quit \n')
 while len(question)>1:   
     
+    model_prompt_custom_prompt = question#alpaca_prompt.format( question, "")
     model_prompt = alpaca_prompt.format( question, "")
     
-    result = test_rag(qa,query=model_prompt)
-    actual_output = result.split("Helpful Answer:")[1]
-    print(f"The Rav answer is {actual_output} \n \n")
+    result_custom_prompt = test_rag(qa,query=model_prompt_custom_prompt,test_pipeline='new')
+    actual_output_custom_prompt = result_custom_prompt.split("Answer:")[1]
+    
+    result_default_prompt = test_rag(qa,query=model_prompt,test_pipeline='old')
+    actual_output = result_default_prompt.split("Helpful Answer:")[1]
+    print(f"The Rav answer with custom prompt is {actual_output_custom_prompt} \n \n")
+    
+    print(f"The Rav answer with default prompt is {actual_output} \n \n")
     question = input('Please enter a question for the Rav \n Enter empty string to quit \n')
