@@ -42,12 +42,6 @@ tokenizer = AutoTokenizer.from_pretrained(
 tokenizer.pad_token = tokenizer.eos_token
 tokenizer.padding_side = "right"
 
-####################
-### Load Dataset ###
-####################
-train_dataset_name = "cleaned_Rebe_Q_and_A_dataset_just_rebe_questions_english_no_hebrew.csv"
-test_dataset = load_dataset("csv", data_files=train_dataset_name,split='train')#[-20%:]')
-
 ##############################
 ### Set Saving Arguments ###
 ##############################
@@ -72,11 +66,9 @@ def formatting_prompts_func(examples):
         texts.append(text)
     return { "text" : texts, }
 
-# Replace this with the actual output from your LLM application
-#for i in range(len(test_dataset)):
 question = input('Please enter a question for the Rav \n Enter empty string to quit \n')
 while len(question)>1:
-    ##question = item['question']#test_dataset['quastion'][i]
+    
     
     pipe = pipeline(
       task="text-generation",
